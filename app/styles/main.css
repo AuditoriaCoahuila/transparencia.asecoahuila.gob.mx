@@ -26,24 +26,171 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
     border: 1px solid #fff;
     padding: 5px;
 }
+.bordered-btn-block{
+	display: inline-block;
+	margin: 10px 0;
+}
+
+/*---------------/
+	#CONTAINERS
+/*---------------*/
+.container{padding: 14px 0}
+
+.container h1,
+.container h2,
+.container h3,
+.container p{
+	color:#666666;
+	margin: 0;
+}
+
+.container-lg{
+	margin: 0 auto;
+	max-width: 760px;
+}
+.container-xlg{
+	margin: 0 auto;
+	max-width: 1000px;
+}
+
+.container-sm{
+	margin: 0 auto;
+	max-width: 500px;
+}
+
+.center-content{
+	text-align: center
+}
+
+.container h1,
+.container h2{
+	font-weight: 300;
+}
+
+.container-alt{background: #F9F9F9}
+
+/*---------------/
+	#BANNER
+/*---------------*/
+.banner{
+	background: url(../images/dunas.jpg) center no-repeat;
+	background-size: cover;
+	/*background: #9B6244;*/
+	padding: 34px 0;
+}
+.banner h1{
+	color: #fff;
+	font-weight: 300;
+	font-size:36px;
+	margin-top: 0;
+}
+.banner .banner-column{
+	color: #fff;
+	font-weight: 700;
+	margin: 0 10px;
+	padding: 8px 14px 0;
+}
+.banner .banner-column p{
+	color:#fff;
+	font-size: 14px;
+	margin: 0;
+}
+.banner .banner-column .big-text{font-size: 34px}
+.banner-column:nth-child(2){
+	border-left:1px solid #fff;
+	border-right:1px solid #fff;
+}
+
+
+
 
 /*-----------/
     #TOOLBAR
 /*----------*/
-.toolbar-head{background:#343667;}
-.toolbar-head .container{
+.header{background:#343667;}
+.header .container{
     padding:40px 26px;
     height: auto;
 }
-.toolbar-head h1{color:#fff;}
-.toolbar-head nav a{
+.header h1{color:#fff;}
+.header nav a{
     font-size: 14px;
     margin: 0 8px;
 }
 
+/*--------------/
+	#FILTERNAV
+/*--------------*/
+.filter-nav{
+	border:1px solid #FF921F;
+	list-style: none;
+	padding: 0;
+}
+.filter-nav a{
+	color:#FF921F;
+	display: block;
+	font-size: 13px;
+	padding: 4px 8px;
+	text-transform: uppercase;
+}
+.filter-nav a:hover{
+	background: #FF921F;
+	color: #fff;
+}
+
+
+/*-------------/
+	#RADIAL
+/*-------------*/
+.radial-row{margin: 30px 0}
+.radial-row p{
+	font-size: 13px;
+	font-weight:700;
+}
+.radial-row .big-text{
+	font-size: 30px;
+}
+
+.radial-item:nth-child(1) p{color:#1878AB}
+.radial-item:nth-child(2) p{color:#FF921D}
+.radial-item:nth-child(3) p{color:#E53E2B}
+.radial-item:nth-child(4) p{color:#2D3057}
+
+/*-----------/
+	#COLUMNS-CONTAINER
+/*-----------*/
+.columns-container{}
+.columns-container .column-item h3{
+	color:#fff;
+	font-weight: 300;
+}
+.columns-container .column-item h3 + p{margin-top: 10px}
+
+.columns-container .column-item p{
+	color:#fff;
+	font-size: 14px;
+}
+.columns-container .column-item{
+	background: #E33E2B;
+	padding: 20px;
+}
+.columns-container .column-item .big-text{font-size: 32px;}
+
+.columns-container .column-item:nth-child(2){
+	background: #343667;
+}
+
+.columns-container .column-item .bordered-btn{color:#fff}
+
+
 #footer{
-	background: #2E1364;
+	background: #040F23;
 	margin-top: -100px!important;
 	min-height: 100px!important;
 	height: auto!important;
+	padding-top:26px;
+}
+#footer p{
+	color:#fff;
+	font-size:12px;
 }
