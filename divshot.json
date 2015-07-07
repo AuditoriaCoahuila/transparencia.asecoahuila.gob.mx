@@ -1,0 +1,9 @@
+{
+  "name": "asec",
+  "root": "dist",
+  "routes": {
+    "**": "index.html"
+  },
+  "clean_urls": true,
+  "error_page": "404.html"
+}
