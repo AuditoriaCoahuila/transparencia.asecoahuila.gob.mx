@@ -36,6 +36,6 @@
   },
   "scripts": {
     "test": "grunt test",
-    "postinstall": "./node_modules/bower/bin/bower install && bower npm install grunt-cli"
+    "postinstall": "npm install -g bower && npm install -g grunt-cli && bower install"
   }
 }
