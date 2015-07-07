@@ -13,6 +13,7 @@ angular
     'ngMaterial'
 ]);
 
+var svg, vis;
 
 function processData(data) {
     var obj = data.countriesMsgVol;
@@ -31,7 +32,9 @@ function initBubbles(){
     var bubbleWidth = parseInt(d3.select('#bubble-chart').style('width'), 10);
     var bubbleHeight = parseInt(d3.select('#bubble-chart').style('height'), 10);
 
-    var svg = d3.select('#bubble-chart').append('svg')
+    d3.select('svg').remove();
+
+    svg = d3.select('#bubble-chart').append('svg')
         .attr('width', bubbleWidth)
         .attr('height', bubbleHeight);
 
@@ -56,5 +59,10 @@ function initBubbles(){
 }
 
 
+function resize(){
+    initBubbles();
+}
+
+d3.select(window).on('resize', resize);
 
 initBubbles();
