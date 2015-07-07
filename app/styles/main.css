@@ -241,7 +241,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	background: rgba(0,0,0,0.1);
 }
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 1000px){
 	/*------------/
 		#CONTAINER
 	/*------------*/
