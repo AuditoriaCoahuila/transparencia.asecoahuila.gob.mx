@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/stickyFooter.css -->
+    <link rel="stylesheet" href="styles/stickyFooter.css">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="asecApp">
+
+    <div id="wrap">
+        <div id="main" class="clearfix">
+            <div id="topBackRepeat" layout='row' flex layout-fill>
+                <div flex layout="column">
+
+                    <md-toolbar class='header'>
+                        <div class="md-toolbar-tools container nopadding" layout='row'>
+                            <div flex>
+                                <h1>Índice de información <strong>presupuestal municipal</strong></h1>
+                            </div>
+                            <nav>
+                                <a href="#">Índice</a>
+                                <a href="#">Contacto</a>
+                                <a href="#">Estados</a>
+                                <a href="#">Estadisticas</a>
+                                <a href="#" class="bordered-btn">Contacto</a>
+                            </nav>
+                        </div>
+                    </md-toolbar>
+
+                    <div class="container container-xlg center-content">
+                        <h1>Tipo de entidad</h1>
+                        <ul class="filter-nav" layout="row" layout-md="column" layout-sm="column">
+                            <a href="#">Poderes</a>
+                            <a href="#">Organismos autnomos</a>
+                            <a href="#">Paraestatales</a>
+                            <a href="#">Sistemas de agua</a>
+                            <a href="#">Paramunicipales</a>
+                            <a href="#">Municipios</a>
+                            <a href="#">Entidades federativas</a>
+                        </ul>
+                    </div>
+                    
+                    <div class="container center-content title-block">
+                        <h1>Nombre del municipio</h1>
+                        <h2>Región norte</h2>
+                    </div>
+
+                    <div class="container container-xlg center-content">
+                        <div class="bubble-chart-wrap" layout="row" layout-md="column" layout-sm="column" layout-align="center center">
+                            <div flex flex-md="100" flex-sm="100" id="bubble-chart"></div>
+                        </div>
+                    </div>
+
+                    <div class="container-alt">
+                        <div class="columns-container" layout="row" layout-md="column" layout-sm="column">
+                            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+                                <div class="container container-sm center-content">
+                                    <h2>Ingreso per cápita del municipio</h2>
+                                    <p><strong>Contra el promedio general de los 38 municipios</strong></p>
+                                    <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
+                                        <div flex class="radial-item">
+                                            <p>This is photoshop version of lotem ipsum</p>
+                                            <p><strong class="big-text">7,458</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+                                <div class="container container-sm center-content">
+                                    <h2>Egresos per cápita del municipio</h2>
+                                    <p><strong>Contra el promedio general de los 38 municipios</strong></p>
+                                    <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
+                                        <div flex class="radial-item">
+                                            <p>This is photoshop version of lotem ipsum</p>
+                                            <p><strong class="big-text">7,458</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- topBackRepeat END -->
+        </div><!-- MAIN END -->
+    </div><!-- WRAP END -->
+    <div class="clear"></div>
+
+    <div id="footer">
+        <div class="container container-xlg" layout="row" layout-sm="column">
+            <p>This is photoshop version of lotem ipsum</p>
+        </div>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

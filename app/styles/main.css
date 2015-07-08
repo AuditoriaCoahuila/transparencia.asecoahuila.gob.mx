@@ -175,14 +175,22 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	background: #E33E2B;
 	padding: 20px;
 }
-.columns-container .column-item .big-text{font-size: 32px;}
 
 .columns-container .column-item:nth-child(2){
 	background: #343667;
 }
-
+.columns-container .column-item .big-text{font-size: 32px;}
 .columns-container .column-item .bordered-btn{color:#fff}
 
+.columns-container .column-item-alt{background: #F9F9F9!important;}
+.columns-container .column-item-alt:nth-child(2){border-left: 4px solid #fff;}
+.columns-container .column-item-alt p{color:#666666}
+
+
+
+/*------------/
+	#FOOTER
+/*-----------*/
 
 #footer{
 	background: #040F23;
@@ -220,6 +228,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 #bubble-chart{
 	width: 300px;
 	width: 80%;
+	min-width: 300px;
 	height: 400px;
 	min-height: 400px;
 }
@@ -240,6 +249,24 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .custom-ordered-list li:nth-child(odd){
 	background: rgba(0,0,0,0.1);
 }
+
+/*---------------/
+	#TITLE-BLOCK
+/*---------------*/
+.title-block{
+	background:#E33E2B;
+	color:#fff;
+	padding: 24px 0;
+}
+.title-block h1{
+	color: #fff;
+	font-size: 26px
+}
+.title-block h2{
+	color:#fff;
+	font-size: 16px
+}
+
 
 @media screen and (max-width: 1000px){
 	/*------------/
