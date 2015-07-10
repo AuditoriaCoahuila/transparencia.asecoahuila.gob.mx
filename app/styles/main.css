@@ -45,20 +45,26 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	margin: 0;
 }
 
-.container-lg{
-	margin: 0 auto;
-	max-width: 760px;
-}
 .container-xlg{
 	margin: 0 auto;
 	max-width: 1000px;
 }
-
+.container-lg{
+	margin: 0 auto;
+	max-width: 760px;
+}
+.container-md{
+	margin: 0 auto;
+	max-width: 640px;
+}
 .container-sm{
 	margin: 0 auto;
 	max-width: 500px;
 }
-
+.container-xsm{
+	margin: 0 auto;
+	max-width: 320px;
+}
 .center-content{
 	text-align: center
 }
@@ -143,12 +149,12 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 /*-------------/
 	#RADIAL
 /*-------------*/
-.radial-row{margin: 30px 0}
-.radial-row p{
+.radial-item{margin: 30px 0}
+.radial-item p{
 	font-size: 13px;
 	font-weight:700;
 }
-.radial-row .big-text{
+.radial-item .big-text{
 	font-size: 30px;
 }
 
@@ -267,6 +273,36 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	font-size: 16px
 }
 
+/*---------------/
+	#FEED-LIST
+/*---------------*/
+.feed-list h4,
+.feed-list p{
+	color:#8B8B8B;
+	margin: 4px 0;
+}
+.feed-list p{font-size: 13px}
+.feed-list-item{padding: 18px 0}
+.feed-list-item + .feed-list-item{border-top: 1px solid #CECECE}
+
+
+/*---------------/
+	#STATS
+/*--------------*/
+.stats-container p{
+	color:#fff;
+	font-size: 12px;
+}
+.stats-bars-container{
+	background: #1977AD;
+	padding: 24px 0;
+}
+
+.stats-count-container{
+	background: #FE931F;
+}
+
+.stats-count-container .radial-item p{color:#fff}
 
 @media screen and (max-width: 1000px){
 	/*------------/
