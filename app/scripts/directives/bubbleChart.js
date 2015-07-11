@@ -87,9 +87,10 @@
                     .attr("r", function(d) { return d.r * 1; } );            
                 })
                 .on('click', function(d){
-                    console.log('d.name');
                     $rootScope.$apply(function() {
-                        $location.path('/'+ d.name);
+                        console.log('d.name');
+                        //$location.path('/'+ d.name);
+                        $location.path('/entity');
                     });                    
                 })        
                 .attr('class', function(d) { return d.className; });

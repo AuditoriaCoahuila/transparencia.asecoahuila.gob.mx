@@ -34,10 +34,9 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
             return "/"
           }
     }
-    }).when('/contratos', {
-        templateUrl: 'templates/pages/contracts.html',
-        controller : 'contratoController', 
-        reloadOnSearch: false
+    }).when('/entity', {
+        templateUrl: '/views/entity.html',
+        controller : 'homeCTL', 
     }).otherwise({
         redirectTo: '/'
     });
