@@ -34,9 +34,9 @@ module.exports = function(config) {
       'bower_components/angular-material/angular-material.js',
       'bower_components/d3/d3.js',
       'bower_components/underscore/underscore.js',
-      'bower_components/d3-tip/index.js',
       'bower_components/perfect-scrollbar/src/perfect-scrollbar.js',
       'bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js',
+      'bower_components/d3-tip/index.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
