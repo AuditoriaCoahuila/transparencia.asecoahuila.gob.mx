@@ -6,6 +6,7 @@
 
     <meta charset="utf-8">
     <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
@@ -13,6 +14,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/perfect-scrollbar/src/perfect-scrollbar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/stickyFooter.css -->
@@ -24,14 +26,14 @@
   </head>
   <body ng-app="asecApp">
 
-    <div id="wrap">
+    <div id="wrap" ng-cloak>
         <div id="main" class="clearfix">
             <div id="topBackRepeat" layout-fill>
                 <div flex layout="column">
                     <md-toolbar class='header'>
                         <div class="md-toolbar-tools container nopadding" layout='row'>
                             <div flex>
-                                <h1>Índice de información <strong>presupuestal municipal</strong></h1>
+                                <h1><a href="/">Índice de información <strong>presupuestal municipal</strong></a></h1>
                             </div>
                             <nav>
                                 <a href="#">Índice</a>
@@ -84,16 +86,23 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/d3-tip/index.js"></script>
+    <script src="bower_components/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <script src="bower_components/pleasejs/dist/Please.js"></script>
+    <!--<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
 
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/homeCTL.js"></script>
+        <script src="scripts/controllers/municipioCTL.js"></script>
         <script src="scripts/directives/bubbleChart.js"></script>
         <!-- endbuild -->
 

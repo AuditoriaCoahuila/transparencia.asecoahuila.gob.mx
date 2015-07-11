@@ -11,7 +11,8 @@
 var app = angular
   .module('asecApp', [
     'ngMaterial',
-    'ngRoute'
+    'ngRoute',
+    'perfect_scrollbar'
 ]);
 
 
@@ -34,11 +35,21 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
             return "/"
           }
     }
-    }).when('/entity', {
-        templateUrl: '/views/entity.html',
-        controller : 'homeCTL', 
+    }).when('/municipio/:municipioId', {
+        templateUrl: '/views/municipio.html',
+        controller : 'municipioCTL', 
     }).otherwise({
         redirectTo: '/'
     });
 }]);
+
+app.config(['$httpProvider', function($httpProvider) {
+      $httpProvider.defaults.useXDomain = true;
+      $httpProvider.defaults.withCredentials = true;
+      delete $httpProvider.defaults.headers.common["X-Requested-With"];
+      $httpProvider.defaults.headers.common["Accept"] = "application/json";
+      $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
+    }
+]);
 

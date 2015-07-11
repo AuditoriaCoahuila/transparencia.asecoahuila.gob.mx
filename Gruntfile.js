@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var modRewrite = require('connect-modrewrite');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -73,6 +75,24 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
+          middleware: function (connect) {
+            return [
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg$ /index.html [L]']),            
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect().use(
+                '/app/styles',
+                connect.static('./app/styles')
+              ),
+              connect.static(appConfig.app)
+            ];            
+          }
+        }
+
+        /*options: {
           open: true,
           middleware: function (connect) {
             return [
@@ -88,7 +108,7 @@ module.exports = function (grunt) {
               connect.static(appConfig.app)
             ];
           }
-        }
+        }*/
       },
       test: {
         options: {
@@ -386,6 +406,7 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    console.log('target: ' + target);
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
