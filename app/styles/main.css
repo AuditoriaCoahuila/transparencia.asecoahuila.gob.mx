@@ -231,12 +231,70 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	margin-top: 14px;
 }
 
+.bubble-chart-tip{
+	background: rgba(250,250,250,0.9);
+	border: 1px solid #BEBEBE;
+	border-radius: 2px;
+	max-width: 200px;
+	padding: 6px 8px;
+	text-align: center;
+}
+
+.bubble-chart-tip:after{
+	content:'';
+	position: absolute;
+	top:100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 7px 0 7px;
+	border-color: rgba(250,250,250,0.9) transparent transparent transparent;	
+}
+
+.bubble-chart-tip hr{
+	height: 0;
+	border: 1px solid #BEBEBE;
+	max-width: 80%;
+	margin: 0 auto;
+}
+
+
+.bubble-chart-tip p{
+	color: #666666;
+	font-size: 12px;
+	margin: 5px 0;
+}
+
+.bubble-chart-tip strong{
+	text-transform: uppercase;
+}
+
+.bubble-chart-tip .quantity{
+	color: red;
+	font-size: 16px;
+}
+
 #bubble-chart{
 	width: 300px;
 	width: 80%;
 	min-width: 300px;
 	height: 400px;
 	min-height: 400px;
+	margin: 0 auto;
+}
+
+.asec-chart{padding: 10px}
+
+.asec-chart circle{
+	cursor: pointer;
+	transition: fill .3s ease-out;
+}
+
+.asec-chart circle:hover {
+	fill: #009966;
 }
 
 /*---------------/
@@ -360,3 +418,4 @@ ISO Country code by regions: http://www.geohive.com/earth/gen_codes.aspx
 .aq, .bv, .io, .tf, .hm, .gs, .um,
 .a1, .a2, .o1,
 .other { fill: #45B29D; background: #45B29D;}
+

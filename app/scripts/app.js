@@ -8,61 +8,38 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('asecApp', [
-    'ngMaterial'
+    'ngMaterial',
+    'ngRoute'
 ]);
 
-var svg, vis;
 
-function processData(data) {
-    var obj = data.countriesMsgVol;
-    var newDataSet = [];
-    for(var prop in obj) {
-        newDataSet.push({name: prop, className: prop.toLowerCase(), size: obj[prop]});
+app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
+
+  $locationProvider.html5Mode(true);
+
+    $routeProvider.when('/',{
+        templateUrl : '/views/home.html',
+        controller : 'homeCTL',
+        redirectTo: function(current, path, search){
+          if(search.goto){
+            // if we were passed in a search param, and it has a path
+            // to redirect to, then redirect to that path
+            return "/" + search.goto
+          }
+          else{
+            // else just redirect back to this location
+            // angular is smart enough to only do this once.
+            return "/"
+          }
     }
-    return {children: newDataSet};
-}
+    }).when('/contratos', {
+        templateUrl: 'templates/pages/contracts.html',
+        controller : 'contratoController', 
+        reloadOnSearch: false
+    }).otherwise({
+        redirectTo: '/'
+    });
+}]);
 
-
-
-function initBubbles(){
-    //var diameter = 600;
-
-    var bubbleWidth = parseInt(d3.select('#bubble-chart').style('width'), 10);
-    var bubbleHeight = parseInt(d3.select('#bubble-chart').style('height'), 10);
-
-    d3.select('svg').remove();
-
-    svg = d3.select('#bubble-chart').append('svg')
-        .attr('width', bubbleWidth)
-        .attr('height', bubbleHeight);
-
-    var bubble = d3.layout.pack()
-        .size([bubbleWidth, bubbleHeight])
-        .padding(3) // padding between adjacent circles
-        .value(function(d) {return d.size;}); // new data will be loaded to bubble layout
-
-    var data = {'countriesMsgVol': {
-      'CA': 170, 'US': 393, 'CU': 9, 'BR': 89, 'MX': 192,'Other': 254
-    }};
-
-    var nodes = bubble.nodes(processData(data))
-        .filter(function(d){ return !d.children; });
-
-    var vis = svg.selectAll('circle').data(nodes, function(d){ return d.name; });
-
-    vis.enter().append('circle')
-        .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
-        .attr('r', function(d) { return d.r; })
-        .attr('class', function(d) { return d.className; });
-}
-
-
-function resize(){
-    initBubbles();
-}
-
-d3.select(window).on('resize', resize);
-
-initBubbles();
