@@ -23,7 +23,7 @@
         var newDataSet = [];
 
         _.each(data, function(item) {
-          console.log(item);
+          //console.log(item);
           newDataSet.push(
             {
               name: item.datos_entidad.nombre_completo,
