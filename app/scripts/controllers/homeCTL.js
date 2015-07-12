@@ -9,7 +9,7 @@
  */
 
 app.controller('homeCTL',['$scope','$http', function ($scope, $http) {
-
+	$scope.isLoaded = false;
 	$scope.municipios = [];
 	$scope.bubbleChartData = [];
 
@@ -36,7 +36,7 @@ app.controller('homeCTL',['$scope','$http', function ($scope, $http) {
 				  	$scope.municipios.push(mun);
 				  }
 				});
-
+				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;			
 			})
 		  .error(function(data, status, headers, config) {

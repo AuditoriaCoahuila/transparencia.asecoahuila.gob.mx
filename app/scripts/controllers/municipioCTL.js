@@ -9,10 +9,23 @@
  */
 
 app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scope, $http, $routeParams) {
-	 $scope.municipioId = $routeParams.municipioId;
-
-
+	$scope.municipioId = $routeParams.municipioId;
 	$scope.municipio = {};
+	$scope.isLoaded = false;
+
+	$scope.drawRadial = function(){
+    var rp1 = radialProgress(document.getElementById('ingreso-per-capita'))
+        .diameter(150)
+        .value(78)
+        //.label('Ingreso per capita del municipio')
+        .render();	
+    var rp2 = radialProgress(document.getElementById('egreso-per-capita'))
+        .diameter(150)
+        .value(82)
+        //.label('Ingreso per capita del municipio')
+        .render();	        	
+	}
+
 
 	$scope.getMunicipio = function(){
 		var nMunicipios = 38;
@@ -24,10 +37,10 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		var requestUrl = baseUrl + id + '&callback=JSON_CALLBACK';
 		$http.jsonp(requestUrl)
 	  	.success(function(data, status, headers, config) {	
-	  		console.log(id);
-	  		console.log(data);
 				$scope.municipio = data[id];
-				console.log($scope.municipio);
+				$scope.drawRadial();
+				$scope.isLoaded = true;
+
 		})
 		.error(function(data, status, headers, config) {
 		// called asynchronously if an error occurs

@@ -1,84 +1,93 @@
-<div class="container center-content title-block">
-    <p><img src="/images/book.png" alt=""></p>
-    <h1 ng-bind="municipio.datos_entidad.nombre_completo"></h1>
-    <h2>Región {{municipio.indicadores[1].valor}}</h2>
+<div  ng-if="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
+    <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div class="container-alt">
-    <div class="columns-container" layout="row" layout-md="column" layout-sm="column">
-        <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
-            <div class="container container-sm center-content">
-                <h2>Ingreso per cápita del municipio</h2>
-                <p><strong>Contra el promedio general de los 38 municipios</strong></p>
-                <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
-                    <div flex class="radial-item">
-                        <p>This is photoshop version of lotem ipsum</p>
-                        <p><strong class="big-text">7,458</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
-            <div class="container container-sm center-content">
-                <h2>Egresos per cápita del municipio</h2>
-                <p><strong>Contra el promedio general de los 38 municipios</strong></p>
-                <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
-                    <div flex class="radial-item">
-                        <p>This is photoshop version of lotem ipsum</p>
-                        <p><strong class="big-text">7,458</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="loaded-wrapper" ng-if="isLoaded">
+    <div class="container center-content title-block">
+        <p><img src="/images/book.png" alt=""></p>
+        <h1 ng-bind="municipio.datos_entidad.nombre_completo"></h1>
+        <h2>Región {{municipio.indicadores[1].valor}}</h2>
     </div>
-</div>
 
-<div class="container container-xlg">
-    <div>
-        <div layout="row" layout-sm="column">
-            <div class="feed-list" flex="65" flex-sm="100">
-                <div class="container-lg container">
-                    <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
-                        <div class="feed-list-item" ng-repeat="criterio in municipio.criterios">
-                            <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
-                                <p class="feed-list-item-title" flex ng-bind="criterio.concepto"></p>
-                                <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
-                                <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
-                            </div>
-                            <div ng-show="showContent">
-                                <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
-                            </div>
+    <div class="container-alt">
+        <div class="columns-container" layout="row" layout-md="column" layout-sm="column">
+            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+                <div class="container container-sm center-content">
+                    <h2>Ingreso per cápita del municipio</h2>
+                    <p><strong>Contra el promedio general de los 38 municipios</strong></p>
+                    <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
+                        <div flex class="radial-item">
+                            <div id="ingreso-per-capita" class="radial-chart"></div>
+                            <p class="radial-chart-label">This is photoshop version of lotem ipsum</p>
+                            <p class="radial-chart-label"><strong class="big-text">7,458</strong></p>
                         </div>
-                    </perfect-scrollbar>
+                    </div>
                 </div>
             </div>
-            <div class="stats" offset="5" flex="30" flex-sm="100">
-                <div class="stats-count container container-xsm center-content">
-                    <h4>Datos financieros</h4>
-                    <div class="radial-item">
-                        <p>This is photoshop version of lotem ipsum</p>
-                        <p><strong class="big-text">7,458</strong></p>
-                    </div> 
-                    <div class="radial-item">
-                        <p>This is photoshop version of lotem ipsum</p>
-                        <p><strong class="big-text">7,458</strong></p>
-                    </div> 
-                    <div class="radial-item">
-                        <p>This is photoshop version of lotem ipsum</p>
-                        <p><strong class="big-text">7,458</strong></p>
-                    </div>                                                            
-                </div>
-                <div class="container docs-list">
-                    <h4>Documentos</h4>
-                    <ul>
-                        <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
-                            <li ng-repeat="doc in municipio.documentos" class="docs-list-item">
-                                <a target="_blank" ng-href="doc.url" ng-bind="doc.nombre_documento"></a>
-                            </li>
-                        </perfect-scrollbar>
-                    </ul>
+            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+                <div class="container container-sm center-content">
+                    <h2>Egresos per cápita del municipio</h2>
+                    <p><strong>Contra el promedio general de los 38 municipios</strong></p>
+                    <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
+                        <div flex class="radial-item">
+                            <div id="egreso-per-capita" class="radial-chart radial-chart-alt"></div>
+                            <p class="radial-chart-label-alt">This is photoshop version of lotem ipsum</p>
+                            <p class="radial-chart-label-alt"><strong class="big-text">7,458</strong></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="container container-xlg">
+        <div>
+            <div layout="row" layout-sm="column">
+                <div class="feed-list" flex="65" flex-sm="100">
+                    <div class="container-lg container">
+                        <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
+                            <div class="feed-list-item" ng-repeat="criterio in municipio.criterios">
+                                <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
+                                    <p class="feed-list-item-title" flex ng-bind="criterio.concepto"></p>
+                                    <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
+                                    <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
+                                </div>
+                                <div ng-show="showContent">
+                                    <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
+                                </div>
+                            </div>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+                <div class="stats" offset="5" flex="30" flex-sm="100">
+                    <div class="stats-count container container-xsm center-content">
+                        <h4>Datos financieros</h4>
+                        <div class="radial-item">
+                            <p>This is photoshop version of lotem ipsum</p>
+                            <p><strong class="big-text">7,458</strong></p>
+                        </div> 
+                        <div class="radial-item">
+                            <p>This is photoshop version of lotem ipsum</p>
+                            <p><strong class="big-text">7,458</strong></p>
+                        </div> 
+                        <div class="radial-item">
+                            <p>This is photoshop version of lotem ipsum</p>
+                            <p><strong class="big-text">7,458</strong></p>
+                        </div>                                                            
+                    </div>
+                    <div class="container docs-list">
+                        <h4>Documentos</h4>
+                        <ul>
+                            <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
+                                <li ng-repeat="doc in municipio.documentos" class="docs-list-item">
+                                    <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.nombre_documento"></a>
+                                </li>
+                            </perfect-scrollbar>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

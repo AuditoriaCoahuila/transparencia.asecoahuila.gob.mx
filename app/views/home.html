@@ -37,8 +37,13 @@
             <h4>This is a photoshop version of Lorem ipsum</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem similique sed vitae mollitia nulla illo facilis rerum, doloremque, perspiciatis laudantium commodi accusamus eligendi eveniet facere repellendus, velit nemo voluptatibus deleniti?</p>
         </div>
-        <!--<div flex="65" flex-md="100" flex-sm="100" class="asec-chart" id="bubble-chart"></div>-->
-        <div flex="65" flex-md="100" flex-sm="100" bubble-chart chart-data="bubbleChartData"></div bubble-chart>
+        <div  ng-if="!isLoaded" class="loading-wrapper" layout="column" layout-fill layout-align="center center">
+            <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+        </div>
+
+        <div flex="65" flex-md="100" flex-sm="100" class="loaded-wrapper"  ng-if="isLoaded">
+            <div  bubble-chart chart-data="bubbleChartData"></div bubble-chart>
+        </div>
     </div>
 
 </div>

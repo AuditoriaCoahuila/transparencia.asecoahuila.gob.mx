@@ -1,6 +1,8 @@
 (function () {
   var controller = function ($scope, $filter, $location, $rootScope) {
 
+      $scope.printedChart = 0;
+
       $scope.getRandomInt = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
@@ -91,7 +93,7 @@
 
           //Agregando circulos con sus respectivas propiedades
           vis.enter().append('circle')
-            .attr('fill', $scope.getRandomColor)
+            .attr('fill', function(d){ return $scope.getRandomColor(); } )
             .attr('opacity', function(d){ return d.opacity; })
             .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
             .attr('r', function(d) { return d.r; })
@@ -115,10 +117,14 @@
             })        
             .attr('class', function(d) { return d.className; });
         }
+
+        printedChart++;
       }
 
       $scope.resize = function(){
-          $scope.initBubbles();
+        setTimeout(function(){ 
+            $scope.initBubbles();
+          }, 1500);
       }
 
       d3.select(window).on('resize', $scope.resize);

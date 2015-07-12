@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="bower_components/perfect-scrollbar/src/perfect-scrollbar.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <!-- build:css(.tmp) styles/radialProgress.css -->
+    <link rel="stylesheet" href="styles/radialProgress.css">
+    <!-- endbuild -->
     <!-- build:css(.tmp) styles/stickyFooter.css -->
     <link rel="stylesheet" href="styles/stickyFooter.css">
     <!-- endbuild -->
@@ -29,7 +32,7 @@
     <div id="wrap" ng-cloak>
         <div id="main" class="clearfix">
             <div id="topBackRepeat" layout-fill>
-                <div flex layout="column">
+                <div flex layout="column" >
                     <md-toolbar class='header'>
                         <div class="md-toolbar-tools container nopadding" layout='row'>
                             <div flex>
@@ -94,6 +97,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/Please.js"></script>
+        <script src="scripts/radialProgress.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/homeCTL.js"></script>

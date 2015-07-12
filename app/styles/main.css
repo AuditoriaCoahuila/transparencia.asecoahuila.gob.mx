@@ -151,6 +151,30 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 /*-------------/
 	#RADIAL
 /*-------------*/
+.radial-chart{
+	width: 160px;
+	height: auto;
+	margin: 20px auto;
+	box-sizing: border-box;
+}
+
+.radial-chart text{font-weight: 700}
+
+.radial-chart,
+.radial-chart-label,
+.radial-chart .arc{
+	fill: #1976AF;
+	color: #1976AF!important;
+}
+
+.radial-chart-alt,
+.radial-chart-label-alt,
+.radial-chart-alt .arc{
+	fill: #E43F2B;
+	color: #E43F2B!important;
+}
+
+
 .radial-item{margin: 30px 0}
 .radial-item p{
 	font-size: 13px;
@@ -461,6 +485,22 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 .docs-list-item + .docs-list-item{border-top: 1px solid #CECECE;}
+
+
+/*------------------/
+	#LOADING-WRAPPER
+/*-----------------*/
+.loading-wrapper{
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+}
+
+.loading-wrapper-abs{
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;	
+}
 
 
 

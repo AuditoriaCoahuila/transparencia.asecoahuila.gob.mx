@@ -1,0 +1,36 @@
+.radial-chart .background {
+    fill: #FFFFFF;
+    fill-opacity: 0.01;
+}
+
+.radial-chart .component {
+    fill: #e1e1e1;
+}
+
+.radial-chart .component .label {
+    font-family: Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+    fill: #0000FF;
+}
+
+.radial-chart .arc {
+    stroke-weight:0.1;
+    fill: #4e8fff;
+}
+
+
+.radial-chart .arc2 {
+    stroke-weight:0.1;
+    fill: #3660b0;
+}
+
+
+.radial-chart .label {
+    font-family:  Myriad, "Helvetic Neue", Helvetica, Arial;
+    text-anchor: middle;
+}
+
+.radial-chart .radial-svg {
+    display: block;
+    margin: 0 auto;
+}
