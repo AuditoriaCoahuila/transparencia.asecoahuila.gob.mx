@@ -1,8 +1,8 @@
-<div  ng-if="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
+<div  ng-show="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
     <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div class="loaded-wrapper" ng-if="isLoaded">
+<div class="loaded-wrapper" ng-show="isLoaded">
     <div class="container center-content title-block">
         <p><img src="/images/book.png" alt=""></p>
         <h1 ng-bind="municipio.datos_entidad.nombre_completo"></h1>

@@ -1,7 +1,6 @@
 (function () {
   var controller = function ($scope, $filter, $location, $rootScope) {
-
-      $scope.printedChart = 0;
+      var innerData;
 
       $scope.getRandomInt = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -13,12 +12,7 @@
         var color = Please.make_color({
           base_color: baseColors[baseColorKey] //set your base color
         });  
-        return color[0];      
-        /*
-        var r = $scope.getRandomInt(0, 255);
-        var g = $scope.getRandomInt(0, 255);
-        var b = $scope.getRandomInt(0, 255);
-        return "rgb(" + r + "," + g + "," + b + ")"; */      
+        return color[0];          
       }
 
       $scope.processData = function(data) {
@@ -33,7 +27,8 @@
               size: item.li_pe.pe_oficial,
               opacity: (1 - item.porcentaje_cumplimiento),
               cumplimiento: item.porcentaje_cumplimiento,
-              resourceId: item.datos_entidad.id
+              resourceId: item.datos_entidad.id,
+              fillColor: $scope.getRandomColor()
             }
           );
         });
@@ -51,10 +46,10 @@
 
       $scope.initBubbles = function(){
         var data;
-        data = $scope.chartData;
+        data = innerData;
 
         //Verificando que el chart tenga datos
-        if(data.length > 0){
+        if(data.children){
 
           //Limpiando etiqueta svg en caso de redibujar
           d3.select('svg').remove();
@@ -85,7 +80,7 @@
             .value(function(d) {return d.size;}); // new data will be loaded to bubble layout
 
 
-          var nodes = bubble.nodes($scope.processData(data))
+          var nodes = bubble.nodes(data)
             .filter(function(d){ return !d.children; });
 
           var vis = svg.selectAll('circle')
@@ -93,7 +88,7 @@
 
           //Agregando circulos con sus respectivas propiedades
           vis.enter().append('circle')
-            .attr('fill', function(d){ return $scope.getRandomColor(); } )
+            .attr('fill', function(d){ return d.fillColor; } )
             .attr('opacity', function(d){ return d.opacity; })
             .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
             .attr('r', function(d) { return d.r; })
@@ -117,10 +112,23 @@
             })        
             .attr('class', function(d) { return d.className; });
         }
-
-        printedChart++;
       }
 
+
+      //Funciones ejecutadas al iniciar la directiva
+      innerData =  $scope.processData( $scope.chartData );
+      $scope.initBubbles();
+
+
+      $scope.$watch('chartData', function(newValue, oldValue) {
+          if (newValue){
+              $scope.processData( $scope.chartData );
+              $scope.initBubbles();
+          }
+      }, true);
+
+      
+      //Redibujando chart en caso de redimensionar pantalla
       $scope.resize = function(){
         setTimeout(function(){ 
             $scope.initBubbles();
@@ -129,13 +137,7 @@
 
       d3.select(window).on('resize', $scope.resize);
 
-      $scope.initBubbles();
 
-      $scope.$watch('chartData', function(newValue, oldValue) {
-          if (newValue){
-              $scope.initBubbles();
-          }
-      }, true);
 
 
   };

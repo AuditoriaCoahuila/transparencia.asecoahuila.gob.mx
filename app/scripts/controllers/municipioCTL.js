@@ -14,6 +14,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.isLoaded = false;
 
 	$scope.drawRadial = function(){
+
     var rp1 = radialProgress(document.getElementById('ingreso-per-capita'))
         .diameter(150)
         .value(78)
@@ -23,7 +24,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
         .diameter(150)
         .value(82)
         //.label('Ingreso per capita del municipio')
-        .render();	        	
+        .render();
 	}
 
 
@@ -38,9 +39,8 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		$http.jsonp(requestUrl)
 	  	.success(function(data, status, headers, config) {	
 				$scope.municipio = data[id];
-				$scope.drawRadial();
 				$scope.isLoaded = true;
-
+				$scope.drawRadial();
 		})
 		.error(function(data, status, headers, config) {
 		// called asynchronously if an error occurs
