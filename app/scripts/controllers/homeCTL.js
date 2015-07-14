@@ -48,7 +48,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	};
 
 	$scope.getMunicipiosData = function(){
-		$http.get('/scripts/municipios.json')
+		$http.get('/municipios.json')
 	  	.success(function(data) {	
 	  		$scope.municipiosCoords = data;
 	  		$scope.getMunicipiosStats();
@@ -95,6 +95,33 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
     width = parseInt(d3.select('#data-map-home').style('width'), 10);
     height = parseInt(d3.select('#data-map-home').style('height'), 10);	
 
+		var scale,
+	    translate,
+			visibleArea, // minimum area threshold for points inside viewport
+  	  invisibleArea; // minimum area threshold for points outside viewport
+
+		var zoomTo = function(location, scale) {
+		  var point = projection(location);
+		  return zoom
+		      .translate([width / 2 - point[0] * scale, height / 2 - point[1] * scale])
+		      .scale(scale);
+		};
+
+		var zoomed = function(d) {
+		  translate = zoom.translate();
+		  scale = zoom.scale();
+		  visibleArea = 1 / scale / scale;
+		  invisibleArea = 200 * visibleArea;
+		  context.clearRect(0, 0, width, height);
+		  context.beginPath();
+		  path(d);
+		  context.stroke();
+		};
+
+		var zoom = d3.behavior.zoom()
+		.size([width, height])
+		.on("zoom", zoomed);
+
 
 		var x = d3.scale.linear()
 		    .domain([0, width])
@@ -131,7 +158,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 		var g = svg.append('g');
 
-		d3.json('/scripts/mx_tj.json', function(error, mx) {
+		d3.json('/mx_tj.json', function(error, mx) {
 		  svg.selectAll('#data-map-home path')
 		    //.data(topojson.feature(mx, mx.objects.municipalities).features)
 		    .data(topojson.feature(mx, mx.objects.municipalities).features.filter(function(d) { return d.properties.state_code === 5; }))		    
