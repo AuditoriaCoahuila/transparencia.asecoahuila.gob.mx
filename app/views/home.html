@@ -48,6 +48,16 @@
 
 </div>
 
+<div class="container container-xlg center-content">
+
+    <div  ng-show="!isLoaded" class="loading-wrapper" layout="column" layout-fill layout-align="center center">
+        <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <div ng-show="isLoaded" id="data-map-home"></div>
+
+</div>
+
 <div class="container-alt">
     <div class="container container-xlg center-content">
         <h1>This is photoshop version of lorem ipsum</h1>

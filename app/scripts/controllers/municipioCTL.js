@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name asecApp.controller:MainCtrl
+ * @name asecApp.controller:municipioCTL
  * @description
- * # MainCtrl
+ * # municipioCTL
  * Controller of the asecApp
  */
 
@@ -25,26 +25,22 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
         .value(82)
         //.label('Ingreso per capita del municipio')
         .render();
-	}
+	};
 
 
 	$scope.getMunicipio = function(){
-		var nMunicipios = 38;
 		var baseUrl = 
 			'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_entidad_todos_datos&id_entidad=';
-
 		var id = $scope.municipioId;
-
 		var requestUrl = baseUrl + id + '&callback=JSON_CALLBACK';
+
 		$http.jsonp(requestUrl)
-	  	.success(function(data, status, headers, config) {	
+	  	.success(function(data) {	
 				$scope.municipio = data[id];
 				$scope.isLoaded = true;
 				$scope.drawRadial();
 		})
-		.error(function(data, status, headers, config) {
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
+		.error(function(data) {
 		});			
 	};
 

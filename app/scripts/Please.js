@@ -1,5 +1,6 @@
 /*!Please JS v0.4.2, Jordan Checkman 2014, Checkman.io, MIT License, Have fun.*/
 (function( globalName, root, factory ) {
+	'use strict';
 	if ( typeof define === 'function' && define.amd ) {
 		define( [], factory );
 	}

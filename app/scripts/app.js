@@ -27,12 +27,12 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
           if(search.goto){
             // if we were passed in a search param, and it has a path
             // to redirect to, then redirect to that path
-            return "/" + search.goto
+            return '/' + search.goto;
           }
           else{
             // else just redirect back to this location
             // angular is smart enough to only do this once.
-            return "/"
+            return '/';
           }
     }
     }).when('/municipio/:municipioId', {
@@ -43,6 +43,7 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
     });
 }]);
 
+/*
 app.config(['$httpProvider', function($httpProvider) {
       $httpProvider.defaults.useXDomain = true;
       $httpProvider.defaults.withCredentials = true;
@@ -51,5 +52,5 @@ app.config(['$httpProvider', function($httpProvider) {
       $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 
     }
-]);
+]);*/
 

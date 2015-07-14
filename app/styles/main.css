@@ -237,6 +237,38 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 
+/*---------------/
+	#SYMBOL-MAP
+/*---------------*/
+#data-map-home {
+	width: 700px;
+	height: 700px;
+  /*position: relative;
+  margin: 0 auto;
+  width: 750px;
+  height: 500px;*/
+}
+
+#data-map-home path {
+  fill: #D3F0FF;
+  stroke: #fff;
+  /*stroke-linejoin: round;
+  stroke-linecap: round;*/
+}
+
+#data-map-home circle{
+	cursor: pointer;
+}
+
+#data-map-home circle:hover{
+	opacity: 1;
+}
+
+#data-map-home .mun:hover{
+	cursor: pointer;
+	/*fill: #343667;*/
+}
+
 /*-------------/
 	#BUBBLE-CHART
 /*------------*/

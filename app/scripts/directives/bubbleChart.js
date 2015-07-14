@@ -52,7 +52,7 @@
         if(data.children){
 
           //Limpiando etiqueta svg en caso de redibujar
-          d3.select('svg').remove();
+          d3.select('#bubble-chart svg').remove();
 
           var bubbleWidth = parseInt(d3.select('#bubble-chart').style('width'), 10);
           var bubbleHeight = parseInt(d3.select('#bubble-chart').style('height'), 10);
@@ -117,7 +117,9 @@
 
       //Funciones ejecutadas al iniciar la directiva
       innerData =  $scope.processData( $scope.chartData );
-      $scope.initBubbles();
+      if($scope.chartData){
+        $scope.initBubbles();
+      }
 
 
       $scope.$watch('chartData', function(newValue, oldValue) {
