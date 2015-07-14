@@ -529,6 +529,8 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
   margin: auto;
 }
 
+.loading-wrapper-small{width: 60px}
+
 .loading-wrapper-abs{
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;	

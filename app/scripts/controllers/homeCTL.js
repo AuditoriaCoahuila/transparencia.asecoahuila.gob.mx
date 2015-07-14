@@ -8,7 +8,7 @@
  * Controller of the asecApp
  */
 
-app.controller('homeCTL',['$scope','$http', function ($scope, $http) {
+app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
 	$scope.isLoaded = false;
 	$scope.municipios = [];
 	$scope.municipiosCoords= [];
@@ -121,7 +121,7 @@ app.controller('homeCTL',['$scope','$http', function ($scope, $http) {
           return $scope.getTooltip(d);
       });
 
-    
+
 
 		var svg = d3.select('#data-map-home').append('svg')
 		    .attr('width', width)
@@ -195,7 +195,13 @@ app.controller('homeCTL',['$scope','$http', function ($scope, $http) {
 				  d3.select(this).transition()
 				  .duration(750)
 				  .attr('r', function(d) { return 0.6*maxR; } );            
-				})              
+				})
+        .on('click', function(d){
+            $rootScope.$apply(function() {
+                //$location.path('/'+ d.name);
+                $location.path('/municipio/' + d.id);
+            });                    
+        }) 				              
 
 		});
 
