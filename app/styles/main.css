@@ -109,14 +109,14 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	font-size: 14px;
 	margin: 0;
 }
-.banner .banner-column .big-text{font-size: 34px}
-.banner-column:nth-child(2){
-	border-left:1px solid #fff;
-	border-right:1px solid #fff;
-}
+.banner .banner-column strong{font-size: 34px}
+.banner .banner-column a{font-weight:normal;color:white;}
+.banner-column{border-right:1px solid #fff;}
+.banner-column:last-child{border-right:none;}
 
-
-
+.banner-graph ul{min-height: 445px;}
+.banner-graph{background: -webkit-linear-gradient(left, #ff931f, #e33e2b);background: linear-gradient(to right, #ff931f, #e33e2b);}
+.banner-graph ul li.radial-row-colors .layer.radial-item a{color:white; border:2px solid white;}
 
 /*-----------/
     #TOOLBAR
@@ -126,7 +126,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
     padding:40px 26px;
     height: auto;
 }
-.header h1{color:#fff;}
+.header h1,.header h1 p{color:#fff;}
 .header nav a{
     font-size: 14px;
     margin: 0 8px;
@@ -256,6 +256,13 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	font-size:12px;
 }
 
+#footer div{text-align:left;}
+#footer div h4{font-weight:400}
+#footer div a{color:white;}
+#footer .icon{padding-left:27px; margin:9px;}
+#footer .geo{background: url(../images/pin.png) 4px center no-repeat;}
+#footer .phone{background: url(../images/tel.png) 4px center no-repeat;}
+#footer .mail{background: url(../images/mail.png) 4px center no-repeat;}
 
 /*---------------/
 	#SYMBOL-MAP
@@ -331,7 +338,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	height: 0;
 	border-style: solid;
 	border-width: 10px 7px 0 7px;
-	border-color: rgba(250,250,250,0.9) transparent transparent transparent;	
+	border-color: rgba(250,250,250,0.9) transparent transparent transparent;
 }
 
 .bubble-chart-tip hr{
@@ -388,7 +395,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .map-tip p{color: #fff;}
 
 .map-tip:after{
-	border-color: #272A55 transparent transparent transparent;	
+	border-color: #272A55 transparent transparent transparent;
 }
 
 /*---------------/
@@ -602,7 +609,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	line-height: 1.2;
     white-space: normal;
     overflow: hidden;
-    padding: 10px 10px 10px 40px;	
+    padding: 10px 10px 10px 40px;
 }
 
 .docs-list-item a{
@@ -629,7 +636,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .loading-wrapper-abs{
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;	
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 

@@ -15,6 +15,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="bower_components/perfect-scrollbar/src/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/radialProgress.css -->
@@ -27,16 +28,15 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="asecApp">
-
+  <body ng-app="asecApp" ng-controller='MainCtrl'>
     <div id="wrap" ng-cloak>
         <div id="main" class="clearfix">
-            <div id="topBackRepeat" layout-fill>
-                <div flex layout="column" >
+            <div id="topBackRepeat" layout-fill >
+                <div flex layout="column" ng-controller='HeaderCtrl'>
                     <md-toolbar class='header'>
                         <div class="md-toolbar-tools container nopadding" layout='row'>
                             <div flex>
-                                <h1><a href="/">Índice de información <strong>presupuestal municipal</strong></a></h1>
+                                <h1><a href="/"  btf-markdown="mainContent.tItulo">Índice de información <strong>presupuestal municipal</strong></a></h1>
                             </div>
                             <nav>
                                 <a href="#">Índice</a>
@@ -48,7 +48,7 @@
                         </div>
                     </md-toolbar>
                 </div>
-                
+
                 <div flex layout="column" ng-view></div>
 
             </div><!-- topBackRepeat END -->
@@ -58,7 +58,21 @@
 
     <div id="footer">
         <div class="container container-xlg" layout="row" layout-sm="column">
-            <p>This is photoshop version of lotem ipsum</p>
+            <div flex="30">
+                <img src="/images/logo.png" alt="">
+            </div>
+            <div flex="40">
+                <h4><a href="">Aviso de privacidad</a> | <a href="">Contacto</a></h4>
+                <br>
+                <p>This is photoshop version of lotem ipsum</p>
+            </div>
+            <div flex="30">
+                <p class="icon geo">Avenida Bonampak calle cereza #1 sm 2-a l 20 <br>
+                  CP 77500 Cancun Quintana Roo, México
+                </p>
+                <p class="icon phone"> (0155) 982462948 </p>
+                <p class="icon mail">info@auditoriasuperior.com</p>
+            </div>
         </div>
     </div>
 
@@ -92,6 +106,10 @@
     <script src="bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js"></script>
     <script src="bower_components/d3-tip/index.js"></script>
     <script src="bower_components/topojson/topojson.js"></script>
+    <script src="bower_components/angular-contentful/dist/angular-contentful.js"></script>
+    <script src="bower_components/showdown/src/showdown.js"></script>
+    <script src="bower_components/angular-markdown-directive/markdown.js"></script>
+    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -104,7 +122,9 @@
         <script src="scripts/controllers/homeCTL.js"></script>
         <script src="scripts/controllers/municipioCTL.js"></script>
         <script src="scripts/directives/bubbleChart.js"></script>
-        <!--<script src="scripts/directives/mapBubbles.js"></script>-->
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/services/pagetitle.js"></script>
+        <script src="scripts/services/metainformation.js"></script>
         <!-- endbuild -->
 
 

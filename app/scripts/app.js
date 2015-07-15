@@ -12,9 +12,18 @@ var app = angular
   .module('asecApp', [
     'ngMaterial',
     'ngRoute',
-    'perfect_scrollbar'
+    'perfect_scrollbar',
+    'contentful',
+    'btford.markdown',
+    'angular-carousel'
 ]);
-
+app
+  .config(function(contentfulProvider){
+    contentfulProvider.setOptions({
+        space: 'ln1xrgztle3b',
+        accessToken: 'f308ed71e5310a68f2547d8696ae5c4e4e20c466073c047d61f2b983c896f8fa'
+    });
+  });
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
 
@@ -37,7 +46,7 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
     }
     }).when('/municipio/:municipioId', {
         templateUrl: '/views/municipio.html',
-        controller : 'municipioCTL', 
+        controller : 'municipioCTL',
     }).otherwise({
         redirectTo: '/'
     });
