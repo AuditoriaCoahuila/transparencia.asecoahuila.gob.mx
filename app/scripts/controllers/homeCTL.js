@@ -15,6 +15,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.bubbleChartData = [];
 	$scope.randomMun = {};
 	$scope.limitDocs = 5;
+	$scope.tip = {};
 
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
@@ -43,7 +44,6 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
 				$scope.randomMun = $scope.municipios[Math.floor(Math.random()*$scope.municipios.length)];
-				console.log($scope.randomMun);
 				$scope.drawState();	
 			})
 		  .error(function(data) {
@@ -55,6 +55,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		$http.get('/municipios.json')
 	  	.success(function(data) {	
 	  		$scope.municipiosCoords = data;
+	  		console.log($scope.municipiosCoords);
 	  		$scope.getMunicipiosStats();
 			})
 		  .error(function(data) {
@@ -64,12 +65,9 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 
   $scope.getTooltip = function(d){
-  	console.log(d);
   	var cumplimiento2013 = false;
   	var cumplimiento2014 = false;
 
-
-		var cumplimiento2014 = d.info.porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
     var html = '<p><strong>' + d.name + '</strong></p>';
     html += '<hr/>';
 
@@ -106,6 +104,15 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
     return {children: newDataSet};
   };  
 
+  $scope.triggerTip = function(circleId){
+  	var svg = d3.select("#data-map-home");
+  	var data = d3.select('.map-circle-' + circleId).data();
+  	if(data.length > 0){
+			var c = svg.select('.map-circle-' + circleId).node();
+			$scope.tip.show(data[0], c);
+  	}
+  };
+
 	$scope.drawState = function(){
 		
 		var move = function() {
@@ -134,17 +141,18 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 		var topo,projection,path,svg,g,muns,circles;
 
-
 		var insertCircles = function(){
 	    //Tooltip
-	    var tip = d3.tip()
+	    $scope.tip = d3.tip()
 	      .attr('class', 'bubble-chart-tip map-tip')
 	      .offset([-10, 0])
 	      .html(function(d) {
 	          return $scope.getTooltip(d);
 	      });
 
-	    svg.call(tip);
+	    svg.call($scope.tip);
+
+
 
 			var data = $scope.processData( $scope.municipiosCoords );
 
@@ -176,23 +184,23 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				.attr('opacity', 0.8)
 				.style('stroke', '#2A82B4')
 				.style('fill', '#2A82B4')
+				.attr('class', function(d){ return 'map-circle-'+d.id })
 				.on('mouseover', function(d){
-				  tip.show(d); 
+				  $scope.tip.show(d); 
 				})
 				.on('mouseout', function(d){
-				  tip.hide(d); 
+				  $scope.tip.hide(d); 
 				})
 			  .on('click', function(d){
-			      $rootScope.$apply(function() {
+		      $rootScope.$apply(function() {
 			          $location.path('/municipio/' + d.id);
-			      });                    
+			    });                    
 			  });
 
 
 		};
 
 		var draw = function(topo) {
-			console.log(topo);
 		  muns = g.selectAll("#data-map-home path").data(topo);
 
 		  muns.enter().append("path")
@@ -228,7 +236,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		    }, 200);
 		};
 
-		d3.select(window).on("resize", throttle);
+		//d3.select(window).on("resize", throttle);
 
 
 		var setup = function(width,height){
@@ -245,14 +253,16 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		  path = d3.geo.path()
 		      .projection(projection);
 
+		  var translateX = 200;
+		  var translateY = height / 2;
+
 		  svg = d3.select("#data-map-home").append("svg")
 		      .attr("width", width)
 		      .attr("height", height)
 		      .append("g")
-		      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+		      .attr("transform", "translate(" + translateX + "," + translateY + ")")
 		      .call(zoom);
 
-		  console.log(zoom);
 		  svg.call(zoom);
 
 		  g = svg.append("g");
