@@ -71,14 +71,15 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
   $scope.processData = function(data) {
     var newDataSet = [];
-
+    var maxR = 50;
     _.each(data, function(item) {
       newDataSet.push(
         {
           name: item.name,
           lat: item.coords.lat,
           lng: item.coords.lng,
-          id: item.id
+          id: item.id,
+					size: ( 0.6*maxR )          
         }
       );
     });
@@ -86,117 +87,63 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
   };  
 
 	$scope.drawState = function(){
+		
+		d3.select(window).on("resize", throttle);
 
-		var width, height;
+		var move = function() {
+		  var t = d3.event.translate;
+		  var s = d3.event.scale;  
+		  var h = height / 3;
+		  
+		  t[0] = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t[0]));
+		  t[1] = Math.min(height / 2 * (s - 1) + h * s, Math.max(height / 2 * (1 - s) - h * s, t[1]));
 
-		/*var width = 960,
-		    height = 500;*/
-
-    width = parseInt(d3.select('#data-map-home').style('width'), 10);
-    height = parseInt(d3.select('#data-map-home').style('height'), 10);	
-
-		var scale,
-	    translate,
-			visibleArea, // minimum area threshold for points inside viewport
-  	  invisibleArea; // minimum area threshold for points outside viewport
-
-		var zoomTo = function(location, scale) {
-		  var point = projection(location);
-		  return zoom
-		      .translate([width / 2 - point[0] * scale, height / 2 - point[1] * scale])
-		      .scale(scale);
-		};
-
-		var zoomed = function(d) {
-		  translate = zoom.translate();
-		  scale = zoom.scale();
-		  visibleArea = 1 / scale / scale;
-		  invisibleArea = 200 * visibleArea;
-		  context.clearRect(0, 0, width, height);
-		  context.beginPath();
-		  path(d);
-		  context.stroke();
+		  zoom.translate(t);
+		  circles.attr("transform", "translate(" + t + ")scale(" + s + ")");
+		  circles.attr('r', function(d) { return d.size/s; });
+		  muns.attr("transform", "translate(" + t + ")scale(" + s + ")");
 		};
 
 		var zoom = d3.behavior.zoom()
-		.size([width, height])
-		.on("zoom", zoomed);
+		    .scaleExtent([1, 8])
+		    .on("zoom", move);
+
+		
+		//var width = 800;
+		var width = $('#data-map-home').width();
+		//var width = document.getElementById('data-map-home').offsetWidth;
+		var height = width;
+
+		var topo,projection,path,svg,g,muns,circles;
 
 
-		var x = d3.scale.linear()
-		    .domain([0, width])
-		    .range([0, width]);
+		var insertCircles = function(){
+	    //Tooltip
+	    var tip = d3.tip()
+	      .attr('class', 'bubble-chart-tip map-tip')
+	      .offset([-10, 0])
+	      .html(function(d) {
+	          return $scope.getTooltip(d);
+	      });
 
-		var y = d3.scale.linear()
-		    .domain([0, height])
-		    .range([height, 0]);
+	    svg.call(tip);
 
+			var data = $scope.processData( $scope.municipiosCoords );
 
-    var coodsCenter = [-101.984106, 27.452909];	    
+			var bubble = d3.layout.pack()
+			  .size([width, height])
+			  .padding(8) // padding between adjacent circles
+			  .value(function(d) {return d.size;}); // new data will be loaded to bubble layout
 
-		var projection = d3.geo.mercator()
-		    .scale(6000)
-		    //.center([-102.34034978813841, 24.012062015793]);
-		    .translate([width/2, (height*0.8)/2])
-		    .center(coodsCenter);
+			var nodes = bubble.nodes(data)
+			  .filter(function(d){ return !d.children; });
 
-    //Tooltip
-    var tip = d3.tip()
-      .attr('class', 'bubble-chart-tip')
-      .offset([-10, 0])
-      .html(function(d) {
-          return $scope.getTooltip(d);
-      });
+			var vis = svg.selectAll('circle')
+			  .data(nodes, function(d){ return d.name; });  
 
+			var maxR = 50;
 
-
-		var svg = d3.select('#data-map-home').append('svg')
-		    .attr('width', width)
-		    .attr('height', height);
-
-		svg.call(tip);
-
-		var g = svg.append('g');
-
-		d3.json('/mx_tj.json', function(error, mx) {
-		  svg.selectAll('#data-map-home path')
-		    //.data(topojson.feature(mx, mx.objects.municipalities).features)
-		    .data(topojson.feature(mx, mx.objects.municipalities).features.filter(function(d) { return d.properties.state_code === 5; }))		    
-		    .enter().append('path')
-		    .attr('d', d3.geo.path().projection(projection))
-		    //.attr("fill", "transparent")
-		    .style('stroke', '#333')
-		    .style('stroke-width', '.2px')
-		    .attr('class', 'mun');
-		  
-		  g.selectAll('#data-map-home path')
-		    .data(topojson.feature(mx, mx.objects.states).features.filter(function(d) { return d.properties.state_code === 5; }))
-		    .enter().append('path')
-		    .attr('d', d3.geo.path().projection(projection))
-		    //.attr("fill", "transparent")
-		    .attr('class', 'state')
-		  	.style('stroke', '#fff');
-
-		  
-
-		  var data = $scope.processData( $scope.municipiosCoords );
-
-      var bubble = d3.layout.pack()
-        .size([width, height])
-        .padding(8) // padding between adjacent circles
-        .value(function(d) {return d.size;}); // new data will be loaded to bubble layout
-
-      var nodes = bubble.nodes(data)
-        .filter(function(d){ return !d.children; });
-
-      var vis = svg.selectAll('circle')
-        .data(nodes, function(d){ return d.name; });  
-
-		  var maxR = 50;
-
-			var coordinates = projection(coodsCenter);
-
-      vis.enter().append('circle')
+			circles = vis.enter().append('circle')
 				.attr('cx', function(d){
 					var coords = [d.lng, d.lat];
 					var coordinates = projection(coords);
@@ -213,24 +160,93 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				.style('fill', '#2A82B4')
 				.on('mouseover', function(d){
 				  tip.show(d); 
-				  d3.select(this).transition()
-				  .duration(750)
-				  .attr('r', function(d) { return ( 0.6*maxR ) * 1.2; } );            
 				})
 				.on('mouseout', function(d){
 				  tip.hide(d); 
-				  d3.select(this).transition()
-				  .duration(750)
-				  .attr('r', function(d) { return 0.6*maxR; } );            
 				})
-        .on('click', function(d){
-            $rootScope.$apply(function() {
-                //$location.path('/'+ d.name);
-                $location.path('/municipio/' + d.id);
-            });                    
-        }) 				              
+			  .on('click', function(d){
+			      $rootScope.$apply(function() {
+			          $location.path('/municipio/' + d.id);
+			      });                    
+			  });
 
-		});
+
+		};
+
+		var draw = function(topo) {
+			console.log(topo);
+		  muns = g.selectAll("#data-map-home path").data(topo);
+
+		  muns.enter().append("path")
+		      .attr("class", "mun")
+		      .attr("d", path);
+		      //.attr("id", function(d,i) { return d.id; })
+		      //.attr("title", function(d,i) { return d.properties.name; })
+		      //.style("fill", function(d, i) { return d.properties.color; });
+
+		  //ofsets plus width/height of transform, plsu 20 px of padding, plus 20 extra for tooltip offset off mouse
+		  var offsetL = document.getElementById('data-map-home').offsetLeft+(width/2)+40;
+		  var offsetT =document.getElementById('data-map-home').offsetTop+(height/2)+20;
+
+		  insertCircles();
+
+		};
+
+
+		var redraw = function() {
+		  width = document.getElementById('data-map-home').width;
+		  height = width;
+		  d3.select('#data-map-home svg').remove();
+		  setup(width,height);
+		  draw(topo);
+		}
+
+		var throttleTimer;
+		var throttle = function() {
+		  window.clearTimeout(throttleTimer);
+		    throttleTimer = window.setTimeout(function() {
+		      redraw();
+		    }, 200);
+		};
+
+		var setup = function(width,height){
+
+			var coodsCenter = [-102.077342, 27.226009];
+
+		  projection = d3.geo.mercator()
+		    .translate([0, 0])
+		    //.translate([width/2, (height*0.8)/2])
+		    .center(coodsCenter)
+		    .scale(6000);
+		    //.scale(width / 2 / Math.PI);
+
+		  path = d3.geo.path()
+		      .projection(projection);
+
+		  svg = d3.select("#data-map-home").append("svg")
+		      .attr("width", width)
+		      .attr("height", height)
+		      .append("g")
+		      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+		      .call(zoom);
+
+		  console.log(zoom);
+		  svg.call(zoom);
+
+		  g = svg.append("g");
+
+		};
+
+		setup(width,height);		
+
+		d3.json("/mx_tj.json", function(error, mx) {
+
+		  var municipios = topojson.feature(mx, mx.objects.municipalities).features.filter(function(d) { return d.properties.state_code === 5; });
+
+		  topo = municipios;
+		  draw(topo);
+
+		});		
 
 	};
 

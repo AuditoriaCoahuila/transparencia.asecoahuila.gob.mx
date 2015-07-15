@@ -189,6 +189,21 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .radial-item:nth-child(3) p{color:#E53E2B}
 .radial-item:nth-child(4) p{color:#2D3057}
 
+
+/*-----------/
+	#RADIAL-ROW-COLORS
+/*-----------*/
+.radial-row-colors .radial-item .bordered-btn{
+	padding: 5px 40px;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+.radial-row-colors .radial-item:nth-child(1) .bordered-btn{color:#1878AB; border: 2px solid #1878AB}
+.radial-row-colors .radial-item:nth-child(2) .bordered-btn{color:#FF921D; border: 2px solid #FF921D}
+.radial-row-colors .radial-item:nth-child(3) .bordered-btn{color:#E53E2B; border: 2px solid #E53E2B}
+.radial-row-colors .radial-item:nth-child(4) .bordered-btn{color:#2D3057; border: 2px solid #2D3057}
+
+
 /*-----------/
 	#COLUMNS-CONTAINER
 /*-----------*/
@@ -241,7 +256,9 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	#SYMBOL-MAP
 /*---------------*/
 #data-map-home {
-	width: 700px;
+	min-width: 800px;
+	width: 100%;
+	width: 800px;
 	height: 700px;
   /*position: relative;
   margin: 0 auto;
@@ -354,6 +371,19 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .asec-chart circle:hover {
 	/*fill: #009966;*/
 	opacity: 1;
+}
+
+/*---------------/
+	#MAP-TIP
+/*---------------*/
+.map-tip{
+	background: #272A55;
+	border: 0;
+}
+.map-tip p{color: #fff;}
+
+.map-tip:after{
+	border-color: #272A55 transparent transparent transparent;	
 }
 
 /*---------------/

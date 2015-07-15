@@ -19,7 +19,7 @@ app.controller('homeCTL',['$scope','$http', function ($scope, $http) {
 		var address = 'address=' + params.name;
 		address += 'Coahuila Mexico';
 
-		var apiKey = 'AIzaSyDZr1ZEQeh6BHsohohlWaStevxtH95FF-M';
+		var apiKey = '';
 
 		var requestUrl = 
 			'https://maps.googleapis.com/maps/api/geocode/json?';

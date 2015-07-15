@@ -35,7 +35,8 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		var requestUrl = baseUrl + id + '&callback=JSON_CALLBACK';
 
 		$http.jsonp(requestUrl)
-	  	.success(function(data) {	
+	  	.success(function(data) {
+  			console.log(data);
 				$scope.municipio = data[id];
 				$scope.isLoaded = true;
 				$scope.drawRadial();

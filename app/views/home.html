@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="container container-xlg center-content">
+<!--<div class="container container-xlg center-content">
     <h1>Tipo de entidad</h1>
     <ul class="filter-nav" layout="row" layout-md="column" layout-sm="column">
         <a href="#">Poderes</a>
@@ -46,11 +46,11 @@
         </div>
     </div>
 
-</div>
+</div> -->
 
 <div class="container container-xlg center-content">
 
-    <div ng-show="!isLoaded" class="loading-wrapper loading-wrapper-small" layout="column" layout-fill layout-align="center center">
+    <div ng-if="!isLoaded" class="loading-wrapper loading-wrapper-small" layout="column" layout-fill layout-align="center center">
         <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
     </div>
 
@@ -63,22 +63,26 @@
         <h1>This is photoshop version of lorem ipsum</h1>
         <p><strong>This is photoshop version of lotem ipsum</strong></p>
 
-        <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
+        <div layout="row" class="radial-row radial-row-colors" layout-md="column" layout-sm="column">
             <div flex class="radial-item">
                 <p>This is photoshop version of lotem ipsum</p>
                 <p><strong class="big-text">7,458</strong></p>
+                <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
             </div>
             <div flex class="radial-item">
                 <p>This is photoshop version of lotem ipsum</p>
                 <p><strong class="big-text">7,458</strong></p>
+                <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
             </div>
             <div flex class="radial-item">
                 <p>This is photoshop version of lotem ipsum</p>
                 <p><strong class="big-text">7,458</strong></p>
+                <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
             </div>
             <div flex class="radial-item">
                 <p>This is photoshop version of lotem ipsum</p>
                 <p><strong class="big-text">7,458</strong></p>
+                <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
             </div>
         </div>
 

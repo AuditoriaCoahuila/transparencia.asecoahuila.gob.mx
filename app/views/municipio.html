@@ -79,9 +79,12 @@
                         <h4>Documentos</h4>
                         <ul>
                             <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
-                                <li ng-repeat="doc in municipio.documentos" class="docs-list-item">
-                                    <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.nombre_documento"></a>
+                                <li ng-repeat="doc in municipio.documentos.generales" class="docs-list-item">
+                                    <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
                                 </li>
+                                <li ng-repeat="doc in municipio.documentos.reporte_imco" class="docs-list-item">
+                                    <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
+                                </li>                                
                             </perfect-scrollbar>
                         </ul>
                     </div>
