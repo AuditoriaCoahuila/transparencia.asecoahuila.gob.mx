@@ -13,6 +13,8 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.municipios = [];
 	$scope.municipiosCoords= [];
 	$scope.bubbleChartData = [];
+	$scope.randomMun = {};
+	$scope.limitDocs = 5;
 
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
@@ -40,6 +42,8 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 			
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
+				$scope.randomMun = $scope.municipios[Math.floor(Math.random()*$scope.municipios.length)];
+				console.log($scope.randomMun);
 				$scope.drawState();	
 			})
 		  .error(function(data) {
@@ -60,10 +64,25 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 
   $scope.getTooltip = function(d){
-		d.cumplimiento =  0.65;
+  	console.log(d);
+  	var cumplimiento2013 = false;
+  	var cumplimiento2014 = false;
+
+
+		var cumplimiento2014 = d.info.porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
     var html = '<p><strong>' + d.name + '</strong></p>';
     html += '<hr/>';
-    html += '<p>Porcentaje de cumplimiento: ' + d.cumplimiento + '%</p>';
+
+  	if(d.info.porcentaje_cumplimiento['2013']){
+			cumplimiento2013 = d.info.porcentaje_cumplimiento['2013'].porcentaje_cumplimiento;
+    	html += '<p>Porcentaje de cumplimiento 2013: ' + cumplimiento2013 + '%</p>';
+  	}
+
+  	if(d.info.porcentaje_cumplimiento['2014']){
+			cumplimiento2014 = d.info.porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
+    	html += '<p>Porcentaje de cumplimiento 2014: ' + cumplimiento2014 + '%</p>';
+  	}
+
     return html;
 
   };	
@@ -79,7 +98,8 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
           lat: item.coords.lat,
           lng: item.coords.lng,
           id: item.id,
-					size: ( 0.6*maxR )          
+					size: ( 0.6*maxR ),
+					info: $scope.municipios[item.id - 1]          
         }
       );
     });
@@ -88,8 +108,6 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 	$scope.drawState = function(){
 		
-		d3.select(window).on("resize", throttle);
-
 		var move = function() {
 		  var t = d3.event.translate;
 		  var s = d3.event.scale;  
@@ -205,9 +223,13 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		var throttle = function() {
 		  window.clearTimeout(throttleTimer);
 		    throttleTimer = window.setTimeout(function() {
+
 		      redraw();
 		    }, 200);
 		};
+
+		d3.select(window).on("resize", throttle);
+
 
 		var setup = function(width,height){
 
@@ -240,12 +262,9 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		setup(width,height);		
 
 		d3.json("/mx_tj.json", function(error, mx) {
-
 		  var municipios = topojson.feature(mx, mx.objects.municipalities).features.filter(function(d) { return d.properties.state_code === 5; });
-
 		  topo = municipios;
 		  draw(topo);
-
 		});		
 
 	};

@@ -82,25 +82,24 @@
     <p><strong>This is photoshop version of lotem ipsum</strong></p>
 </div>
 
-<div class="columns-container" layout="row" layout-md="column" layout-sm="column">
+<div ng-if="randomMun.documentos" class="columns-container" layout="row" layout-md="column" layout-sm="column">
     <div class="column-item" flex="50" flex-md="100" flex-sm="100">
         <div class="container container-sm">
-            <h3>This is photoshop version of lorem ipsum</h3>
+            <h3 ng-bind="randomMun.datos_entidad.nombre_completo"></h3>
+            <p>Documentos relacionados</p>
             <ul class="custom-ordered-list">
-                <li><strong>1</strong> This is a photoshop version of Lorem ipsum</li>
-                <li><strong>2</strong> This is a photoshop version of Lorem ipsum</li>
-                <li><strong>3</strong> This is a photoshop version of Lorem ipsum</li>
-                <li><strong>4</strong> This is a photoshop version of Lorem ipsum</li>
-                <li><strong>5</strong> This is a photoshop version of Lorem ipsum</li>
+                <li ng-repeat="doc in randomMun.documentos.reporte_imco | objectLimitTo:limitDocs">
+                    <a ng-href="{{doc.url}}" ng-bind="doc.concepto" ></a>
+                </li>
             </ull>
         </div>
     </div>
     <div class="column-item" flex="50" flex-md="100" flex-sm="100">
         <div class="container container-sm">
             <h3><strong class="big-text">$33,567,986</strong></h3>
-            <h3>This is photoshop version of lorem ipsum</h3>
+            <h3 ng-bind="randomMun.datos_entidad.nombre_completo"></h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga perferendis voluptatibus praesentium beatae quam perspiciatis asperiores temporibus eveniet eos tempora rem quo ducimus soluta, laboriosam. Eos nesciunt voluptatem eaque. Minima.</p>
-            <p><a href="#" class="bordered-btn bordered-btn-block">Ver municipio</a></p>
+            <p><a ng-href="/municipio/{{randomMun.datos_entidad.id}}" class="bordered-btn bordered-btn-block">Ver municipio</a></p>
         </div>
     </div>
 </div>
