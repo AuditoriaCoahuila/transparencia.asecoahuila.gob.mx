@@ -104,11 +104,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	font-size: 14px;
 	margin: 0;
 }
-.banner .banner-column .big-text{font-size: 34px}
-.banner-column:nth-child(2){
-	border-left:1px solid #fff;
-	border-right:1px solid #fff;
-}
+.banner .banner-column strong{font-size: 34px}
+.banner .banner-column a{font-weight:normal;color:white;}
+.banner-column{border-right:1px solid #fff;}
+.banner-column:last-child{border-right:none;}
 
 
 
@@ -121,7 +120,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
     padding:40px 26px;
     height: auto;
 }
-.header h1{color:#fff;}
+.header h1,.header h1 p{color:#fff;}
 .header nav a{
     font-size: 14px;
     margin: 0 8px;

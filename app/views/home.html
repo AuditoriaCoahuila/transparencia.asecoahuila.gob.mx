@@ -1,20 +1,8 @@
 <div class="banner">
     <div class="container container-lg center-content">
-        <h1>This is Photoshop's version</h1>
+        <div btf-markdown="mainContent.subtitulo"></div>
         <div layout="row" layout-md="column" layout-sm="column">
-            <div class="banner-column" flex>
-                <p>This is a Photoshop version of Lorem Ipsum</p>
-                <p><strong class="big-text">7,458</strong></p>
-            </div>
-            <div class="banner-column" flex>
-                <p>This is a Photoshop version of Lorem Ipsum</p>
-                <p><strong class="big-text">7,458</strong></p>
-            </div>
-            <div class="banner-column" flex>
-                <p>This is a Photoshop version of Lorem Ipsum</p>
-                <p><strong class="big-text">7,458</strong></p>
-            </div>
-
+            <div class="banner-column" flex ng-repeat='cifra in mainContent.cifrasPrincipales' btf-markdown="cifra"></div>        
         </div>
     </div>
 </div>
