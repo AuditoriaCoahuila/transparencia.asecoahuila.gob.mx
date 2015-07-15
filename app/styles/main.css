@@ -395,12 +395,21 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	padding: 0;
 }
 .custom-ordered-list li{
+	background: url(../images/pdf-icon.png) 4px center no-repeat;
+	background-size: 22px 25px;
 	color:#fff;
 	font-size:13px;
 	padding: 8px;
 }
+
+.custom-ordered-list li a{
+	color: #fff;
+	display: block;
+	padding-left: 40px
+}
+
 .custom-ordered-list li:nth-child(odd){
-	background: rgba(0,0,0,0.1);
+	background-color: rgba(0,0,0,0.1);
 }
 
 /*---------------/
@@ -435,7 +444,8 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .feed-list p,
 .feed-list strong,
-.feed-list span{
+.feed-list span,
+.feed-list a{
 	color:#8B8B8B;
 	margin: 4px 0;
 }

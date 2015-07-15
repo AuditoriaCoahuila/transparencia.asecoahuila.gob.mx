@@ -45,7 +45,8 @@
             <div layout="row" layout-sm="column">
                 <div class="feed-list" flex="65" flex-sm="100">
                     <div class="container-lg container">
-                        <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
+                        <h4>Documentos</h4>
+                        <!--<perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
                             <div class="feed-list-item" ng-repeat="criterio in municipio.criterios">
                                 <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
                                     <p class="feed-list-item-title" flex ng-bind="criterio.concepto"></p>
@@ -56,7 +57,17 @@
                                     <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
                                 </div>
                             </div>
-                        </perfect-scrollbar>
+                        </perfect-scrollbar>-->
+                        <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
+                            <div class="feed-list-item" ng-repeat="doc in municipio.documentos.reporte_imco">
+                                <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
+                                    <p class="feed-list-item-title" flex>
+                                        <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
+                                    </p>
+                                    <strong class="feed-list-item-status"><a target="_blank" ng-href="{{doc.url}}">&#10006;</a></strong>
+                                </div>
+                            </div>
+                        </perfect-scrollbar>                        
                     </div>
                 </div>
                 <div class="stats" offset="5" flex="30" flex-sm="100">
