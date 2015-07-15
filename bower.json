@@ -18,7 +18,8 @@
     "d3-tip": "~0.6.7",
     "topojson": "~1.6.19",
     "angular-contentful": "~2.0.0",
-    "angular-markdown-directive": "~0.3.1"
+    "angular-markdown-directive": "~0.3.1",
+    "angular-carousel": "~0.3.12"
   },
   "overrides": {
     "pleasejs": {

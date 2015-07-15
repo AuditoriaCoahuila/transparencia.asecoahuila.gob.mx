@@ -14,7 +14,8 @@ var app = angular
     'ngRoute',
     'perfect_scrollbar',
     'contentful',
-    'btford.markdown'
+    'btford.markdown',
+    'angular-carousel'
 ]);
 app
   .config(function(contentfulProvider){
@@ -45,7 +46,7 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
     }
     }).when('/municipio/:municipioId', {
         templateUrl: '/views/municipio.html',
-        controller : 'municipioCTL', 
+        controller : 'municipioCTL',
     }).otherwise({
         redirectTo: '/'
     });

@@ -2,8 +2,21 @@
     <div class="container container-lg center-content">
         <div btf-markdown="mainContent.subtitulo"></div>
         <div layout="row" layout-md="column" layout-sm="column">
-            <div class="banner-column" flex ng-repeat='cifra in mainContent.cifrasPrincipales' btf-markdown="cifra"></div>        
+            <div class="banner-column" flex ng-repeat='cifra in mainContent.cifrasPrincipales' btf-markdown="cifra"></div>
         </div>
+    </div>
+</div>
+
+<div class="banner-graph">
+    <div class="container container-lg center-content" flex>
+        <ul rn-carousel rn-carousel-auto-slide rn-carousel-controls layout-fill>
+            <li ng-repeat="graph in bannerGraphImgs" class="radial-row-colors">
+                <div class="layer radial-item">
+                    <img ng-src="{{graph.image}}">
+                    <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 

@@ -18,7 +18,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
-		var baseUrl = 
+		var baseUrl =
 			'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_n_entidades_todos_datos&id_entidad=';
 		var ids = '';
 
@@ -26,40 +26,40 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 			if(i === (nMunicipios) ){
 				ids += i;
 			}else{
-				ids += i+',';				
+				ids += i+',';
 			}
 		}
-		
+
 		var requestUrl = baseUrl + ids + '&callback=JSON_CALLBACK';
 		$http.jsonp(requestUrl)
-	  	.success(function(data) {	
+	  	.success(function(data) {
 
 				_.each(data, function(mun) {
-				  if(mun){	
+				  if(mun){
 				  	$scope.municipios.push(mun);
 				  }
 				});
-			
+
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
 				$scope.randomMun = $scope.municipios[Math.floor(Math.random()*$scope.municipios.length)];
 				console.log($scope.randomMun);
-				$scope.drawState();	
+				$scope.drawState();
 			})
 		  .error(function(data) {
-		  
-		  });			
+
+		  });
 	};
 
 	$scope.getMunicipiosData = function(){
 		$http.get('/municipios.json')
-	  	.success(function(data) {	
+	  	.success(function(data) {
 	  		$scope.municipiosCoords = data;
 	  		$scope.getMunicipiosStats();
 			})
 		  .error(function(data) {
-		  
-		  });	
+
+		  });
 	};
 
 
@@ -85,7 +85,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
     return html;
 
-  };	
+  };
 
 
   $scope.processData = function(data) {
@@ -99,20 +99,20 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
           lng: item.coords.lng,
           id: item.id,
 					size: ( 0.6*maxR ),
-					info: $scope.municipios[item.id - 1]          
+					info: $scope.municipios[item.id - 1]
         }
       );
     });
     return {children: newDataSet};
-  };  
+  };
 
 	$scope.drawState = function(){
-		
+
 		var move = function() {
 		  var t = d3.event.translate;
-		  var s = d3.event.scale;  
+		  var s = d3.event.scale;
 		  var h = height / 3;
-		  
+
 		  t[0] = Math.min(width / 2 * (s - 1), Math.max(width / 2 * (1 - s), t[0]));
 		  t[1] = Math.min(height / 2 * (s - 1) + h * s, Math.max(height / 2 * (1 - s) - h * s, t[1]));
 
@@ -126,7 +126,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		    .scaleExtent([1, 8])
 		    .on("zoom", move);
 
-		
+
 		//var width = 800;
 		var width = $('#data-map-home').width();
 		//var width = document.getElementById('data-map-home').offsetWidth;
@@ -157,7 +157,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 			  .filter(function(d){ return !d.children; });
 
 			var vis = svg.selectAll('circle')
-			  .data(nodes, function(d){ return d.name; });  
+			  .data(nodes, function(d){ return d.name; });
 
 			var maxR = 50;
 
@@ -177,15 +177,15 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				.style('stroke', '#2A82B4')
 				.style('fill', '#2A82B4')
 				.on('mouseover', function(d){
-				  tip.show(d); 
+				  tip.show(d);
 				})
 				.on('mouseout', function(d){
-				  tip.hide(d); 
+				  tip.hide(d);
 				})
 			  .on('click', function(d){
 			      $rootScope.$apply(function() {
 			          $location.path('/municipio/' + d.id);
-			      });                    
+			      });
 			  });
 
 
@@ -259,16 +259,22 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 		};
 
-		setup(width,height);		
+		setup(width,height);
 
 		d3.json("/mx_tj.json", function(error, mx) {
 		  var municipios = topojson.feature(mx, mx.objects.municipalities).features.filter(function(d) { return d.properties.state_code === 5; });
 		  topo = municipios;
 		  draw(topo);
-		});		
+		});
 
 	};
 
 	$scope.getMunicipiosData();
+
+  $scope.bannerGraphImgs = [
+    { image: '/images/example_graph1.png' },
+    { image: '/images/example_graph2.png'}
+
+  ]
 
 }]);
