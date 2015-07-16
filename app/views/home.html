@@ -64,7 +64,7 @@
                 </h4>
                 <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10" include-padding="true">
                     <div class="feed-list-item" ng-repeat="mun in municipios track by $index">
-                        <div class="feed-list-item-top" layout="row" ng-click="triggerTip(mun.datos_entidad.id, $index)">                        
+                        <div class="feed-list-item-top" layout="row" ng-click="triggerTip(mun.datos_entidad.id, $index)">
                             <strong flex="15" class="feed-list-item-num">
                                 <a ng-bind="$index+1"></a>
                             </strong>
@@ -76,7 +76,7 @@
                             </strong>
                         </div>
                         <div ng-show="showContentList[$index]">
-                            <p class="feed-list-item-content feed-list-item-btn">
+                            <p class="feed-list-item-content feed-list-item-btn" ng-click="tip.hide();">
                                 <a ng-href="/municipio/{{mun.datos_entidad.id}}">Ver perfil del municipio</a>
                             </p>
                         </div>
@@ -124,4 +124,4 @@
         </div>
     </div>
 </div>
-<div ng-include="'/views/footer.html'"></div>    
+<div ng-include="'/views/footer.html'"></div>
