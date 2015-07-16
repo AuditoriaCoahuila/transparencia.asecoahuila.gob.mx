@@ -1,16 +1,17 @@
 <!doctype html>
 <html class="no-js" ng-app="asecApp" ng-controller='MainCtrl'>
   <head>
-
     <base href="/" >
-
-    <meta charset="utf-8">
-    <title ng-bind="mainContent.tituloMeta"></title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="description" content="{{ MetaInformation.metaDescription() }}">
-        <meta name="keywords" content="{{ MetaInformation.metaKeywords() }}">
     
+    <title ng-bind="meta.title"></title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="description" content="{{meta.description }}">
+    <meta name="keywords" content="{{ meta.keywords }}">
+    
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -69,8 +70,6 @@
         <script src="scripts/controllers/municipioCTL.js"></script>
         <script src="scripts/directives/bubbleChart.js"></script>
         <script src="scripts/controllers/header.js"></script>
-        <script src="scripts/services/pagetitle.js"></script>
-        <script src="scripts/services/metainformation.js"></script>
         <!-- endbuild -->
 
 

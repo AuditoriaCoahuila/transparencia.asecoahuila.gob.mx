@@ -14,8 +14,16 @@ angular.module('asecApp')
   		$scope.mainContent = response.data.fields;
       $scope.mainContent.cifrasPrincipales = $scope.mainContent.cifrasPrincipales.split("\\,");
       $scope.mainContent.descripciones = $scope.mainContent.descripciones.split("\\,");
+      $scope.initMeta();
       console.log($scope.mainContent);
   	});
+    $scope.initMeta = function(){
+      $scope.meta = {
+        title : $scope.mainContent.tituloMeta,
+        description : $scope.mainContent.descripcionMeta,
+        keywords : $scope.mainContent.keywordsMeta
+      }
+    }
     $scope.mainContent = {};
 
     $scope.capitulos = {

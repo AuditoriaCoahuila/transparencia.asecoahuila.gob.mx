@@ -17,7 +17,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.limitDocs = 5;
 	$scope.tip = {};
 	$scope.showContentList = [];
-
+	$scope.initMeta();
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
 		var baseUrl =
