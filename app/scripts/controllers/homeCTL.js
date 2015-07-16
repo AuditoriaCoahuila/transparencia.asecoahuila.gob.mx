@@ -45,7 +45,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
 				$scope.randomMun = $scope.municipios[Math.floor(Math.random()*$scope.municipios.length)];
-				$scope.drawState();	
+				$scope.drawState();
 			})
 		  .error(function(data) {
 
@@ -194,10 +194,10 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				.style('fill', '#2A82B4')
 				.attr('class', function(d){ return 'map-circle-'+d.id })
 				.on('mouseover', function(d){
-				  $scope.tip.show(d); 
+				  $scope.tip.show(d);
 				})
 				.on('mouseout', function(d){
-				  $scope.tip.hide(d); 
+				  $scope.tip.hide(d);
 				})
 			  .on('click', function(d){
 		      $rootScope.$apply(function() {
@@ -290,7 +290,16 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
   $scope.bannerGraphImgs = [
     { image: '/images/example_graph1.png' },
     { image: '/images/example_graph2.png'}
+  ];
 
-  ]
+  $scope.bannerGraphImgsIndex = 0;
+  $scope.carouselNext = function(){
+    $scope.bannerGraphImgsIndex = ++$scope.bannerGraphImgsIndex % $scope.bannerGraphImgs.length;
+  };
+
+  $scope.carouselBack = function(){
+    $scope.bannerGraphImgsIndex = --$scope.bannerGraphImgsIndex % $scope.bannerGraphImgs.length;
+  };
+
 
 }]);

@@ -77,7 +77,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg$ /index.html [L]']),            
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -88,7 +88,7 @@ module.exports = function (grunt) {
                 connect.static('./app/styles')
               ),
               connect.static(appConfig.app)
-            ];            
+            ];
           }
         }
 
@@ -254,12 +254,16 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      js: '<%= yeoman.dist %>/scripts/*.js',
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
           '<%= yeoman.dist %>/images',
           '<%= yeoman.dist %>/styles'
-        ]
+        ],
+        patterns: {
+          js: [[/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']]
+        }
       }
     },
 

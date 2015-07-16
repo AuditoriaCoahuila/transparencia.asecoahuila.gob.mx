@@ -8,22 +8,15 @@
 </div>
 
 <div class="banner-graph">
-    <div class="container container-lg center-content" flex>
-        <ul rn-carousel rn-carousel-auto-slide rn-carousel-auto-slide="5" rn-carousel-controls layout-fill>
-            <li class="radial-row-colors">
-                <div class="layer radial-item">
-                    <img src="/images/example_graph1.png">
-                    <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
-                </div>
-            </li>
-            <li class="radial-row-colors">
-                <div class="layer radial-item">
-                    <img src="/images/example_graph2.png">
-                    <a href="#" class="bordered-btn bordered-btn-block">Leer más</a>
-                </div>
-            </li>            
-        </ul>
-    </div>
+    <ul rn-carousel rn-carousel-index="bannerGraphImgsIndex">
+        <li ng-repeat="graph in bannerGraphImgs" class="radial-row-colors">
+            <div class="layer radial-item">
+                <img ng-src="{{graph.image}}">
+            </div>
+        </li>
+    </ul>
+    <a class="carousel-buttons carousel-next" ng-click="carouselNext()"></a>
+    <a class="carousel-buttons carousel-back" ng-click="carouselNext()"></a>
 </div>
 
 <!--<div class="container container-xlg center-content">
@@ -72,10 +65,9 @@
                 <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10" include-padding="true">
                     <div class="feed-list-item" ng-repeat="mun in municipios track by $index">
                         <div class="feed-list-item-top" layout="row" ng-click="triggerTip(mun.datos_entidad.id, $index)">                        
-                        <!--<div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">-->
                             <strong flex="15" class="feed-list-item-num">
                                 <a ng-bind="$index+1"></a>
-                            </strong>                         
+                            </strong>
                             <p class="feed-list-item-title" flex>
                                 <a ng-bind="mun.datos_entidad.nombre_completo"></a>
                             </p>
@@ -87,10 +79,10 @@
                             <p class="feed-list-item-content feed-list-item-btn">
                                 <a ng-href="/municipio/{{mun.datos_entidad.id}}">Ver perfil del municipio</a>
                             </p>
-                        </div>                        
+                        </div>
                     </div>
                 </perfect-scrollbar>
-                <a class="small-note">*Porcentaje de cumplimiento del 2014</a>                        
+                <a class="small-note">*Porcentaje de cumplimiento del 2014</a>
             </div>
         </div>
     </div>
