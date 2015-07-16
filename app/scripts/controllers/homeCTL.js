@@ -16,6 +16,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.randomMun = {};
 	$scope.limitDocs = 5;
 	$scope.tip = {};
+	$scope.showContentList = [];
 
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
@@ -104,7 +105,14 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
     return {children: newDataSet};
   };
 
-  $scope.triggerTip = function(circleId){
+  $scope.triggerTip = function(circleId, index){
+  	angular.forEach( $scope.showContentList, function(v,i){
+  		$scope.showContentList[i] = false;
+  	});
+  	$scope.showContentList[index] = !$scope.showContentList[index];
+  	
+  	//this.showContent = !this.showContent;
+
   	var svg = d3.select("#data-map-home");
   	var data = d3.select('.map-circle-' + circleId).data();
   	if(data.length > 0){
