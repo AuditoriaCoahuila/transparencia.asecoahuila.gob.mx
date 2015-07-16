@@ -80,6 +80,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .container h2{
 	font-weight: 300;
 }
+.container-no-top{padding-top: 0}
+.container-side-margin-left{
+	margin-left: 10px;
+}
 
 .container-alt{background: #F9F9F9}
 
