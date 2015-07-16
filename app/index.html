@@ -28,32 +28,24 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="asecApp" ng-controller='MainCtrl'>
-    <div id="wrap" ng-cloak>
-        <div id="main" class="clearfix">
-            <div id="topBackRepeat" layout-fill >
-                <div flex layout="column" ng-controller='HeaderCtrl'>
-                    <md-toolbar class='header'>
-                        <div class="md-toolbar-tools container nopadding" layout='row'>
-                            <div flex>
-                                <h1><a href="/"  btf-markdown="mainContent.tItulo">Índice de información <strong>presupuestal municipal</strong></a></h1>
-                            </div>
-                            <nav>
-                                <a href="/">Índice</a>
-                                <a href="">Documentos</a>
-                                <a href="" >Municipios</a><!-- 
-                                <a href="#" class="bordered-btn">Contacto</a> -->
-                            </nav>
-                        </div>
-                    </md-toolbar>
+  <body ng-app="asecApp" ng-controller='MainCtrl' >
+    <div flex layout="column" ng-controller='HeaderCtrl'>
+        <md-toolbar class='header'>
+            <div class="md-toolbar-tools container nopadding" layout='row'>
+                <div flex>
+                    <h1><a href="/"  btf-markdown="mainContent.tItulo">Índice de información <strong>presupuestal municipal</strong></a></h1>
                 </div>
+                <nav>
+                    <a href="/">Índice</a>
+                    <a href="">Documentos</a>
+                    <a href="" >Municipios</a><!-- 
+                    <a href="#" class="bordered-btn">Contacto</a> -->
+                </nav>
+            </div>
+        </md-toolbar>
+    </div>
 
-                <div flex layout="column" ng-view></div>
-
-            </div><!-- topBackRepeat END -->
-        </div><!-- MAIN END -->
-    </div><!-- WRAP END -->
-    <div class="clear"></div>
+    <div flex layout="column" ng-view></div>
 
     <div id="footer">
         <div class="container container-xlg" layout="row" layout-sm="column">
@@ -62,14 +54,12 @@
             </div>
             <div flex="30">
                 <h4><a href="">Aviso de privacidad</a> | <a href="">Contacto</a></h4>
-                <p class="small-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate id aperiam odio obcaecati, sit delectus illo repellendus. Veniam asperiores minus, vitae similique, non possimus, dolor voluptatum commodi id at quaerat.</p>
+                <div class="small-note" btf-markdown='mainContent.avisoFooter'></div>
             </div>
             <div flex="30" offset="10">
-                <p class="icon geo">Avenida Bonampak calle cereza #1 sm 2-a l 20
-                  CP 77500 Cancun Quintana Roo, México
-                </p>
-                <p class="icon phone"> (0155) 982462948 </p>
-                <p class="icon mail">info@auditoriasuperior.com</p>
+                <div class="icon geo" btf-markdown='mainContent.direccin' ></div>
+                <p class="icon phone" ng-bind='mainContent.telefono'></p>
+                <p class="icon mail" ng-bind='mainContent.email'></p>
             </div>
         </div>
     </div>
@@ -108,7 +98,6 @@
     <script src="bower_components/showdown/src/showdown.js"></script>
     <script src="bower_components/angular-markdown-directive/markdown.js"></script>
     <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
-    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
