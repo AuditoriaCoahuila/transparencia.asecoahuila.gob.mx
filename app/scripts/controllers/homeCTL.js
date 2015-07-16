@@ -110,14 +110,17 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
   		$scope.showContentList[i] = false;
   	});
   	$scope.showContentList[index] = !$scope.showContentList[index];
-  	
+
   	//this.showContent = !this.showContent;
 
   	var svg = d3.select("#data-map-home");
   	var data = d3.select('.map-circle-' + circleId).data();
   	if(data.length > 0){
-			var c = svg.select('.map-circle-' + circleId).node();
-			$scope.tip.show(data[0], c);
+          var c = svg.select('.map-circle-' + circleId).node();
+          var e = document.createEvent('UIEvents');
+          e.initUIEvent('mouseover', true, true);
+          c.dispatchEvent(e);
+          //$scope.tip.show(data[0], c);
   	}
   };
 
