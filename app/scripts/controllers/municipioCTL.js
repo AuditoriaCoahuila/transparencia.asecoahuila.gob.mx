@@ -19,7 +19,8 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		$scope.egresos = [];
 
 		angular.forEach($scope.capitulos , function(cap,key){
-			var capObject = egresosList['Capítulo ' + key];
+			var capObject = {};
+			capObject = egresosList['Capítulo ' + key] || {'valor':0};
 			capObject['Descripcion'] = $scope.capitulos[key];
 			$scope.egresos.push(capObject);
 		});
@@ -40,9 +41,13 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 				$scope.municipio = data[id];
 				$scope.isLoaded = true;
 				$scope.drawEgresos();
+				$scope.meta.title = $scope.municipio.datos_entidad.nombre+' - '+$scope.mainContent.tituloMeta;
+				$scope.meta.description = $scope.municipio.datos_entidad.descripcion_250;
+				$scope.meta.keywords = $scope.municipio.datos_entidad.nombre+", "+$scope.mainContent.keywordsMeta;
 		})
 		.error(function(data) {
-		});			
+		});	
+
 	};
 
 	$scope.getMunicipio();

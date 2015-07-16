@@ -10,12 +10,22 @@
 angular.module('asecApp')
   .controller('MainCtrl', function ($scope,contentful,$document,$location) {
   	//Obtener Contenido General de contentful
+    $scope.meta = {};
   	contentful.entry('6OjQJVDBf2CoIKyyg8EU2W').then(function(response){
   		$scope.mainContent = response.data.fields;
       $scope.mainContent.cifrasPrincipales = $scope.mainContent.cifrasPrincipales.split("\\,");
       $scope.mainContent.descripciones = $scope.mainContent.descripciones.split("\\,");
+      
+      if($location.path == '/') $scope.initMeta();
       console.log($scope.mainContent);
   	});
+    $scope.initMeta = function(){
+      $scope.meta = {
+        title : $scope.mainContent.tituloMeta,
+        description : $scope.mainContent.descripcionMeta,
+        keywords : $scope.mainContent.keywordsMeta
+      }
+    }
     $scope.mainContent = {};
 
     $scope.capitulos = {
@@ -24,7 +34,10 @@ angular.module('asecApp')
       "3000" : "Servicios generales”",
       "4000" : "Subsidios y transferencias",
       "5000" : "Bienes muebles, inmuebles e intangibles",
-      "6000" : "Inversión pública"
+      "6000" : "Inversión pública",
+      "7000" :"Inversiones financieras y otras provisiones",
+      "8000" : "Participaciones y aportaciones",
+      "9000" : "Deuda Pública"
     };
 
   });

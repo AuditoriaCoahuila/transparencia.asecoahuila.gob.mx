@@ -17,7 +17,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.limitDocs = 5;
 	$scope.tip = {};
 	$scope.showContentList = [];
-
+	$scope.initMeta();
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
 		var baseUrl =
@@ -144,11 +144,13 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 		    .scaleExtent([1, 8])
 		    .on("zoom", move);
 
+    zoom = function(){};
+
 
 		//var width = 800;
 		var width = $('#data-map-home').width();
 		//var width = document.getElementById('data-map-home').offsetWidth;
-		var height = width;
+		var height = width + 45;
 
 		var topo,projection,path,svg,g,muns,circles;
 
