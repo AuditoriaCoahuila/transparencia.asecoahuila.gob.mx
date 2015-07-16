@@ -684,7 +684,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	margin-left: 40px
 }
 
-.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y{background-color: #fff}
+.docs-list .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y{background-color: #fff}
 
 
 
