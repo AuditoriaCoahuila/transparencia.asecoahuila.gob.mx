@@ -184,6 +184,11 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	box-sizing: border-box;
 }
 
+.ring-chart{
+	height: 200px;
+	width: 100%;
+}
+
 .radial-chart text{font-weight: 700}
 
 .radial-chart,

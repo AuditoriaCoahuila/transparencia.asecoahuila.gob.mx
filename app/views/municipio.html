@@ -1,8 +1,8 @@
-<div  ng-show="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
+<div  ng-if="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
     <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div class="loaded-wrapper" ng-show="isLoaded">
+<div class="loaded-wrapper" ng-if="isLoaded">
     <div class="container center-content title-block">
         <p><img src="/images/book.png" alt=""></p>
         <h1 ng-bind="municipio.datos_entidad.nombre_completo"></h1>
@@ -15,13 +15,17 @@
                 <div class="container container-sm center-content">
                     <h2>Ingreso per cápita del municipio</h2>
                     <p><strong>Contra el promedio general de los 38 municipios</strong></p>
-                    <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
-                        <div flex class="radial-item">
-                            <div id="ingreso-per-capita" class="radial-chart"></div>
-                            <p class="radial-chart-label">This is photoshop version of lotem ipsum</p>
-                            <p class="radial-chart-label"><strong class="big-text">7,458</strong></p>
-                        </div>
-                    </div>
+
+                    <!--<div class="radial-item">
+                        <graph data="dataRadialIngresos" class="ring-chart" width="100%" height="300px">
+                            <r field="Cantidad"></r>
+                            <graph-legend></graph-legend>
+                            <ring field="Concepto" thickness="20"></ring>
+                        </graph>                        
+                        <p class="radial-chart-label">This is photoshop version of lotem ipsum</p>
+                        <p class="radial-chart-label"><strong class="big-text">7,458</strong></p>
+                    </div>-->
+
                 </div>
             </div>
             <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">

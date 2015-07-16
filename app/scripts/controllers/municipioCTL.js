@@ -13,18 +13,8 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.municipio = {};
 	$scope.isLoaded = false;
 
-	$scope.drawRadial = function(){
-
-    var rp1 = radialProgress(document.getElementById('ingreso-per-capita'))
-        .diameter(150)
-        .value(78)
-        //.label('Ingreso per capita del municipio')
-        .render();	
-    var rp2 = radialProgress(document.getElementById('egreso-per-capita'))
-        .diameter(150)
-        .value(82)
-        //.label('Ingreso per capita del municipio')
-        .render();
+	$scope.drawEgresos = function(){
+		//$scope.municipio.informacion_presupuestal['2014'].Egresos;
 	};
 
 
