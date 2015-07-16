@@ -15,8 +15,16 @@ angular.module('asecApp')
       $scope.mainContent.cifrasPrincipales = $scope.mainContent.cifrasPrincipales.split("\\,");
       $scope.mainContent.descripciones = $scope.mainContent.descripciones.split("\\,");
       console.log($scope.mainContent);
-      console.log('loaded main content');
-  	})
+  	});
     $scope.mainContent = {};
+
+    $scope.capitulos = {
+      "1000" : "Servicios personales",
+      "2000" : "Materiales y suministros",
+      "3000" : "Servicios generales”",
+      "4000" : "Subsidios y transferencias",
+      "5000" : "Bienes muebles, inmuebles e intangibles",
+      "6000" : "Inversión pública"
+    };
 
   });

@@ -1,4 +1,6 @@
-<div  ng-if="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
+<div ng-show="isLoaded" ng-include="'/views/header.html'"></div>
+
+<div  ng-show="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
     <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
 </div>
 
@@ -16,22 +18,6 @@
                     <h2>Ingreso per cápita del municipio</h2>
                     <p><strong>Contra el promedio general de los 38 municipios</strong></p>
 
-                    <!--<div class="radial-item">
-                        <graph data="dataRadialIngresos" class="ring-chart" width="100%" height="300px">
-                            <r field="Cantidad"></r>
-                            <graph-legend></graph-legend>
-                            <ring field="Concepto" thickness="20"></ring>
-                        </graph>                        
-                        <p class="radial-chart-label">This is photoshop version of lotem ipsum</p>
-                        <p class="radial-chart-label"><strong class="big-text">7,458</strong></p>
-                    </div>-->
-
-                </div>
-            </div>
-            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
-                <div class="container container-sm center-content">
-                    <h2>Egresos per cápita del municipio</h2>
-                    <p><strong>Contra el promedio general de los 38 municipios</strong></p>
                     <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
                         <div flex class="radial-item">
                             <div id="egreso-per-capita" class="radial-chart radial-chart-alt"></div>
@@ -39,6 +25,25 @@
                             <p class="radial-chart-label-alt"><strong class="big-text">7,458</strong></p>
                         </div>
                     </div>
+
+                </div>
+            </div>
+            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+                <div class="container container-sm center-content">
+                    <h2>Egresos per cápita del municipio</h2>
+                    <p><strong>Dividido por concepto</strong></p>
+
+
+                    <div class="radial-item">
+                        <graph data="egresos" class="ring-chart" width="100%" height="300px">
+                            <r field="valor"></r>
+                            <graph-legend></graph-legend>
+                            <ring field="Descripcion" thickness="20"></ring>
+                        </graph>                        
+                        <p class="radial-chart-label">Presupuesto de egresos 2014 (Adenda)</p>
+                        <p class="radial-chart-label"><strong class="big-text">{{presupuestoEgresos.valor | currency:'$'}}</strong></p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -47,36 +52,37 @@
     <div class="container container-xlg">
         <div>
             <div layout="row" layout-sm="column">
-                <div class="feed-list" flex="65" flex-sm="100">
+                <div class="feed-list" flex="55" flex-sm="100">
                     <div class="container-lg container">
-                        <h4>Documentos</h4>
-                        <!--<perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
-                            <div class="feed-list-item" ng-repeat="criterio in municipio.criterios">
-                                <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
-                                    <p class="feed-list-item-title" flex ng-bind="criterio.concepto"></p>
-                                    <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
-                                    <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
-                                </div>
-                                <div ng-show="showContent">
-                                    <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
-                                </div>
-                            </div>
-                        </perfect-scrollbar>-->
-                        <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
-                            <div class="feed-list-item" ng-repeat="doc in municipio.documentos.reporte_imco">
-                                <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
-                                    <p class="feed-list-item-title" flex>
-                                        <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
-                                    </p>
-                                    <strong class="feed-list-item-status"><a target="_blank" ng-href="{{doc.url}}">&#10006;</a></strong>
-                                </div>
-                            </div>
-                        </perfect-scrollbar>                        
+
+                        <div class="container docs-list">
+                            <h4>Documentos</h4>
+                            <ul>
+                                <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
+                                    <li ng-repeat="folder in municipio.documentos track by $index" class="docs-list-item docs-list-item-parent">
+                                        <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
+                                            {{folders[$index]}}
+                                            <span ng-class="{'caret-down' : toggleFolder}" class="caret"></span>
+                                        </a>
+
+                                        <ul ng-show="toggleFolder">
+                                            <li ng-repeat="doc in folder" class="docs-list-item">
+                                                <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                              
+                                </perfect-scrollbar>
+                            </ul>
+                        </div>
+                      
                     </div>
                 </div>
-                <div class="stats" offset="5" flex="30" flex-sm="100">
-                    <div class="stats-count container container-xsm center-content">
-                        <h4>Datos financieros</h4>
+                <div class="stats" offset="5" flex="40" flex-sm="100">
+                    
+                    <div class="stats-count stats-count-alt container container-xsm center-content">
+                        <h4>Información presupuestal</h4>
                         <div class="radial-item">
                             <p>This is photoshop version of lotem ipsum</p>
                             <p><strong class="big-text">7,458</strong></p>
@@ -90,22 +96,27 @@
                             <p><strong class="big-text">7,458</strong></p>
                         </div>                                                            
                     </div>
-                    <div class="container docs-list">
-                        <h4>Documentos</h4>
-                        <ul>
-                            <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
-                                <li ng-repeat="doc in municipio.documentos.generales" class="docs-list-item">
-                                    <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
-                                </li>
-                                <li ng-repeat="doc in municipio.documentos.reporte_imco" class="docs-list-item">
-                                    <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
-                                </li>                                
-                            </perfect-scrollbar>
-                        </ul>
+
+                    <div class="stats-count container container-xsm center-content">
+                        <h4>Ramo 23</h4>
+                        <div class="radial-item">
+                            <p>This is photoshop version of lotem ipsum</p>
+                            <p><strong class="big-text">7,458</strong></p>
+                        </div> 
+                        <div class="radial-item">
+                            <p>This is photoshop version of lotem ipsum</p>
+                            <p><strong class="big-text">7,458</strong></p>
+                        </div> 
+                        <div class="radial-item">
+                            <p>This is photoshop version of lotem ipsum</p>
+                            <p><strong class="big-text">7,458</strong></p>
+                        </div>                                                            
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+<div ng-include="'/views/footer.html'" ng-show="isLoaded"></div>    

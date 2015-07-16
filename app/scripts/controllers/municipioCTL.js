@@ -12,9 +12,19 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.municipioId = $routeParams.municipioId;
 	$scope.municipio = {};
 	$scope.isLoaded = false;
+	$scope.folders = ['Reporte IMCO','Generales'];
 
 	$scope.drawEgresos = function(){
-		//$scope.municipio.informacion_presupuestal['2014'].Egresos;
+		var egresosList = $scope.municipio.informacion_presupuestal['2014'].Egresos;
+		$scope.egresos = [];
+
+		angular.forEach($scope.capitulos , function(cap,key){
+			var capObject = egresosList['Capítulo ' + key];
+			capObject['Descripcion'] = $scope.capitulos[key];
+			$scope.egresos.push(capObject);
+		});
+
+		$scope.presupuestoEgresos = egresosList['Presupuesto de Egresos 2014 (Adenda)'];
 	};
 
 
@@ -29,7 +39,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
   			console.log(data);
 				$scope.municipio = data[id];
 				$scope.isLoaded = true;
-				$scope.drawRadial();
+				$scope.drawEgresos();
 		})
 		.error(function(data) {
 		});			
