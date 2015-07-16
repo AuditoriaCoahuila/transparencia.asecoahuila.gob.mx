@@ -15,8 +15,7 @@ angular.module('asecApp')
       $scope.mainContent.cifrasPrincipales = $scope.mainContent.cifrasPrincipales.split("\\,");
       $scope.mainContent.descripciones = $scope.mainContent.descripciones.split("\\,");
       console.log($scope.mainContent);
-      console.log('loaded main content');
-  	})
+  	});
     $scope.mainContent = {};
 
   });

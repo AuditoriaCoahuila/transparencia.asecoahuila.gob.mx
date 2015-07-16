@@ -1,3 +1,5 @@
+<div ng-show="isLoaded" ng-include="'/views/header.html'"></div>
+
 <div  ng-show="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
     <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
 </div>
@@ -105,3 +107,4 @@
     </div>
 
 </div>
+<div ng-include="'/views/footer.html'" ng-show="isLoaded"></div>    
