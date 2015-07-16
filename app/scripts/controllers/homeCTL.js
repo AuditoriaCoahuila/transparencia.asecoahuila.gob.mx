@@ -206,7 +206,8 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				})
 			  .on('click', function(d){
 		      $rootScope.$apply(function() {
-			          $location.path('/municipio/' + d.id);
+		      	$scope.tip.hide(d);
+	          $location.path('/municipio/' + d.id);
 			  	});
 		    });
 		};
@@ -256,10 +257,8 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 		  projection = d3.geo.mercator()
 		    .translate([0, 0])
-		    //.translate([width/2, (height*0.8)/2])
 		    .center(coodsCenter)
 		    .scale(6000);
-		    //.scale(width / 2 / Math.PI);
 
 		  path = d3.geo.path()
 		      .projection(projection);

@@ -12,19 +12,20 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.municipioId = $routeParams.municipioId;
 	$scope.municipio = {};
 	$scope.isLoaded = false;
+	$scope.folders = ['Reporte IMCO','Generales'];
 
-	$scope.drawRadial = function(){
+	$scope.drawEgresos = function(){
+		var egresosList = $scope.municipio.informacion_presupuestal['2014'].Egresos;
+		$scope.egresos = [];
 
-    var rp1 = radialProgress(document.getElementById('ingreso-per-capita'))
-        .diameter(150)
-        .value(78)
-        //.label('Ingreso per capita del municipio')
-        .render();	
-    var rp2 = radialProgress(document.getElementById('egreso-per-capita'))
-        .diameter(150)
-        .value(82)
-        //.label('Ingreso per capita del municipio')
-        .render();
+		angular.forEach($scope.capitulos , function(cap,key){
+			var capObject = {};
+			capObject = egresosList['Capítulo ' + key] || {'valor':0};
+			capObject['Descripcion'] = $scope.capitulos[key];
+			$scope.egresos.push(capObject);
+		});
+
+		$scope.presupuestoEgresos = egresosList['Presupuesto de Egresos 2014 (Adenda)'];
 	};
 
 
@@ -39,7 +40,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
   			console.log(data);
 				$scope.municipio = data[id];
 				$scope.isLoaded = true;
-				$scope.drawRadial();
+				$scope.drawEgresos();
 				$scope.meta.title = $scope.municipio.datos_entidad.nombre+' - '+$scope.mainContent.tituloMeta;
 				$scope.meta.description = $scope.municipio.datos_entidad.descripcion_250;
 				$scope.meta.keywords = $scope.municipio.datos_entidad.nombre+", "+$scope.mainContent.keywordsMeta;

@@ -136,7 +136,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .banner-graph ul li{padding:0;margin:0}
 .banner-graph .carousel-next{background: url(../images/der.png) center no-repeat;right:0;}
 .banner-graph .carousel-back{background: url(../images/izq.png) center no-repeat;left:0}
-.banner-graph .carousel-buttons{position:absolute; width:10%; height:20%; margin:0 auto;top:35%;}
+.banner-graph .carousel-buttons{cursor: pointer;position:absolute; width:10%; height:20%; margin:0 auto;top:35%;}
 .banner-graph .carousel-buttons:focus{outline:transparent;}
 
 /*-----------/
@@ -184,6 +184,11 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	box-sizing: border-box;
 }
 
+.ring-chart{
+	height: 200px;
+	width: 100%;
+}
+
 .radial-chart text{font-weight: 700}
 
 .radial-chart,
@@ -202,6 +207,9 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 
 .radial-item{margin: 30px 0}
+
+.radial-item-margin{margin: 30px 10px}
+
 .radial-item p{
 	font-size: 13px;
 }
@@ -266,6 +274,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 #footer{
 	background: #040F23;
+	padding: 16px 0;
 }
 #footer p{
 	color:#fff;
@@ -591,12 +600,14 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .stats-count .radial-item .big-text{font-size: 22px}
 
 
+.stats-count-alt{background: #FD8D21}
+
 /*-------------------/
 	#DOCS-LIST
 /*------------------*/
 .docs-list-scroller {
     white-space: normal;
-    height: 300px;
+    height: 400px;
     overflow-y: hidden;
     position: relative;
 }
@@ -632,12 +643,49 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .docs-list-item a{
 	color: #fff;
+	display: block;
 	font-size: 12px;
 	line-height: 1.2;
 	font-weight: 700;
 }
 
 .docs-list-item + .docs-list-item{border-top: 1px solid #CECECE;}
+
+.docs-list-item-parent{
+	background: none;
+	border: 0!important;
+	padding-left: 10px;
+	padding: 0;
+}
+
+.docs-list-item-parent > a{
+	cursor: pointer;
+	background: #16719E url(../images/folder.png) 10px center no-repeat;
+	padding: 12px 12px 12px 45px;
+	position: relative;
+}
+
+.docs-list-item-parent > .caret{
+	background: url(../images/flechalado.png) 4px center no-repeat;
+	height: 22px;
+	position: absolute;
+	top: 4px;
+	right: 20px;
+	width: 20px;
+}
+
+.docs-list-item-parent > .caret-down{
+	background: url(../images/flechaabajo.png) 4px center no-repeat;
+	right: 20px;
+	width: 28px;
+}
+
+.docs-list-item-parent > ul{
+	margin-left: 40px
+}
+
+.docs-list .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y{background-color: #fff}
+
 
 
 /*------------------/

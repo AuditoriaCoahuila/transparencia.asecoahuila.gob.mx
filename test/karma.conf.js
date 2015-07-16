@@ -42,6 +42,8 @@ module.exports = function(config) {
       'bower_components/showdown/src/showdown.js',
       'bower_components/angular-markdown-directive/markdown.js',
       'bower_components/angular-carousel/dist/angular-carousel.js',
+      'bower_components/dimple/dist/dimple.v2.1.4.min.js',
+      'bower_components/angular-dimple/dist/angular-dimple.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

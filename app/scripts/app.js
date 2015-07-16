@@ -16,6 +16,7 @@ var app = angular
     'contentful',
     'btford.markdown',
     'angular-carousel',
+    'angular-dimple',
 ]);
 app
   .config(function(contentfulProvider){
