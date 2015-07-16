@@ -18,4 +18,13 @@ angular.module('asecApp')
   	});
     $scope.mainContent = {};
 
+    $scope.capitulos = {
+      "1000" : "Servicios personales",
+      "2000" : "Materiales y suministros",
+      "3000" : "Servicios generales”",
+      "4000" : "Subsidios y transferencias",
+      "5000" : "Bienes muebles, inmuebles e intangibles",
+      "6000" : "Inversión pública"
+    };
+
   });
