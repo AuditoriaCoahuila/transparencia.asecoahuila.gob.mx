@@ -54,7 +54,7 @@
             <div layout="row" layout-sm="column">
                 
                 <div class="feed-list" flex="50" flex-sm="100">
-                    <div class="container-lg container container-no-top">
+                    <div class="container container-no-top">
                         <div class="container docs-list">
                             <h4>Documentos</h4>
                             <ul>
@@ -76,6 +76,21 @@
                                 </perfect-scrollbar>
                             </ul>
                         </div>
+                    </div>
+                    <div class="container">
+                        <h4>Criterios de transparencia presupuestal</h4>
+                        <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
+                            <div class="feed-list-item" ng-repeat="criterio in municipio.criterios">
+                                <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
+                                    <p class="feed-list-item-title" flex ng-bind="criterio.concepto"></p>
+                                    <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
+                                    <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
+                                </div>
+                                <div ng-show="showContent">
+                                    <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
+                                </div>
+                            </div>
+                        </perfect-scrollbar>                        
                     </div>
                 </div>
 

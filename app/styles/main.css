@@ -611,7 +611,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 /*------------------*/
 .docs-list-scroller {
     white-space: normal;
-    height: 400px;
+    height: 215px;
     overflow-y: hidden;
     position: relative;
 }
