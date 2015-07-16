@@ -8,7 +8,7 @@
  * Controller of the asecApp
  */
 angular.module('asecApp')
-  .controller('MainCtrl', function ($scope,contentful,$document) {
+  .controller('MainCtrl', function ($scope,contentful,$document,$location) {
   	//Obtener Contenido General de contentful
   	contentful.entry('6OjQJVDBf2CoIKyyg8EU2W').then(function(response){
   		$scope.mainContent = response.data.fields;

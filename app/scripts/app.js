@@ -26,7 +26,7 @@ app
   });
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
-  $locationProvider.hashPrefix('!');
+  
 
   $locationProvider.html5Mode(true);
 
@@ -51,6 +51,8 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
     }).otherwise({
         redirectTo: '/'
     });
+
+    $locationProvider.hashPrefix('!');
 }]);
 
 app.filter('objectLimitTo', [function(){
