@@ -47,6 +47,11 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	margin: 0;
 }
 
+.container-xxlg{
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
 .container-xlg{
 	margin: 0 auto;
 	max-width: 1000px;
@@ -109,9 +114,16 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .banner-column{border-right:1px solid #fff;}
 .banner-column:last-child{border-right:none;}
 
-.banner-graph ul{min-height: 445px;}
-.banner-graph{background: -webkit-linear-gradient(left, #ff931f, #e33e2b);background: linear-gradient(to right, #ff931f, #e33e2b);}
+.banner-graph{position:relative;}
+.banner-graph ul{min-height: 445px; width:100%;margin-top:0;}
+.banner-graph ul img{width:100%; max-height:455px;}
 .banner-graph ul li.radial-row-colors .layer.radial-item a{color:white; border:2px solid white;}
+.banner-graph ul li.radial-row-colors .layer.radial-item{margin:0;}
+.banner-graph ul li{padding:0;margin:0}
+.banner-graph .carousel-next{background: url(../images/der.png) center no-repeat;right:0;}
+.banner-graph .carousel-back{background: url(../images/izq.png) center no-repeat;left:0}
+.banner-graph .carousel-buttons{position:absolute; width:10%; height:20%; margin:0 auto;top:35%;}
+.banner-graph .carousel-buttons:focus{outline:transparent;}
 
 /*-----------/
     #TOOLBAR
@@ -262,10 +274,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	#SYMBOL-MAP
 /*---------------*/
 #data-map-home {
-	min-width: 800px;
-	width: 100%;
-	width: 800px;
-	height: 700px;
+	/*min-width: 800px;
+	width: 100%;*/
+	width: 600px;
+	height: 600px;
   /*position: relative;
   margin: 0 auto;
   width: 750px;
@@ -441,6 +453,8 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 /*---------------/
 	#FEED-LIST
 /*---------------*/
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y{background-color: #FF911E}
+
 .feed-list-scroller {
     white-space: normal;
     height: 500px;
@@ -448,12 +462,28 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
     position: relative;
 }
 
+.feed-list h4{text-align: left;}
+
+.feed-list .main-color,
+.feed-list .alt-color{
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.feed-list .main-color,
+.feed-list .main-color a,
+.feed-list .main-color p{color: #FF921F}
+.feed-list .alt-color,
+.feed-list .alt-color a,
+.feed-list .alt-color p{color: #1976B1}
+
 .feed-list p,
 .feed-list strong,
 .feed-list span,
 .feed-list a{
 	color:#8B8B8B;
 	margin: 4px 0;
+	font-size: 12px;
 }
 .feed-list strong{}
 
@@ -470,9 +500,21 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .feed-list-item-title,
 .feed-list-item-content,
-.feed-list-item-status{
+.feed-list-item-status,
+.feed-list-item-num{
 	border: 2px solid #FF911E;
 	padding: 4px 10px;
+}
+
+.feed-list-item:hover .feed-list-item-title,
+.feed-list-item:hover .feed-list-item-status{
+	background: #1976B1;
+	border: 2px solid #1976B1;
+	color: #fff!important;
+}
+.feed-list-item:hover,
+.feed-list-item:hover a{
+	color: #fff!important;
 }
 
 .feed-list-item-title,
@@ -483,8 +525,29 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .feed-list-item-title{
 	font-weight: 700;
 	border-right: 0;
+	text-align: left;
 }
 .feed-list-item-status{color: #FF911E!important}
+
+.feed-list-item-num{
+	background: #FF911E;
+	color: #fff!important;
+}
+.feed-list-item-num a{
+	color: #fff;
+}
+.feed-list-item-btn{
+	background: #1976B1;
+	border: 2px solid #1976B1;
+	color: #fff;
+}
+
+.feed-list-item-btn a{
+	color: #fff;
+	font-weight: 700;
+}
+
+.small-note{font-size: 11px;}
 
 /*---------------/
 	#STATS
