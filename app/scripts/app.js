@@ -15,7 +15,7 @@ var app = angular
     'perfect_scrollbar',
     'contentful',
     'btford.markdown',
-    'angular-carousel'
+    'angular-carousel',
 ]);
 app
   .config(function(contentfulProvider){
@@ -26,6 +26,7 @@ app
   });
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
+  $locationProvider.hashPrefix('!');
 
   $locationProvider.html5Mode(true);
 
