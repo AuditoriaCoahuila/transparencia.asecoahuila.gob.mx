@@ -308,6 +308,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
   $scope.bannerGraphImgs = [
     { image: '/images/grafica1.png' },
+    { image: '/images/grafica2.png' },
   ];
 
   $scope.bannerGraphImgsIndex = 0;
