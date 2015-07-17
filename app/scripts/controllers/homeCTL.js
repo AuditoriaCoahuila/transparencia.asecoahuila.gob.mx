@@ -97,7 +97,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
   $scope.processData = function(data) {
     var newDataSet = [];
-    var maxR = 40;
+    var maxR = 20;
     _.each(data, function(item) {
     	var sizeFactor = $scope.municipios[item.id - 1].porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
     	sizeFactor = (sizeFactor - 50) / 50;
