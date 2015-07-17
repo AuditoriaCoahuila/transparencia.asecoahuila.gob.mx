@@ -21,7 +21,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.getMunicipiosStats = function(){
 		var nMunicipios = 38;
 		var baseUrl =
-			'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_n_entidades_todos_datos&id_entidad=';
+			'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_evaluacion_n_entidades&id_entidad=';
 		var ids = '';
 
 		for( var i=1; i < (nMunicipios+1) ; i++ ){
@@ -44,7 +44,13 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
-				$scope.randomMun = $scope.municipios[Math.floor(Math.random()*$scope.municipios.length)];
+				$scope.getMuncipioDetail(20,function(err,result){
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        $scope.randomMun = result;
+                    }
+                });
 				$scope.drawState();
 			})
 		  .error(function(data) {

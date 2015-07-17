@@ -29,6 +29,27 @@ angular.module('asecApp')
       }
     }
 
+    $scope.getMuncipioDetail = function(municipio,callback) {
+        var baseUrl =
+            'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_entidad_todos_datos&id_entidad=';
+        var id = municipio;
+        var requestUrl = baseUrl + id + '&callback=JSON_CALLBACK';
+
+        var response = {};
+        $http.jsonp(requestUrl)
+            .success(function(data) {
+                response.municipio = data[id];
+                response.title = $scope.municipio.datos_entidad.nombre+' - '+$scope.mainContent.tituloMeta;
+                response.description = $scope.municipio.datos_entidad.descripcion_250;
+                response.keywords = $scope.municipio.datos_entidad.nombre+", "+$scope.mainContent.keywordsMeta;
+                callback(null,response);
+            })
+            .error(function(data) {
+                console.log(data);
+                callback(data,null);
+            });
+    };
+
     $scope.capitulos = {
       "1000" : "Servicios personales",
       "2000" : "Materiales y suministros",
