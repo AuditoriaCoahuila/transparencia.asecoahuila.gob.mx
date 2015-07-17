@@ -7,7 +7,7 @@
         </div>
     </div>
 </div>
-<!-- 
+
 <div class="banner-graph">
     <ul rn-carousel rn-carousel-index="bannerGraphImgsIndex">
         <li ng-repeat="graph in bannerGraphImgs" class="radial-row-colors">
@@ -16,9 +16,12 @@
             </div>
         </li>
     </ul>
-    <a class="carousel-buttons carousel-next" ng-click="carouselNext()"></a>
-    <a class="carousel-buttons carousel-back" ng-click="carouselNext()"></a>
-</div> -->
+    <div ng-if="bannerGraphImgs.length > 1">
+      <a  class="carousel-buttons carousel-next" ng-click="carouselNext()"></a>
+      <a class="carousel-buttons carousel-back" ng-click="carouselBack()"></a>
+    </div>
+
+</div>
 
 
 <div class="container container-xlg center-content" ng-include="'/views/municipiosMap.html'"></div>

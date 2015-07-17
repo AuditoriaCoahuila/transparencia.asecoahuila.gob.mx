@@ -85,7 +85,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 .container-no-top{padding-top: 0}
 .container-side-margin-left{
-	margin-left: 4px;
+	margin-left: 5px;
 }
 
 .container-alt{background: #F9F9F9}
@@ -122,17 +122,17 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .banner-column:last-child{border-right:none;}
 
 .banner-graph{position:relative;}
-.banner-graph ul{min-height: 445px; width:100%;margin-top:0;}
-.banner-graph ul img{width:100%; max-height:455px;}
+.banner-graph ul{min-height: 500px; width:100%;margin-top:0;}
+.banner-graph ul img{width:100%; max-height:455px; max-width:886px;}
 
 .banner-graph ul li.radial-row-colors .layer{
-	padding: 40px 0;
+	padding: 25px 0;
 	background: #F98321; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
 	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */
 
 }
-.banner-graph ul li.radial-row-colors .layer img{display: block;width: auto!important;margin: 0 auto}
+.banner-graph ul li.radial-row-colors .layer img{display: block;margin: 0 auto}
 .banner-graph ul li.radial-row-colors .layer.radial-item a{color:white; border:2px solid white;}
 .banner-graph ul li.radial-row-colors .layer.radial-item{margin:0;}
 .banner-graph ul li{padding:0;margin:0}
@@ -784,6 +784,30 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 
+/*--------------/
+	#SECTION-TITLE
+/*-------------*/
+.section-title{
+	padding: 20px 10px;
+	background: #F98321; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */	
+	text-align: center;
+}
+.section-title h1{
+	color: #fff;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0;
+}
+
+.section-title .quantity{
+	margin: 0;
+	color: #fff;
+	font-size: 38px;
+	font-weight: 700;
+}
+
 
 @media screen and (max-width: 1000px){
 	/*------------/
@@ -816,6 +840,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	.columns-container .column-item p{font-size: 13px;}
 
 	.dimple-graph svg{/*margin-left: -30px*/}
+
+  .banner-graph{
+    display:none;
+  }
 
 	#footer .icon{margin: 9px 0}
 	#footer h4{
