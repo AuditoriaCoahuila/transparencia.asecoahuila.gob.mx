@@ -255,6 +255,15 @@ AddDefaultCharset utf-8
 #    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
+# ##############################################################################
+# # Routes                                                              #
+# ##############################################################################
+
+<IfModule mod_rewrite.c>
+    RewriteRule ^municipio/? index.html [L]
+    RewriteRule ^municipios/? index.html [L]
+    RewriteRule ^documentos/? index.html [L]
+</IfModule>
 
 # ##############################################################################
 # # SECURITY                                                                   #
