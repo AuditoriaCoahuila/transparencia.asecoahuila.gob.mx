@@ -212,7 +212,7 @@ AddDefaultCharset utf-8
     Options +FollowSymlinks
   # Options +SymLinksIfOwnerMatch
     RewriteEngine On
-  #  RewriteBase /
+  # RewriteBase /
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -550,4 +550,3 @@ FileETag None
 # <IfModule mod_headers.c>
 #    Header set Connection Keep-Alive
 # </IfModule>
-
