@@ -85,7 +85,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 .container-no-top{padding-top: 0}
 .container-side-margin-left{
-	margin-left: 4px;
+	margin-left: 5px;
 }
 
 .container-alt{background: #F9F9F9}
@@ -783,6 +783,30 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+
+/*--------------/
+	#SECTION-TITLE
+/*-------------*/
+.section-title{
+	padding: 20px 10px;
+	background: #F98321; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */	
+	text-align: center;
+}
+.section-title h1{
+	color: #fff;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0;
+}
+
+.section-title .quantity{
+	margin: 0;
+	color: #fff;
+	font-size: 38px;
+	font-weight: 700;
+}
 
 
 @media screen and (max-width: 1000px){
