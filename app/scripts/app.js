@@ -27,7 +27,7 @@ app
   });
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
-  
+
 
   $locationProvider.html5Mode(true);
 
@@ -49,6 +49,10 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
     }).when('/municipio/:municipioId', {
         templateUrl: '/views/municipio.html',
         controller : 'municipioCTL',
+    }).when('/documentos', {
+      templateUrl: 'views/document.html',
+      controller: 'DocumentCtrl',
+      controllerAs: 'document'
     }).otherwise({
         redirectTo: '/'
     });

@@ -1,0 +1,60 @@
+<div ng-include="'/views/header.html'"></div>
+<div id="documents">
+  <div  ng-show="!isLoaded" class="loading-wrapper loading-wrapper-abs" layout="column" layout-fill layout-align="center center">
+    <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <div class="filterDocs" ng-if="isLoaded">
+      <div class="container center-content title-block">
+        <p><img src="/images/documentos.png" alt=""></p>
+        <h1>Documentos</h1>
+      </div>
+
+      <div class="container center-content docs-relative" >
+        <div class="documentFilter">
+            <p class="icon-search">
+              <input type="text" ng-model="search.name" placeholder="Busca un documento" value="asdda">
+            </p>
+          <div class="clear"></div>
+        </div>
+      </div>
+  </div>
+
+  <div class="container container-xlg" ng-if="isLoaded" flex="100" layout-fill>
+      <div class="feed-list">
+          <div class="container container-no-top">
+              <div class="container docs-list">
+                  <ul>
+                      <perfect-scrollbar class="docs-list-scroller docs-list-scroller-all" wheel-propagation="true" wheel-speed="2">
+                      <li ng-repeat="municipio in municipios | municipioByName:search.name" class="docs-list-item docs-list-item-parent">
+                         <a ng-click="toggleFolderMuncipio = !toggleFolderMuncipio" class="docs-list-item-parent">
+                           {{ municipio.datos_entidad.nombre_completo}}
+                           <span ng-class="{'caret-down' : toggleFolderMuncipio}" class="caret"></span>
+                         </a>
+                         <ul ng-show="toggleFolderMuncipio">
+
+                            <li ng-repeat="folder in municipio.documentos track by $index" class="docs-list-item docs-list-item-parent">
+                              <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
+                                  {{folders[$index]}}
+                                  <span ng-class="{'caret-down' : toggleFolder}" class="caret"></span>
+                              </a>
+
+                              <ul ng-show="toggleFolder">
+                                  <li ng-repeat="doc in folder" class="docs-list-item">
+                                      <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
+                                  </li>
+                              </ul>
+
+                           </li>
+                         </ul>
+                      </li>
+                      </perfect-scrollbar>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+</div>
+<div ng-include="'/views/footer.html'" ng-show="isLoaded"></div>

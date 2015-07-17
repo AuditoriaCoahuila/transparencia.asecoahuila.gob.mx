@@ -132,7 +132,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	background: -ms-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* IE10+ */
 	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */
-	
+
 }
 .banner-graph ul li.radial-row-colors .layer img{display: block;width: auto!important;margin: 0 auto}
 .banner-graph ul li.radial-row-colors .layer.radial-item a{color:white; border:2px solid white;}
@@ -470,6 +470,9 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	font-weight: 700;
 	font-size: 26px
 }
+#documents .title-block h1{
+  color:#1C78A8;
+}
 .title-block h2{
 	color:#666666;
 	font-size: 16px
@@ -616,6 +619,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
     position: relative;
 }
 
+.docs-list-scroller.docs-list-scroller-all {
+    height: 500px;
+}
+
 .docs-list{
 	color: #fff;
 	background: #1C78A9;
@@ -690,6 +697,63 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .docs-list .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y{background-color: #fff}
 
+/*---------------/
+	#DOCUMENTS
+/*--------------*/
+
+.docs-relative{
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.docs-relative .documentFilter{
+  position: absolute;
+  width: 100%;
+  background: red;
+  padding: 7px;
+	background: #F98321; /* Old browsers */
+	background: -moz-linear-gradient(left,  #F98321 0%, #EA5328 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#F98321), color-stop(100%,#EA5328)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* IE10+ */
+	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */
+}
+
+.docs-relative .documentFilter input{
+  background:transparent;
+  border: none;
+  padding: 4px 50px 4px 4px;
+  color: white;
+}
+
+.docs-relative .documentFilter input::-webkit-input-placeholder {
+  color: white;
+}
+
+.docs-relative .documentFilter input:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+.docs-relative .documentFilter input::-moz-placeholder {  /* Firefox 19+ */
+  color: white;
+}
+
+.docs-relative .documentFilter input:-ms-input-placeholder {
+  color: white;
+}
+
+.docs-relative .documentFilter input:focus{
+  outline: white;
+}
+
+.docs-relative .documentFilter p{
+  padding-left: 30px; margin:9px;min-height: 28px;
+  background: url(../images/search.png) 4px 4px no-repeat;
+  display: inline-block;
+  border: 1px solid white;
+}
 
 
 /*------------------/
