@@ -71,7 +71,7 @@
                             <p class="feed-list-item-title" flex>
                                 <a ng-bind="mun.datos_entidad.nombre_completo"></a>
                             </p>
-                            <strong flex="25" class="feed-list-item-status alt-color">
+                            <strong flex="30" class="feed-list-item-status alt-color">
                                 <a>{{mun.porcentaje_cumplimiento['2014'].porcentaje_cumplimiento}}%</a>
                             </strong>
                         </div>
@@ -94,8 +94,8 @@
     <div class="container container-xlg center-content">
         <div btf-markdown='mainContent.tituloDescripciones'></div>
 
-        <div layout="row" class="radial-row radial-row-colors" layout-md="column" layout-sm="column">
-            <div flex class="radial-item radial-item-margin" ng-repeat='desc in mainContent.descripciones' btf-markdown='desc'></div>
+        <div layout="row" layout-wrap class="radial-row radial-row-colors" layout-md="column" layout-sm="column">
+            <div flex='33' class="radial-item radial-item-margin" ng-repeat='desc in mainContent.descripciones' btf-markdown='desc'></div>
         </div>
 
     </div>
