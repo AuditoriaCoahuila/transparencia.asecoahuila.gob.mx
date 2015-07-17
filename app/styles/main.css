@@ -75,6 +75,9 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .center-content{
 	text-align: center
 }
+.align-right{
+	text-align:right;
+}
 
 .container h1,
 .container h2{
@@ -588,9 +591,13 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .stats-count{
 	background: #E33E2B;
-	margin-bottom: 10px;
+	padding: 20px 30px;
+	margin-bottom: 5px;
 }
 
+.stats-count p{
+	color:white;
+}
 .stats-count h4{
 	color:#fff;
 	font-size: 24px;
@@ -600,12 +607,11 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 .stats-count .radial-item{
-	max-width: 240px;
-	margin: 10px auto;
+	margin: 7px 11px;
 }
 
 .stats-count .radial-item p{color:#fff}
-.stats-count .radial-item .big-text{font-size: 22px}
+.stats-count .radial-item .big-text{font-size: 18px}
 
 
 .stats-count-alt{background: #FD8D21}

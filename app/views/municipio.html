@@ -95,36 +95,32 @@
                 </div>
 
                 <div class="stats container-side-margin-left" flex="50" flex-sm="100">
-                    <div class="stats-count container stats-count-alt center-content">
-                        <h4>Información presupuestal</h4>
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div>                                                            
+                    <div class="stats-count container stats-count-alt">
+                        <h4>Cuentas Públicas 2014</h4>
+                        <div ng-repeat='(key,category) in municipio.cuentas_publicas[2014]'>
+                            <p><strong ng-bind='key'></strong></p>
+                            <div class="radial-item" ng-repeat='dato in category' >
+                                <p layout='row'>
+                                    <span flex ng-bind='dato.concepto'></span>
+                                    <span ><strong ng-bind='dato.valor | currency:"$" '></strong></span>
+                                </p>
+                            </div> 
+                        </div>
                     </div>
 
-                    <div class="stats-count container center-content">
-                        <h4>Ramo 23</h4>
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div>                                                            
+                    <div class="stats-count container">
+                        <h4>Valuación Actuarial 2013</h4>
+                        <div ng-repeat='(key,category) in municipio.valuacion_actuarial[2013]'>
+                            <p><strong ng-bind='key'></strong></p>
+                            <div class="radial-item" ng-repeat='dato in category' >
+                                <p layout='row'>
+                                    <span flex ng-bind='dato.concepto'></span>
+                                    <span class='align-right' flex='20' ng-bind='dato.valor_hombre | currency:"" '></span>
+                                    <span class='align-right' flex='20' ng-bind='dato.valor_mujer| currency:"" '></span>
+                                    <span class='align-right' flex='20'><strong ng-bind='dato.valor_total | currency:"":0 '></strong></span>
+                                </p>
+                            </div> 
+                        </div>
                     </div>
 
                 </div>
