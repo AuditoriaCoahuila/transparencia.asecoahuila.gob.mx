@@ -296,7 +296,11 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 #footer .footer-column{margin: 10px 0}
 
 #footer div{text-align:left;}
-#footer div h4{font-weight:400}
+#footer div h4{
+	font-weight:400;
+	font-size: 14px;
+	margin: 0 20px;
+}
 #footer div a{color:white;}
 #footer .icon{padding-left:30px; margin:9px;min-height: 28px}
 #footer .geo{background: url(../images/pin.png) 4px 4px no-repeat;}
@@ -806,7 +810,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	.dimple-graph svg{/*margin-left: -30px*/}
 
 	#footer .icon{margin: 9px 0}
-	#footer h4{font-size: 14px}
+	#footer h4{
+		font-size: 14px;
+		margin: 0!important;
+	}
 	#footer .logo-img{max-width: 150px}
 }
 
