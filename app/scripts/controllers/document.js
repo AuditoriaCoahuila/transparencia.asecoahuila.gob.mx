@@ -10,9 +10,6 @@
 angular.module('asecApp')
   .controller('DocumentCtrl',['$scope', '$http' ,function ($scope, $http) {
     $scope.search = {};
-    $scope.$watch('search', function(a,b){
-      console.log(a,b);
-    })
     $scope.isLoaded = false;
     $scope.folders = ['Reporte IMCO','Generales'];
 

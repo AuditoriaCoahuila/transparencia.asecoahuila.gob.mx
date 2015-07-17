@@ -12,6 +12,7 @@ angular.module('asecApp')
   .filter('municipioByName',['$filter', function ($filter) {
     var inputArray;
     return function (input, name) {
+      return input;
       if(!inputArray && !input.length){
         inputArray = [];
         Object.keys(input).filter(function(index){
