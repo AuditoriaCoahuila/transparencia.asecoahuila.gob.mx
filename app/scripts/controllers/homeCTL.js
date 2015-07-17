@@ -101,7 +101,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
     _.each(data, function(item) {
     	var sizeFactor = $scope.municipios[item.id - 1].porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
     	sizeFactor = (sizeFactor - 50) / 50;
-    	console.log(sizeFactor);
+    	//console.log(sizeFactor);
       	newDataSet.push(
 	        {
 	          	name: item.name,
