@@ -97,18 +97,21 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
   $scope.processData = function(data) {
     var newDataSet = [];
-    var maxR = 50;
+    var maxR = 40;
     _.each(data, function(item) {
-      newDataSet.push(
-        {
-          name: item.name,
-          lat: item.coords.lat,
-          lng: item.coords.lng,
-          id: item.id,
-					size: ( 0.6*maxR ),
-					info: $scope.municipios[item.id - 1]
-        }
-      );
+    	var sizeFactor = $scope.municipios[item.id - 1].porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
+    	sizeFactor = (sizeFactor - 50) / 50;
+    	console.log(sizeFactor);
+      	newDataSet.push(
+	        {
+	          	name: item.name,
+	          	lat: item.coords.lat,
+	          	lng: item.coords.lng,
+	          	id: item.id,
+				size: ( sizeFactor*maxR ),
+				info: $scope.municipios[item.id - 1]
+	        }
+      	);
     });
     return {children: newDataSet};
   };
@@ -201,7 +204,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 					var coordinates = projection(coords);
 					return coordinates[1];
 				})
-				.attr('r', function(){ return 0.6*maxR; })
+				.attr('r', function(d){ return d.size; })
 				.attr('opacity', 0.8)
 				.style('stroke', '#2A82B4')
 				.style('fill', '#2A82B4')
