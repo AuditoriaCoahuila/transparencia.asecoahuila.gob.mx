@@ -44,7 +44,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
-				
+
 				$scope.drawState();
 			})
 		  .error(function(data) {
@@ -307,8 +307,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	$scope.getMunicipiosData();
 
   $scope.bannerGraphImgs = [
-    { image: '/images/example_graph1.png' },
-    { image: '/images/example_graph2.png'}
+    { image: '/images/grafica1.png' },
   ];
 
   $scope.bannerGraphImgsIndex = 0;
