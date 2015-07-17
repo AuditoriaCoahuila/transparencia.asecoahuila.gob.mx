@@ -1,5 +1,5 @@
 <div ng-include="'/views/header.html'"></div>
-<div class="banner">
+<div class="banner" >
     <div class="container container-lg center-content">
         <div btf-markdown="mainContent.subtitulo"></div>
         <div layout="row" layout-md="column" layout-sm="column">
@@ -21,47 +21,7 @@
 </div> -->
 
 
-<div class="container container-xlg center-content">
-    <a name='#municipios'></a>
-    <div ng-if="!isLoaded" class="loading-wrapper loading-wrapper-small" layout="column" layout-fill layout-align="center center">
-        <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
-    </div>
-
-    <div ng-show="isLoaded" layout="row">
-        <div  flex="65" id="data-map-home"></div>
-
-        <div class="feed-list" flex="35" flex-sm="100">
-            <div class="container-lg container">
-                <h4>
-                    <strong class="main-color">Municipio |</strong><strong class="alt-color">Porcentaje de transparencia</strong>
-                </h4>
-                <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10" include-padding="true">
-                    <div class="feed-list-item" ng-repeat="mun in municipios track by $index">
-                        <div class="feed-list-item-top" layout="row" ng-click="triggerTip(mun.datos_entidad.id, $index)">
-                            <strong flex="15" class="feed-list-item-num">
-                                <a ng-bind="$index+1"></a>
-                            </strong>
-                            <p class="feed-list-item-title" flex>
-                                <a ng-bind="mun.datos_entidad.nombre_completo"></a>
-                            </p>
-                            <strong flex="30" class="feed-list-item-status alt-color">
-                                <a>{{mun.porcentaje_cumplimiento['2014'].porcentaje_cumplimiento}}%</a>
-                            </strong>
-                        </div>
-                        <div ng-show="showContentList[$index]">
-                            <p class="feed-list-item-content feed-list-item-btn" ng-click="tip.hide();">
-                                <a ng-href="/municipio/{{mun.datos_entidad.id}}">Ver perfil del municipio</a>
-                            </p>
-                        </div>
-                    </div>
-                </perfect-scrollbar>
-                <a class="small-note">*Porcentaje de cumplimiento del 2014</a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
+<div class="container container-xlg center-content" ng-include="'/views/municipiosMap.html'"></div>
 
 <div class="container-alt">
     <div class="container container-xlg center-content">
@@ -74,7 +34,7 @@
     </div>
 </div>
 
-<div class="container container-xlg center-content" btf-markdown='mainContent.tituloFooter'></div>
+<!-- <div class="container container-xlg center-content" btf-markdown='mainContent.tituloFooter'></div> -->
 
 <div ng-if="randomMun.documentos" class="columns-container" layout="row" layout-md="column" layout-sm="column">
     <div class="column-item" flex="50" flex-md="100" flex-sm="100">

@@ -44,25 +44,27 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 				$scope.isLoaded = true;
 				$scope.bubbleChartData = $scope.municipios;
-				$scope.getMuncipioDetail(20,function(err,result){
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        $scope.randomMun = result;
-                    }
-                });
+				
 				$scope.drawState();
 			})
 		  .error(function(data) {
 
 		  });
+
+		$scope.getMuncipioDetail(20,function(err,result){
+			if (err) {
+				console.log(err);
+			} else {
+				$scope.randomMun = result;
+			}
+		});
 	};
 
 	$scope.getMunicipiosData = function(){
 		$http.get('/municipios.json')
 	  	.success(function(data) {
 	  		$scope.municipiosCoords = data;
-	  		console.log($scope.municipiosCoords);
+	  		//console.log($scope.municipiosCoords);
 	  		$scope.getMunicipiosStats();
 			})
 		  .error(function(data) {
@@ -80,12 +82,12 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
   	if(d.info.porcentaje_cumplimiento['2013']){
 			cumplimiento2013 = d.info.porcentaje_cumplimiento['2013'].porcentaje_cumplimiento;
-    	html += '<p>Porcentaje de cumplimiento 2013: ' + cumplimiento2013 + '%</p>';
+    	html += '<p>Porcentaje de cumplimiento en el IIPM 2013: ' + cumplimiento2013 + '%</p>';
   	}
 
   	if(d.info.porcentaje_cumplimiento['2014']){
 			cumplimiento2014 = d.info.porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
-    	html += '<p>Porcentaje de cumplimiento 2014: ' + cumplimiento2014 + '%</p>';
+    	html += '<p>Porcentaje de cumplimiento en el IIPM 2014: ' + cumplimiento2014 + '%</p>';
   	}
 
     return html;

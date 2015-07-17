@@ -116,8 +116,8 @@
                             <div class="radial-item" ng-repeat='dato in category' >
                                 <p layout='row'>
                                     <span flex ng-bind='dato.concepto'></span>
-                                    <span class='align-right' flex='20' ng-bind='dato.valor_hombre | currency:"" '></span>
-                                    <span class='align-right' flex='20' ng-bind='dato.valor_mujer| currency:"" '></span>
+                                    <span class='align-right' flex='20' ng-bind='dato.valor_hombre | currency:"":0 '></span>
+                                    <span class='align-right' flex='20' ng-bind='dato.valor_mujer| currency:"":0 '></span>
                                     <span class='align-right' flex='20'><strong ng-bind='dato.valor_total | currency:"":0 '></strong></span>
                                 </p>
                             </div> 

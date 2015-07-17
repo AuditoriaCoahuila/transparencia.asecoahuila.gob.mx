@@ -8,7 +8,7 @@
  * Controller of the asecApp
  */
 angular.module('asecApp')
-  .controller('MainCtrl', function ($scope,contentful,$document,$location) {
+  .controller('MainCtrl', function ($scope,contentful,$document,$location,$http) {
     $scope.meta = {};
     $scope.privacyNotice = false;
     $scope.mainContent = {};
@@ -38,14 +38,10 @@ angular.module('asecApp')
         var response = {};
         $http.jsonp(requestUrl)
             .success(function(data) {
-                response.municipio = data[id];
-                response.title = $scope.municipio.datos_entidad.nombre+' - '+$scope.mainContent.tituloMeta;
-                response.description = $scope.municipio.datos_entidad.descripcion_250;
-                response.keywords = $scope.municipio.datos_entidad.nombre+", "+$scope.mainContent.keywordsMeta;
+                response = data[id];
                 callback(null,response);
             })
             .error(function(data) {
-                console.log(data);
                 callback(data,null);
             });
     };

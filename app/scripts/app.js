@@ -53,6 +53,9 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider, $locat
       templateUrl: 'views/document.html',
       controller: 'DocumentCtrl',
       controllerAs: 'document'
+    }).when('/municipios', {
+      templateUrl: 'views/municipios.html',
+      controller: 'homeCTL'
     }).otherwise({
         redirectTo: '/'
     });
