@@ -797,7 +797,13 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 @media screen and (max-width: 600px){
-	.header h1{font-size: 12px}
+	.header .container{
+		padding: 40px 8px;
+	}
+	.header h1{
+		font-size: 12px;
+		margin-right: 10px;
+	}
 	.header nav a{
 		font-size: 12px;
 		margin: 0 2px;
@@ -806,6 +812,8 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 		float: none;
 		width: 100%;
 	}
+
+	.columns-container .column-item p{font-size: 13px;}
 
 	.dimple-graph svg{/*margin-left: -30px*/}
 
