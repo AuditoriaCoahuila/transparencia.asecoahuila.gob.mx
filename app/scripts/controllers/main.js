@@ -19,7 +19,7 @@ angular.module('asecApp')
       $scope.mainContent.descripciones = $scope.mainContent.descripciones.split("\\,");
       
       if($location.path == '/') $scope.initMeta();
-      console.log($scope.mainContent);
+      //console.log($scope.mainContent);
     });
     $scope.initMeta = function(){
       $scope.meta = {
@@ -53,7 +53,7 @@ angular.module('asecApp')
     $scope.capitulos = {
       "1000" : "Servicios personales",
       "2000" : "Materiales y suministros",
-      "3000" : "Servicios generales”",
+      "3000" : "Servicios generales",
       "4000" : "Subsidios y transferencias",
       "5000" : "Bienes muebles, inmuebles e intangibles",
       "6000" : "Inversión pública",

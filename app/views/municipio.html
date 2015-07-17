@@ -13,24 +13,25 @@
 
     <div class="container-alt">
         <div class="columns-container" layout="row" layout-md="column" layout-sm="column">
-            <div class="column-item column-item-alt" flex="20" flex-md="100" flex-sm="100">
+            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
                 <div class="container container-sm center-content">
-                    <h2>Ingreso per cápita del municipio</h2>
-                    <p><strong>Contra el promedio general de los 38 municipios</strong></p>
-
-                    <div layout="row" class="radial-row" layout-md="column" layout-sm="column">
-                        <div flex class="radial-item">
-                            <div id="egreso-per-capita" class="radial-chart radial-chart-alt"></div>
-                            <p class="radial-chart-label-alt">This is photoshop version of lotem ipsum</p>
-                            <p class="radial-chart-label-alt"><strong class="big-text">7,458</strong></p>
-                        </div>
+                    <h2>Ingresos per cápita de {{municipio.datos_entidad.nombre}}</h2>
+                    <p><strong> vs promedio estatal</strong></p>
+                    <div class="radial-item">
+                        <graph data="ingresos_egresos" class="ring-chart" width="100%" height="300px">
+                            <r field="valor"></r>
+                            <graph-legend></graph-legend>
+                            <ring field="concepto" thickness="20"></ring>
+                        </graph>
+                        <p class="radial-chart-label">Ingresos per cápita 2014 {{municipio.datos_entidad.nombre}} </p>
+                        <p class="radial-chart-label"><strong class="big-text">{{ingresos_per_capita.valor | currency:'$'}}</strong></p>
                     </div>
 
                 </div>
             </div>
-            <div class="column-item column-item-alt" flex="40" flex-md="100" flex-sm="100">
+            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
                 <div class="container container-sm center-content">
-                    <h2>Egresos per cápita del municipio</h2>
+                    <h2>Egresos cor capitulo</h2>
                     <p><strong>Dividido por concepto</strong></p>
 
 
@@ -42,21 +43,6 @@
                         </graph>
                         <p class="radial-chart-label">Presupuesto de egresos 2014 (Adenda)</p>
                         <p class="radial-chart-label"><strong class="big-text">{{presupuestoEgresos.valor | currency:'$'}}</strong></p>
-                    </div>
-
-                </div>
-            </div>
-            <div class="column-item column-item-alt" flex="40" flex-md="100" flex-sm="100">
-                <div class="container container-sm center-content">
-                    <h2>Egresos vs Ingresos per cápita del municipio</h2>
-                    <div class="radial-item">
-                        <graph data="ingresos_egresos" class="ring-chart" width="100%" height="300px">
-                            <r field="valor"></r>
-                            <graph-legend></graph-legend>
-                            <ring field="concepto" thickness="20"></ring>
-                        </graph>
-                        <p class="radial-chart-label">Presupuesto de egresos vs ingresos 2014 (Adenda)</p>
-                        <p class="radial-chart-label"><strong class="big-text">{{porcentaje_ie.valor | currency:'$'}}</strong></p>
                     </div>
 
                 </div>
@@ -110,36 +96,32 @@
                 </div>
 
                 <div class="stats container-side-margin-left" flex="50" flex-sm="100">
-                    <div class="stats-count container stats-count-alt center-content">
-                        <h4>Información presupuestal</h4>
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div>                                                            
+                    <div class="stats-count container stats-count-alt">
+                        <h4>Cuentas Públicas 2014</h4>
+                        <div ng-repeat='(key,category) in municipio.cuentas_publicas[2014]'>
+                            <p><strong ng-bind='key'></strong></p>
+                            <div class="radial-item" ng-repeat='dato in category' >
+                                <p layout='row'>
+                                    <span flex ng-bind='dato.concepto'></span>
+                                    <span ><strong ng-bind='dato.valor | currency:"$" '></strong></span>
+                                </p>
+                            </div> 
+                        </div>
                     </div>
 
-                    <div class="stats-count container center-content">
-                        <h4>Ramo 23</h4>
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div> 
-                        <div class="radial-item">
-                            <p>This is photoshop version of lotem ipsum</p>
-                            <p><strong class="big-text">7,458</strong></p>
-                        </div>                                                            
+                    <div class="stats-count container">
+                        <h4>Valuación Actuarial 2013</h4>
+                        <div ng-repeat='(key,category) in municipio.valuacion_actuarial[2013]'>
+                            <p><strong ng-bind='key'></strong></p>
+                            <div class="radial-item" ng-repeat='dato in category' >
+                                <p layout='row'>
+                                    <span flex ng-bind='dato.concepto'></span>
+                                    <span class='align-right' flex='20' ng-bind='dato.valor_hombre | currency:"" '></span>
+                                    <span class='align-right' flex='20' ng-bind='dato.valor_mujer| currency:"" '></span>
+                                    <span class='align-right' flex='20'><strong ng-bind='dato.valor_total | currency:"":0 '></strong></span>
+                                </p>
+                            </div> 
+                        </div>
                     </div>
 
                 </div>
