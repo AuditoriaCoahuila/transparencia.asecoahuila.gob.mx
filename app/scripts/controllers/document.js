@@ -36,6 +36,9 @@ angular.module('asecApp')
 
     $scope.isNotLoadedDocs = {};
     $scope.getDocs = function(id){
+      if($scope.municipios[id].documentos)
+        return;
+
       var requestUrlDocs = baseUrlDocs + id + '&callback=JSON_CALLBACK';
       $scope.isNotLoadedDocs[id] = true;
       $http.jsonp(requestUrlDocs)
