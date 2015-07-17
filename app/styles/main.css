@@ -127,12 +127,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 
 .banner-graph ul li.radial-row-colors .layer{
 	padding: 40px 0;
-	background: #F98321; /* Old browsers */
-	background: -moz-linear-gradient(left,  #F98321 0%, #EA5328 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#F98321), color-stop(100%,#EA5328)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* IE10+ */
+	background: #F98321; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
 	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */
 
@@ -213,9 +208,14 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 
+
 .radial-item{margin: 30px 0}
 
-.radial-item-margin{padding: 30px 10px}
+.radial-item-margin{
+	padding: 10px 18px;
+	text-align: justify;
+	margin: 10px 0;
+}
 
 .radial-item p{
 	font-size: 13px;
@@ -293,6 +293,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 #footer .small-note{font-size: 11px}
+#footer .footer-column{margin: 10px 0}
 
 #footer div{text-align:left;}
 #footer div h4{font-weight:400}
@@ -721,12 +722,7 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
   width: 100%;
   background: red;
   padding: 7px;
-	background: #F98321; /* Old browsers */
-	background: -moz-linear-gradient(left,  #F98321 0%, #EA5328 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#F98321), color-stop(100%,#EA5328)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #F98321 0%,#EA5328 100%); /* IE10+ */
+	background: #F98321; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
 	background: linear-gradient(to right,  #F98321 0%,#EA5328 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F98321', endColorstr='#EA5328',GradientType=1 ); /* IE6-9 */
 }
@@ -792,53 +788,26 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	.container{padding: 14px;}
 }
 
+@media screen and (max-width: 960px){
+	.map-tip{display: none;}
+}
 
-/*
-ISO Country code by regions: http://www.geohive.com/earth/gen_codes.aspx
-*/
+@media screen and (max-width: 600px){
+	.header h1{font-size: 12px}
+	.header nav a{
+		font-size: 12px;
+		margin: 0 2px;
+	}
+	.columns-container .column-item{
+		float: none;
+		width: 100%;
+	}
 
-/* Northern America */
-.bm, .ca, .gl, .pm, .us,
-.noram {fill: #DF4949; background: #DF4949;}
+	.dimple-graph svg{/*margin-left: -30px*/}
 
-/* Latin America and the Caribbean */
-.ai, .ag, .aw, .bs, .bb, .bq, .vg, .ky, .cu, .cw, .dm, .do, .gp, .ht, .jm, .mq, .ms, .pr, .bl, .kn, .lc, .mf, .vc, .sx, .tt, .vi,
-.bz, .crr, .sv, .gt, .hn, .mx, .ni, .pa,
-.ar, .bo, .br, .cl, .co, .ec, .fk, .gf, .gy, .py, .pe, .sr, .uy, .ve,
-.latam {fill: #E27A3F; background: #E27A3F;}
+	#footer .icon{margin: 9px 0}
+	#footer h4{font-size: 14px}
+	#footer .logo-img{max-width: 150px}
+}
 
-/* Europe */
-.by, .bg, .cz, .hu, .md, .pl, .ro, .ru, .sk, .ua,
-.ax, .dk, .ee, .fo, .fi, .gg, .is, .ie, .je, .lv, .lt, .im, .no, .sj, .se, .gb,
-.al, .ad, .ba, .hr, .gi, .gr, .va, .it, .mk, .mt, .me, .pt, .sm, .rs, .si, .es,
-.at, .be, .fr, .de, .li, .lu, .mc, .nl, .ch,
-.eu { fill: #EFC94C; background: #EFC94C;}
-
-/* Asia */
-.kz, .kg, .tj, .tm, .uz,
-.cn, .hk, .mo, .jp, .kp, .kr, .mn, .tw,
-.af, .bd, .bt, .in, .ir, .mv, .np, .pk, .lk,
-.bn, .kh, .id, .la, .my, .mm, .ph, .sg, .th, .tl, .vn,
-.am, .az, .bh, .cy, .ge, .iq, .il, .jo, .kw, .lb, .ps, .om, .qa, .sa, .sy, .tr, .ae, .ye,
-.asia { fill: #9B59B6; background:  #9B59B6;}
-
-/* Oceania */
-.au, .cx, .cc, .nz, .nf,
-.fj, .nc, .pg, .sb, .vu,
-.gu, .ki, .mh, .fm, .nr, .mp, .pw,
-.as, .ck, .pf, .nu, .pn, .ws, .tk, .to, .tv, .wf,
-.oceania {fill: #3498db; background: #3498db;}
-
-/* Africa */
-.bi, .km, .dj, .er, .et, .ke, .mg, .mw, .mu, .yt, .mz, .re, .rw, .sc, .so, .tz, .ug, .zm, .zw,
-.ao, .cm, .cf, .td, .cg, .cd, .gq, .ga, .st,
-.dz, .eg, .ly, .ma, .ss, .sd, .tn, .eh,
-.bw, .ls, .na,  .za, .sz,
-.bj, .bf, .cv, .gm, .gh, .gn, .gw, .lr, .ml, .mr, .ne, .ng, .sh, .sn, .sl, .tg,
-.africa {fill: #F495A3; background: #F495A3;}
-
-/* Unclassified */
-.aq, .bv, .io, .tf, .hm, .gs, .um,
-.a1, .a2, .o1,
-.other { fill: #45B29D; background: #45B29D;}
 

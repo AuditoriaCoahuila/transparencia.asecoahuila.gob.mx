@@ -1,5 +1,5 @@
 <div ng-include="'/views/header.html'"></div>
-<div class="banner" >
+<div class="banner" hide-sm>
     <div class="container container-lg center-content">
         <div btf-markdown="mainContent.subtitulo"></div>
         <div layout="row" layout-md="column" layout-sm="column">
@@ -27,8 +27,8 @@
     <div class="container container-xlg center-content">
         <div btf-markdown='mainContent.tituloDescripciones'></div>
 
-        <div layout="row" layout-wrap class="radial-row radial-row-colors" layout-md="column" layout-sm="column">
-            <div flex='33' class="radial-item radial-item-margin" ng-repeat='desc in mainContent.descripciones' btf-markdown='desc'></div>
+        <div layout="row" layout-md="column" layout-sm="column" layout-wrap class="radial-row radial-row-colors" layout-md="column" layout-sm="column">
+            <div flex='33' flex-md="100" flex-sm="100" class="radial-item radial-item-margin" ng-repeat='desc in mainContent.descripciones' btf-markdown='desc'></div>
         </div>
 
     </div>
