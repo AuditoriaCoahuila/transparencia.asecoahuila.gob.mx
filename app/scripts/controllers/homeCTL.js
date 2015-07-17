@@ -61,7 +61,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 	};
 
 	$scope.getMunicipiosData = function(){
-		$http.get('/municipios.json')
+		$http.get('/json_municipios.json')
 	  	.success(function(data) {
 	  		$scope.municipiosCoords = data;
 	  		//console.log($scope.municipiosCoords);

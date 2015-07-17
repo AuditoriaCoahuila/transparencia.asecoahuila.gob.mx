@@ -1,0 +1,306 @@
+[
+  {
+    "name": "ABASOLO",
+    "id": "1",
+    "coords": {
+      "lat": 27.082589,
+      "lng": -101.227647
+    }
+  },
+  {
+    "name": "ACUÑA",
+    "id": "2",
+    "coords": {
+      "lat": 29.493245,
+      "lng": -101.947878
+    }
+  },
+  {
+    "name": "ALLENDE",
+    "id": "3",
+    "coords": {
+      "lat": 28.344596,
+      "lng": -100.855077
+    }
+  },
+  {
+    "name": "ARTEAGA",
+    "id": "4",
+    "coords": {
+      "lat": 25.406326,
+      "lng": -100.642142
+    }
+  },
+  {
+    "name": "CANDELA",
+    "id": "5",
+    "coords": {
+      "lat": 26.835543,
+      "lng": -100.667566
+    }
+  },
+  {
+    "name": "CASTAÑOS",
+    "id": "6",
+    "coords": {
+      "lat": 26.583925,
+      "lng": -101.419975
+    }
+  },
+  {
+    "name": "CUATROCIÉNEGAS",
+    "id": "7",
+    "coords": {
+      "lat": 26.784931,
+      "lng": -102.262334
+    }
+  },
+  {
+    "name": "ESCOBEDO",
+    "id": "8",
+    "coords": {
+      "lat": 27.343635,
+      "lng": -101.333705
+    }
+  },
+  {
+    "name": "FCO. I. MADERO",
+    "id": "9",
+    "coords": {
+      "lat": 26.172167,
+      "lng": -103.271071
+    }
+  },
+  {
+    "name": "FRONTERA",
+    "id": "10",
+    "coords": {
+      "lat": 26.90,
+      "lng": -101.496109
+    }
+  },
+  {
+    "name": "GENERAL CEPEDA",
+    "id": "11",
+    "coords": {
+      "lat": 25.377116,
+      "lng": -101.476496
+    }
+  },
+  {
+    "name": "GUERRERO",
+    "id": "12",
+    "coords": {
+      "lat": 28.095158,
+      "lng": -100.386331
+    }
+  },
+  {
+    "name": "HIDALGO",
+    "id": "13",
+    "coords": {
+      "lat": 25.5385299,
+      "lng": -103.0706021
+    }
+  },
+  {
+    "name": "JIMÉNEZ",
+    "id": "14",
+    "coords": {
+      "lat": 29.064587,
+      "lng": -100.681131
+    }
+  },
+  {
+    "name": "JUÁREZ",
+    "id": "15",
+    "coords": {
+      "lat": 27.609018,
+      "lng": -100.727402
+    }
+  },
+  {
+    "name": "LAMADRID",
+    "id": "16",
+    "coords": {
+      "lat": 27.151830,
+      "lng": -101.922707
+    }
+  },
+  {
+    "name": "MATAMOROS",
+    "id": "17",
+    "coords": {
+      "lat": 25.533090,
+      "lng": -103.253858
+    }
+  },
+  {
+    "name": "MONCLOVA",
+    "id": "18",
+    "coords": {
+      "lat": 26.906415,
+      "lng": -101.153240
+    }
+  },
+  {
+    "name": "MORELOS",
+    "id": "19",
+    "coords": {
+      "lat": 28.328326,
+      "lng": -101.162698
+    }
+  },
+  {
+    "name": "MÚZQUIZ",
+    "id": "20",
+    "coords": {
+      "lat": 28.329268,
+      "lng": -101.844071
+    }
+  },
+  {
+    "name": "NADADORES",
+    "id": "21",
+    "coords": {
+      "lat": 27.229033,
+      "lng": -101.732467
+    }
+  },
+  {
+    "name": "NAVA",
+    "id": "22",
+    "coords": {
+      "lat": 28.523921,
+      "lng": -100.565021
+    }
+  },
+  {
+    "name": "PARRAS",
+    "id": "24",
+    "coords": {
+      "lat": 25.446164,
+      "lng": -102.180584
+    }
+  },
+  {
+    "name": "PIEDRAS NEGRAS",
+    "id": "25",
+    "coords": {
+      "lat": 28.790906,
+      "lng": -100.541387
+    }
+  },
+  {
+    "name": "OCAMPO",
+    "id": "23",
+    "coords": {
+      "lat": 27.413732,
+      "lng": -102.497049
+    }
+  },
+  {
+    "name": "PROGRESO",
+    "id": "26",
+    "coords": {
+      "lat": 27.427612,
+      "lng": -100.989363
+    }
+  },
+  {
+    "name": "RAMOS ARIZPE",
+    "id": "27",
+    "coords": {
+      "lat": 25.537908,
+      "lng": -100.950048
+    }
+  },
+  {
+    "name": "SABINAS",
+    "id": "28",
+    "coords": {
+      "lat": 27.914309,
+      "lng": -101.121900
+    }
+  },
+  {
+    "name": "SACRAMENTO",
+    "id": "29",
+    "coords": {
+      "lat": 26.922728,
+      "lng": -101.834152
+    }
+  },
+  {
+    "name": "SALTILLO",
+    "id": "30",
+    "coords": {
+      "lat": 25.052900,
+      "lng": -101.108114
+    }
+  },
+  {
+    "name": "SAN BUENAVENTURA",
+    "id": "31",
+    "coords": {
+      "lat": 27.058307,
+      "lng": -101.542644
+    }
+  },
+  {
+    "name": "SAN JUAN DE SABINAS",
+    "id": "32",
+    "coords": {
+      "lat": 28.08,
+      "lng": -101.402976
+    }
+  },
+  {
+    "name": "SAN PEDRO",
+    "id": "33",
+    "coords": {
+      "lat": 25.986495,
+      "lng": -102.785838
+    }
+  },
+  {
+    "name": "SIERRA MOJADA",
+    "id": "34",
+    "coords": {
+      "lat": 27.290137,
+      "lng": -103.700529
+    }
+  },
+  {
+    "name": "TORREÓN",
+    "id": "35",
+    "coords": {
+      "lat": 25.064231,
+      "lng": -103.193854
+    }
+  },
+  {
+    "name": "VIESCA",
+    "id": "36",
+    "coords": {
+      "lat": 25.208437,
+      "lng": -102.917972
+    }
+  },
+  {
+    "name": "VILLAUNIÓN",
+    "id": "37",
+    "coords": {
+      "lat": 28.102132,
+      "lng": -100.726168
+    }
+  },
+  {
+    "name": "ZARAGOZA",
+    "id": "38",
+    "coords": {
+      "lat": 28.593213,
+      "lng": -101.0
+    }
+  }
+]
