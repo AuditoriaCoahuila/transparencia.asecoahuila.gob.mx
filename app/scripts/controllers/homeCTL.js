@@ -99,10 +99,9 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
     var newDataSet = [];
     var maxR = 20;
     _.each(data, function(item) {
-    	if($scope.municipios[item.id - 1].porcentaje_cumplimiento['2014'])
+    	if($scope.municipios[item.id - 1])
     		var sizeFactor = $scope.municipios[item.id - 1].porcentaje_cumplimiento['2014'].porcentaje_cumplimiento;
-    	else if($scope.municipios[item.id - 1].porcentaje_cumplimiento['2013'])
-    		var sizeFactor = $scope.municipios[item.id - 1].porcentaje_cumplimiento['2013'].porcentaje_cumplimiento;
+    	else consoe.log('error here');
     	sizeFactor = (sizeFactor - 50) / 50;
     	//console.log(sizeFactor);
       	newDataSet.push(
