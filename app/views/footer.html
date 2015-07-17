@@ -4,8 +4,12 @@
           <img src="/images/logo.png" alt="">
       </div>
       <div flex="30">
-          <h4><a href="">Aviso de privacidad</a> | <a href="">Contacto</a></h4>
-          <div class="small-note" btf-markdown='mainContent.avisoFooter'></div>
+          <h4>
+            <a href="" ng-click='privacyNotice = !privacyNotice'>Aviso de privacidad</a> |
+            <a href="" ng-click='privacyNotice = !privacyNotice'> Unidad de Contabilidad Gubernamental de la Auditoría Superior del Estado de Coahuila</a>
+          </h4>
+          
+          <div ng-show='privacyNotice' class="small-note" btf-markdown='mainContent.avisoFooter'></div>
       </div>
       <div flex="30" offset="10">
           <div class="icon geo" btf-markdown='mainContent.direccin' ></div>
