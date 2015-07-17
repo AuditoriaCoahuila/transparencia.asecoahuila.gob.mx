@@ -13,10 +13,15 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.municipio = {};
 	$scope.isLoaded = false;
 	$scope.folders = ['Reporte IMCO','Generales'];
+    $scope.documents = [];
 
 	$scope.drawEgresos = function(){
 		var egresosList = $scope.municipio.informacion_presupuestal['2014'].Egresos;
+        var ingresosList = $scope.municipio.informacion_presupuestal['2014'].Ingresos;
+
 		$scope.egresos = [];
+        $scope.ingresos_egresos = {};
+        $scope.documents.push($scope.municipio.documentos);
 
 		angular.forEach($scope.capitulos , function(cap,key){
 			var capObject = {};
@@ -24,6 +29,13 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 			capObject['Descripcion'] = $scope.capitulos[key];
 			$scope.egresos.push(capObject);
 		});
+
+        var egresos_per_capita = egresosList['Egresos Per C\u00e1pita por Municipio'] || { 'valor' : 0 };
+        var ingresos_per_capita = ingresosList['Ingresos Per C\u00e1pita por Municipio'] || { 'valor' : 0 };
+
+        $scope.ingresos_egresos = [];
+        $scope.ingresos_egresos.push(ingresos_per_capita);
+        $scope.ingresos_egresos.push(egresos_per_capita);
 
 		$scope.presupuestoEgresos = egresosList['Presupuesto de Egresos 2014 (Adenda)'];
 	};
