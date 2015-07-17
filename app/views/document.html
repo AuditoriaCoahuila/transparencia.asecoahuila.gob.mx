@@ -27,11 +27,14 @@
                   <ul>
                       <perfect-scrollbar class="docs-list-scroller docs-list-scroller-all" wheel-propagation="true" wheel-speed="2">
                       <li ng-repeat="municipio in municipios | municipioByName:search.name" class="docs-list-item docs-list-item-parent">
-                         <a ng-click="toggleFolderMuncipio = !toggleFolderMuncipio" class="docs-list-item-parent">
+                         <a ng-click="getDocs(municipio.datos_entidad.id); toggleFolderMuncipio = !toggleFolderMuncipio" class="docs-list-item-parent">
                            {{ municipio.datos_entidad.nombre_completo}}
                            <span ng-class="{'caret-down' : toggleFolderMuncipio}" class="caret"></span>
                          </a>
                          <ul ng-show="toggleFolderMuncipio">
+                          <div  ng-show="isNotLoadedDocs[municipio.datos_entidad.id]"  layout="column" layout-fill layout-align="center center">
+                            <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+                          </div>
 
                             <li ng-repeat="folder in municipio.documentos track by $index" class="docs-list-item docs-list-item-parent">
                               <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
