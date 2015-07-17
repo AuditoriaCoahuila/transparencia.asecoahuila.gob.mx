@@ -117,22 +117,26 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
   };
 
   $scope.triggerTip = function(circleId, index){
-  	angular.forEach( $scope.showContentList, function(v,i){
-  		$scope.showContentList[i] = false;
-  	});
-  	$scope.showContentList[index] = !$scope.showContentList[index];
 
-  	//this.showContent = !this.showContent;
+  	if( $(window).width() >= 960 ){
+	  	angular.forEach( $scope.showContentList, function(v,i){
+	  		$scope.showContentList[i] = false;
+	  	});
+	  	$scope.showContentList[index] = !$scope.showContentList[index];
 
-  	var svg = d3.select("#data-map-home");
-  	var data = d3.select('.map-circle-' + circleId).data();
-  	if(data.length > 0){
-          var c = svg.select('.map-circle-' + circleId).node();
-          var e = document.createEvent('UIEvents');
-          e.initUIEvent('mouseover', true, true);
-          c.dispatchEvent(e);
-          //$scope.tip.show(data[0], c);
-  	}
+	  	var svg = d3.select("#data-map-home");
+	  	var data = d3.select('.map-circle-' + circleId).data();
+	  	if(data.length > 0){
+	          var c = svg.select('.map-circle-' + circleId).node();
+	          var e = document.createEvent('UIEvents');
+	          e.initUIEvent('mouseover', true, true);
+	          c.dispatchEvent(e);
+	          //$scope.tip.show(data[0], c);
+	  	}
+		}
+		else{
+			$location.path('/municipio/'+circleId);
+		}
   };
 
 	$scope.drawState = function(){
