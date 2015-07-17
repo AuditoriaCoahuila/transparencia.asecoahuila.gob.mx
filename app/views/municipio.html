@@ -13,7 +13,7 @@
 
     <div class="container-alt">
         <div class="columns-container" layout="row" layout-md="column" layout-sm="column">
-            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+            <div class="column-item column-item-alt" flex="20" flex-md="100" flex-sm="100">
                 <div class="container container-sm center-content">
                     <h2>Ingreso per cápita del municipio</h2>
                     <p><strong>Contra el promedio general de los 38 municipios</strong></p>
@@ -28,7 +28,7 @@
 
                 </div>
             </div>
-            <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
+            <div class="column-item column-item-alt" flex="40" flex-md="100" flex-sm="100">
                 <div class="container container-sm center-content">
                     <h2>Egresos per cápita del municipio</h2>
                     <p><strong>Dividido por concepto</strong></p>
@@ -39,9 +39,24 @@
                             <r field="valor"></r>
                             <graph-legend></graph-legend>
                             <ring field="Descripcion" thickness="20"></ring>
-                        </graph>                        
+                        </graph>
                         <p class="radial-chart-label">Presupuesto de egresos 2014 (Adenda)</p>
                         <p class="radial-chart-label"><strong class="big-text">{{presupuestoEgresos.valor | currency:'$'}}</strong></p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="column-item column-item-alt" flex="40" flex-md="100" flex-sm="100">
+                <div class="container container-sm center-content">
+                    <h2>Egresos vs Ingresos per cápita del municipio</h2>
+                    <div class="radial-item">
+                        <graph data="ingresos_egresos" class="ring-chart" width="100%" height="300px">
+                            <r field="valor"></r>
+                            <graph-legend></graph-legend>
+                            <ring field="concepto" thickness="20"></ring>
+                        </graph>
+                        <p class="radial-chart-label">Presupuesto de egresos vs ingresos 2014 (Adenda)</p>
+                        <p class="radial-chart-label"><strong class="big-text">{{porcentaje_ie.valor | currency:'$'}}</strong></p>
                     </div>
 
                 </div>
