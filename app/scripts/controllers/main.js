@@ -25,7 +25,8 @@ angular.module('asecApp')
       $scope.meta = {
         title : $scope.mainContent.tituloMeta,
         description : $scope.mainContent.descripcionMeta,
-        keywords : $scope.mainContent.keywordsMeta
+        keywords : $scope.mainContent.keywordsMeta,
+        url: $location.protocol() + "://" + $location.host() + ":" + $location.port()
       }
     }
 
