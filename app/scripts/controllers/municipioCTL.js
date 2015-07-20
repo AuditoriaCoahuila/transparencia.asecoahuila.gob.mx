@@ -20,22 +20,27 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
         var ingresosList = $scope.municipio.informacion_presupuestal['2014'].Ingresos;
 
 		$scope.egresos = [];
-        $scope.ingresos_egresos = {};
-        $scope.documents.push($scope.municipio.documentos);
+    $scope.ingresos_egresos = {};
+    $scope.documents.push($scope.municipio.documentos);
 
 		angular.forEach($scope.capitulos , function(cap,key){
 			var capObject = {};
 			capObject = egresosList['Capítulo ' + key] || {'valor':0};
 			capObject['Descripcion'] = $scope.capitulos[key];
+
+			if( parseInt(capObject['valor']) <= 0 ){
+				capObject['concepto'] = 'Capítulo ' + key;
+				capObject['valor'] =  '0';
+			}
 			$scope.egresos.push(capObject);
 		});
 
-        var egresos_per_capita = { 'valor' : 4521.31, 'concepto' : 'promedio'};
-        $scope.ingresos_per_capita = ingresosList['Ingresos Per C\u00e1pita por Municipio'] || { 'valor' : 0 };
-        $scope.ingresos_per_capita.concepto = 'ingresos per cápita '+$scope.municipio.datos_entidad.nombre;
-        $scope.ingresos_egresos = [];
-        $scope.ingresos_egresos.push($scope.ingresos_per_capita);
-        $scope.ingresos_egresos.push(egresos_per_capita);
+    var egresos_per_capita = { 'valor' : 4521.31, 'concepto' : 'promedio'};
+    $scope.ingresos_per_capita = ingresosList['Ingresos Per C\u00e1pita por Municipio'] || { 'valor' : 0 };
+    $scope.ingresos_per_capita.concepto = 'ingresos per cápita '+$scope.municipio.datos_entidad.nombre;
+    $scope.ingresos_egresos = [];
+    $scope.ingresos_egresos.push($scope.ingresos_per_capita);
+    $scope.ingresos_egresos.push(egresos_per_capita);
 
 		$scope.presupuestoEgresos = egresosList['Presupuesto de Egresos 2014 (Adenda)'];
 	};
@@ -49,7 +54,6 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 
 		$http.jsonp(requestUrl)
 	  	.success(function(data) {
-  			//console.log(data);
 				$scope.municipio = data[id];
 				$scope.isLoaded = true;
 				$scope.drawEgresos();
@@ -60,6 +64,14 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		.error(function(data) {
 		});	
 
+	};
+
+	$scope.isSubfolder = function(item, key){
+		var result = false;
+		if( angular.isArray(item)  || isNaN(key) ){
+			result = true;
+		}
+		return result;
 	};
 
 	$scope.getMunicipio();

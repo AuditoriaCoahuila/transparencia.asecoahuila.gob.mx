@@ -23,10 +23,10 @@
                     <h2>Ingresos per cápita de {{municipio.datos_entidad.nombre}}</h2>
                     <p><strong> vs promedio estatal</strong></p>
                     <div class="radial-item">
-                        <graph data="ingresos_egresos" class="ring-chart" width="100%" height="300px">
+                        <graph data="ingresos_egresos" class="ring-chart" width="100%" height="520px">
                             <r field="valor"></r>
                             <graph-legend></graph-legend>
-                            <ring field="concepto" thickness="20"></ring>
+                            <ring field="concepto" diameter="80" thickness="15"></ring>
                         </graph>
                         <p class="radial-chart-label">Ingresos per cápita 2014 {{municipio.datos_entidad.nombre}} </p>
                         <p class="radial-chart-label"><strong class="big-text">{{ingresos_per_capita.valor | currency:'$'}}</strong></p>
@@ -35,16 +35,16 @@
                 </div>
             </div>
             <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
-                <div class="container container-sm center-content">
+                <div class="container center-content">
                     <h2>Egresos por capitulo</h2>
                     <p><strong>Dividido por concepto</strong></p>
 
 
                     <div class="radial-item">
-                        <graph data="egresos" class="ring-chart" width="100%" height="300px">
+                        <graph data="egresos" class="ring-chart" width="100%" height="520px">
                             <r field="valor"></r>
                             <graph-legend></graph-legend>
-                            <ring field="Descripcion" thickness="20"></ring>
+                            <ring field="Descripcion" diameter="80" thickness="15"></ring>
                         </graph>
                         <p class="radial-chart-label">Presupuesto de egresos 2014 (Adenda)</p>
                         <p class="radial-chart-label"><strong class="big-text">{{presupuestoEgresos.valor | currency:'$'}}</strong></p>
@@ -72,8 +72,21 @@
                                         </a>
 
                                         <ul ng-show="toggleFolder">
-                                            <li ng-repeat="doc in folder" class="docs-list-item">
-                                                <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
+                                            <!--Si es un doc-->
+                                            <li ng-if="!isSubfolder(value, key)" ng-repeat="(key,value) in folder" class="docs-list-item">
+                                                <a target="_blank" ng-href="{{value.url}}" ng-bind="value.concepto">ENTRO</a>
+                                            </li>
+                                            <!--Si es un subfolder-->
+                                            <li ng-if="isSubfolder(value, key)" ng-repeat="(key,value) in folder track by $index" class="docs-list-item docs-list-item-parent">
+                                                <a ng-click="toggleSubfolder = !toggleSubfolder" class="docs-list-item-parent">
+                                                    {{key}}
+                                                    <span ng-class="{'caret-down' : toggleSubfolder}" class="caret"></span>
+                                                </a>
+                                                <ul ng-show="toggleSubfolder">
+                                                    <li ng-repeat="doc in value" class="docs-list-item">
+                                                        <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.nombre_archivo"></a>
+                                                    </li> 
+                                                </ul>                                               
                                             </li>
                                         </ul>
 
@@ -103,7 +116,7 @@
                 <div class="stats container-side-margin-left" flex="50" flex-sm="100">
                     <div class="stats-count container stats-count-alt">
                         <h4>Cuentas Públicas 2014</h4>
-                        <div ng-repeat='(key,category) in municipio.cuentas_publicas[2014]'>
+                        <div class="separator-top" ng-repeat='(key,category) in municipio.cuentas_publicas[2014]'>
                             <p><strong ng-bind='key'></strong></p>
                             <div class="radial-item" ng-repeat='dato in category' >
                                 <p layout='row'>
@@ -116,8 +129,17 @@
 
                     <div class="stats-count container">
                         <h4>Valuación Actuarial 2013</h4>
-                        <div ng-repeat='(key,category) in municipio.valuacion_actuarial[2013]'>
-                            <p><strong ng-bind='key'></strong></p>
+                        <div class="separator-top" ng-repeat='(key,category) in municipio.valuacion_actuarial[2013]'>
+                            <p layout="row">
+                                <strong ng-bind='key'></strong>                              
+                            </p>
+                            <div class="radial-item">
+                                <p layout="row" layout-align="end center">
+                                    <strong class="align-right" offset="20" flex="20">Hombres</strong>
+                                    <strong class="align-right" flex="20">Mujeres</strong>
+                                    <strong class="align-right" flex="20">Total</strong>                                      
+                                </p>                                
+                            </div>
                             <div class="radial-item" ng-repeat='dato in category' >
                                 <p layout='row'>
                                     <span flex ng-bind='dato.concepto'></span>
