@@ -663,9 +663,9 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	background: url(../images/pdf-icon.png) 4px center no-repeat;
 	background-size: 22px 25px;
 	line-height: 1.2;
-    white-space: normal;
-    overflow: hidden;
-    padding: 10px 10px 10px 40px;
+  white-space: normal;
+  overflow: hidden;
+  padding: 10px 10px 10px 40px;
 }
 
 .docs-list-item a{
@@ -816,6 +816,104 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
   border-top: 1px solid #fff;
   padding-top: 14px;
   margin-top: 14px;	
+}
+
+/*----------------/
+		#YEAR-SELECTOR
+/*----------------*/
+.year-selector{padding: 0 2px}
+.year-selector .bordered-btn{
+	border: 2px solid #858585;
+	color: #858585;
+	cursor: pointer;
+	font-weight: 700;
+	text-align: center;
+}
+
+.year-selector .bordered-btn + .bordered-btn{margin-left: 4px}
+
+.year-selector .bordered-btn.active-btn,
+.year-selector .bordered-btn.active-btn span,
+.year-selector .bordered-btn:hover,
+.year-selector .bordered-btn:hover span{
+	background: #858585;
+	color: #fff;
+}
+
+.year-selector .bordered-btn span{
+	color: #858585;
+	font-size: 14px;
+}
+
+/*--------------------/
+	#INFO-LIST
+/*-------------------*/
+.info-list{
+	list-style: none;
+	padding-left: 0;
+	white-space: normal;
+}
+
+.info-list-collection{
+	white-space: normal;
+	list-style-type: none!important;
+	padding: 0;
+}
+
+.info-list-scroller{
+  white-space: normal;
+  height: 260px;
+  overflow-y: hidden;
+  position: relative;	
+}
+
+.info-list-item-parent > a{
+	background: #FF8800;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding:  10px 12px;
+	position: relative;	
+}
+
+.info-list-item-parent > a > span,
+.info-list-item-parent > a > strong{
+	color: #fff;
+	font-size: 15px;
+}
+
+.info-list-item-parent .caret{
+	background: url(../images/flechalado.png) 4px center no-repeat;
+	height: 22px;
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	right: 20px;
+	width: 20px;
+}
+
+.info-list-item-parent .caret-down{
+	background: url(../images/flechaabajo.png) 4px center no-repeat;
+	right: 20px;
+	width: 28px;
+}
+
+.info-list-item-parent > ul{
+	padding-left: 0;
+}
+
+.info-list-item strong,
+.info-list-item p{margin: 0}
+
+.info-list-item .feed-list-item-top{margin: 4px 0}
+.info-list-item .feed-list-item-content{border-top: 0}
+.info-list-item .feed-list-item-title{padding: 8px 4px}
+.info-list-item .feed-list-item-url{
+	/*border-left: 0;*/
+	border-right: 0;
+	margin: 0;
 }
 
 

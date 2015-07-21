@@ -36,15 +36,15 @@
                             <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
                           </div>
 
-                            <li ng-repeat="folder in municipio.documentos track by $index" class="docs-list-item docs-list-item-parent">
+                            <li ng-repeat="(key,folder) in municipio.documentos.generales" class="docs-list-item docs-list-item-parent">
                               <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
-                                  {{folders[$index]}}
+                                  {{key}}
                                   <span ng-class="{'caret-down' : toggleFolder}" class="caret"></span>
                               </a>
 
                               <ul ng-show="toggleFolder">
                                   <li ng-repeat="doc in folder" class="docs-list-item">
-                                      <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.concepto"></a>
+                                      <a target="_blank" ng-href="{{doc.url}}" >{{doc.nombre_archivo}} | {{doc.anio}}</a>
                                   </li>
                               </ul>
 

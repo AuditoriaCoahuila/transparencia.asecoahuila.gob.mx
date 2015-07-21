@@ -65,29 +65,16 @@
                             <h4>Documentos</h4>
                             <ul>
                                 <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
-                                    <li ng-repeat="folder in municipio.documentos track by $index" class="docs-list-item docs-list-item-parent">
+                                    <li ng-repeat="(key,folder) in municipio.documentos.generales track by $index" class="docs-list-item docs-list-item-parent">
                                         <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
-                                            {{folders[$index]}}
+                                            {{key}}
                                             <span ng-class="{'caret-down' : toggleFolder}" class="caret"></span>
                                         </a>
 
                                         <ul ng-show="toggleFolder">
-                                            <!--Si es un doc-->
-                                            <li ng-if="!isSubfolder(value, key)" ng-repeat="(key,value) in folder" class="docs-list-item">
-                                                <a target="_blank" ng-href="{{value.url}}" ng-bind="value.concepto">ENTRO</a>
-                                            </li>
-                                            <!--Si es un subfolder-->
-                                            <li ng-if="isSubfolder(value, key)" ng-repeat="(key,value) in folder track by $index" class="docs-list-item docs-list-item-parent">
-                                                <a ng-click="toggleSubfolder = !toggleSubfolder" class="docs-list-item-parent">
-                                                    {{key}}
-                                                    <span ng-class="{'caret-down' : toggleSubfolder}" class="caret"></span>
-                                                </a>
-                                                <ul ng-show="toggleSubfolder">
-                                                    <li ng-repeat="doc in value" class="docs-list-item">
-                                                        <a target="_blank" ng-href="{{doc.url}}" ng-bind="doc.nombre_archivo"></a>
-                                                    </li> 
-                                                </ul>                                               
-                                            </li>
+                                            <li ng-repeat="doc in folder" class="docs-list-item">
+                                                <a target="_blank" ng-href="{{doc.url}}" >{{doc.nombre_archivo}} | {{doc.anio}}</a>
+                                            </li> 
                                         </ul>
 
                                     </li>
@@ -97,19 +84,68 @@
                         </div>
                     </div>
                     <div class="container">
-                        <h4>Criterios de transparencia presupuestal 2014</h4>
-                        <perfect-scrollbar class="feed-list-scroller" wheel-propagation="true" wheel-speed="10">
-                            <div class="feed-list-item" ng-repeat="criterio in municipio.criterios">
-                                <div class="feed-list-item-top" layout="row"  ng-click="showContent = !showContent">
-                                    <p class="feed-list-item-title" flex ng-bind="criterio.concepto"></p>
-                                    <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
-                                    <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
-                                </div>
-                                <div ng-show="showContent">
-                                    <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
-                                </div>
-                            </div>
-                        </perfect-scrollbar>                        
+                        <h4>Criterios de transparencia presupuestal</h4>
+                        
+                        <div class="year-selector" layout="row">
+                            <a  flex="50"
+                                ng-class="{'active-btn': selectedYear=='2014'}"
+                                ng-click="setYear('2014')"
+                                class="bordered-btn">
+                                <span>2014</span>
+                            </a>
+
+                            <a  flex="50"
+                                ng-class="{'active-btn': selectedYear=='2015'}"
+                                ng-click="setYear('2015')"
+                                class="bordered-btn">
+                                <span>2015</span>
+                            </a>
+                        </div>
+
+                        <div class="year-group">
+                           <ul class="info-list">
+                               <li class="info-list-item info-list-item-parent" ng-repeat="(key,tema) in municipio.criterios[selectedYear]">
+
+                                    <a href="#" ng-click="toggleTema = !toggleTema" class="">
+                                        <span>{{key}}</span> <strong>({{ showSize(tema) }})</strong>
+                                        <span ng-class="{'caret-down' : toggleTema}" class="caret"></span>
+                                    </a>
+
+                                    <perfect-scrollbar ng-if="toggleTema"class="info-list-scroller" wheel-propagation="true" wheel-speed="10">
+
+                                        <ul class="info-list-collection">
+                                            <li ng-repeat="criterio in tema"
+                                                class="feed-list-item-top"
+                                                >
+
+                                                <div layout="row" >
+                                                    <p class="feed-list-item-title"
+                                                        ng-click="showContent = !showContent"
+                                                        flex
+                                                        ng-bind="criterio.concepto"></p>
+                                                    
+                                                    <a 
+                                                        ng-repeat="doc in criterio.documentos | limitTo:1"
+                                                        ng-href="{{doc.url}}"
+                                                        target="_blank"
+                                                        class="feed-list-item-status feed-list-item-url">Link</a>
+
+                                                    <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
+                                                    <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
+
+                                                </div>
+                                                
+                                                <div ng-show="showContent">
+                                                    <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
+                                                </div> 
+
+                                            </li>
+                                        </ul>
+                                    </perfect-scrollbar>
+                               </li>
+                           </ul>                                
+                        </div>  
+
                     </div>
                 </div>
 

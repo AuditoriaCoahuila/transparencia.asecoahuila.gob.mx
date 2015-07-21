@@ -32,7 +32,7 @@ angular.module('asecApp')
 
     $scope.getMuncipioDetail = function(municipio,callback) {
         var baseUrl =
-            'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_entidad_todos_datos&id_entidad=';
+            'http://tnservice.asecoahuila.gob.mx/web_service.php?accion=get_entidad_todos_datos&id_entidad=';
         var id = municipio;
         var requestUrl = baseUrl + id + '&callback=JSON_CALLBACK';
 
@@ -58,5 +58,13 @@ angular.module('asecApp')
       "8000" : "Participaciones y aportaciones",
       "9000" : "Deuda Pública"
     };
+
+    $scope.isSubfolder = function(item, key){
+      var result = false;
+      if( angular.isArray(item)  || isNaN(key) ){
+        result = true;
+      }
+      return result;
+    };    
 
   });

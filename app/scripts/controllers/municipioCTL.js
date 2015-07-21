@@ -13,7 +13,8 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.municipio = {};
 	$scope.isLoaded = false;
 	$scope.folders = ['Reporte IMCO','Generales'];
-    $scope.documents = [];
+  $scope.documents = [];
+  $scope.selectedYear = '2014';
 
 	$scope.drawEgresos = function(){
 		var egresosList = $scope.municipio.informacion_presupuestal['2014'].Egresos;
@@ -48,7 +49,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 
 	$scope.getMunicipio = function(){
 		var baseUrl = 
-			'http://desarrollo.optimit.com.mx/auditoria_coahuila/web_service.php?accion=get_entidad_todos_datos&id_entidad=';
+			'http://tnservice.asecoahuila.gob.mx/web_service.php?accion=get_entidad_todos_datos&id_entidad=';
 		var id = $scope.municipioId;
 		var requestUrl = baseUrl + id + '&callback=JSON_CALLBACK';
 
@@ -66,13 +67,13 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 
 	};
 
-	$scope.isSubfolder = function(item, key){
-		var result = false;
-		if( angular.isArray(item)  || isNaN(key) ){
-			result = true;
-		}
-		return result;
+	$scope.setYear = function(year){
+		$scope.selectedYear = year;
 	};
+	$scope.showSize = function(arr){
+		var size = Object.keys(arr).length;
+		return size;
+	}
 
 	$scope.getMunicipio();
 
