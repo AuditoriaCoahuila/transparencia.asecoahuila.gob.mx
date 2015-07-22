@@ -569,6 +569,17 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 .feed-list-item-status{color: #FF911E!important}
 
+
+.feed-list-item-status-not{
+	background: url(../images/cruz.png) center center no-repeat;
+	width: 18px;
+}
+
+.feed-list-item-status-ok{
+	background: url(../images/palomita.png) center center no-repeat;
+	width: 18px;
+}
+
 .feed-list-item-num{
 	background: #FF911E;
 	color: #fff!important;
@@ -912,8 +923,10 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 .info-list-item .feed-list-item-title{padding: 8px 4px}
 .info-list-item .feed-list-item-url{
 	/*border-left: 0;*/
+	background: url(../images/link.png) center no-repeat;
 	border-right: 0;
 	margin: 0;
+	width: 16px;
 }
 
 

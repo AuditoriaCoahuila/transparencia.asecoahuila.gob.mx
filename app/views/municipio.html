@@ -111,37 +111,36 @@
                                         <span ng-class="{'caret-down' : toggleTema}" class="caret"></span>
                                     </a>
 
-                                    <perfect-scrollbar ng-if="toggleTema"class="info-list-scroller" wheel-propagation="true" wheel-speed="10">
+                                    <ul ng-show="toggleTema" class="info-list-collection">
+                                        <li ng-repeat="criterio in tema"
+                                            class="feed-list-item-top"
+                                            >
 
-                                        <ul class="info-list-collection">
-                                            <li ng-repeat="criterio in tema"
-                                                class="feed-list-item-top"
-                                                >
-
-                                                <div layout="row" >
-                                                    <p class="feed-list-item-title"
-                                                        ng-click="showContent = !showContent"
-                                                        flex
-                                                        ng-bind="criterio.concepto"></p>
-                                                    
-                                                    <a 
-                                                        ng-repeat="doc in criterio.documentos | limitTo:1"
-                                                        ng-href="{{doc.url}}"
-                                                        target="_blank"
-                                                        class="feed-list-item-status feed-list-item-url">Link</a>
-
-                                                    <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status">&#10006;</strong>
-                                                    <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status">&#10004;</strong>
-
-                                                </div>
+                                            <div layout="row" >
+                                                <p class="feed-list-item-title"
+                                                    ng-click="showContent = !showContent"
+                                                    flex
+                                                    ng-bind="criterio.concepto"></p>
                                                 
-                                                <div ng-show="showContent">
-                                                    <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
-                                                </div> 
+                                                <a 
+                                                    ng-repeat="doc in criterio.documentos | limitTo:1"
+                                                    ng-href="{{doc.url}}"
+                                                    target="_blank"
+                                                    class="feed-list-item-status feed-list-item-url">
+                                                </a>
 
-                                            </li>
-                                        </ul>
-                                    </perfect-scrollbar>
+                                                <strong ng-if="criterio.porcentaje_cumplimiento == 0" class="feed-list-item-status feed-list-item-status-not"></strong>
+                                                <strong ng-if="criterio.porcentaje_cumplimiento == 1" class="feed-list-item-status feed-list-item-status-ok"></strong>
+
+                                            </div>
+                                            
+                                            <div ng-show="showContent">
+                                                <p class="feed-list-item-content" flex ng-bind="criterio.respuesta_criterio"></p>
+                                            </div> 
+
+                                        </li>
+                                    </ul>
+
                                </li>
                            </ul>                                
                         </div>  
@@ -153,7 +152,7 @@
                     <div class="stats-count container stats-count-alt">
                         <h4>Cuentas Públicas 2014</h4>
                         <div class="separator-top" ng-repeat='(key,category) in municipio.cuentas_publicas[2014]'>
-                            <p><strong ng-bind='key'></strong></p>
+                            <p ng-if="key != 'Gastos y Otras Pérdidas'"><strong ng-bind='key'></strong></p>
                             <div class="radial-item" ng-repeat='dato in category' >
                                 <p layout='row'>
                                     <span flex ng-bind='dato.concepto'></span>
