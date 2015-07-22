@@ -36,9 +36,9 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 			$scope.egresos.push(capObject);
 		});
 
-    var egresos_per_capita = { 'valor' : 4521.31, 'concepto' : 'promedio'};
+    var egresos_per_capita = { 'valor' : 4521.31, 'concepto' : 'Promedio'};
     $scope.ingresos_per_capita = ingresosList['Ingresos Per C\u00e1pita por Municipio'] || { 'valor' : 0 };
-    $scope.ingresos_per_capita.concepto = 'ingresos per cápita '+$scope.municipio.datos_entidad.nombre;
+    $scope.ingresos_per_capita.concepto = 'Ingresos per cápita '+$scope.municipio.datos_entidad.nombre;
     $scope.ingresos_egresos = [];
     $scope.ingresos_egresos.push($scope.ingresos_per_capita);
     $scope.ingresos_egresos.push(egresos_per_capita);

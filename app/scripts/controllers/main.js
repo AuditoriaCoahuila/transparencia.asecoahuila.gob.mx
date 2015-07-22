@@ -51,7 +51,7 @@ angular.module('asecApp')
       "1000" : "Servicios personales",
       "2000" : "Materiales y suministros",
       "3000" : "Servicios generales",
-      "4000" : "Subsidios y transferencias",
+      "4000" : "Transferencias, asignaciones, subsidios y otras ayudas",
       "5000" : "Bienes muebles, inmuebles e intangibles",
       "6000" : "Inversión pública",
       "7000" :"Inversiones financieras y otras provisiones",
