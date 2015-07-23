@@ -43,9 +43,11 @@
                               </a>
 
                               <ul ng-show="toggleFolder">
-                                  <li ng-repeat="doc in folder" class="docs-list-item">
-                                      <a target="_blank" ng-href="{{doc.url}}" >{{doc.nombre_archivo}} | {{doc.anio}}</a>
-                                  </li>
+
+                                  <li ng-repeat="(key,doc) in folder| toArray  | orderBy : '-anio' | orderBy : 'subconcepto'" class="docs-list-item docs-item" ng-class='getFileExt(doc.nombre_archivo)' >
+                                      <a target="_blank" ng-href="{{doc.url}}" >
+                                          {{doc.subconcepto}} <span ng-if='doc.subconcepto'>|</span> {{doc.anio}} - {{doc.nombre_archivo}}</a>
+                                  </li> 
                               </ul>
 
                            </li>

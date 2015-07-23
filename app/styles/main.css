@@ -450,8 +450,6 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	padding: 0;
 }
 .custom-ordered-list li{
-	background: url(../images/pdf-icon.png) 4px center no-repeat;
-	background-size: 22px 25px;
 	color:#fff;
 	font-size:13px;
 	padding: 8px;
@@ -671,12 +669,11 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 }
 
 .docs-list-item{
-	background: url(../images/pdf-icon.png) 4px center no-repeat;
 	background-size: 22px 25px;
 	line-height: 1.2;
-  white-space: normal;
-  overflow: hidden;
-  padding: 10px 10px 10px 40px;
+	white-space: normal;
+	overflow: hidden;
+	padding: 10px 10px 10px 40px;
 }
 
 .docs-list-item a{
@@ -727,6 +724,22 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 /*---------------/
 	#DOCUMENTS
 /*--------------*/
+.docs-item{
+	background: url(../images/pdf-icon.png) 4px center/22px 25px no-repeat;
+}
+.docs-item.xls{
+	background-image: url(../images/pdf-icon.png);
+}
+.docs-item.xlsx{
+	background-image: url(../images/pdf-icon.png);
+}
+.docs-item.doc{
+	background-image: url(../images/pdf-icon.png);
+}
+.docs-item.docx{
+	background-image: url(../images/pdf-icon.png);
+}
+
 
 .docs-relative{
   position: relative;

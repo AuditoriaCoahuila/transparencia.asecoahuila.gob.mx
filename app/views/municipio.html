@@ -64,22 +64,20 @@
                         <div class="container docs-list">
                             <h4>Documentos</h4>
                             <ul>
-                                <perfect-scrollbar class="docs-list-scroller" wheel-propagation="true" wheel-speed="10">
-                                    <li ng-repeat="(key,folder) in municipio.documentos.generales track by $index" class="docs-list-item docs-list-item-parent">
-                                        <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
-                                            {{key}}
-                                            <span ng-class="{'caret-down' : toggleFolder}" class="caret"></span>
-                                        </a>
+                                <li ng-repeat="(key,folder) in municipio.documentos.generales track by $index" class="docs-list-item docs-list-item-parent">
+                                    <a ng-click="toggleFolder = !toggleFolder" class="docs-list-item-parent">
+                                        {{key}}
+                                        <span ng-class="{'caret-down' : toggleFolder}" class="caret"></span>
+                                    </a>
 
-                                        <ul ng-show="toggleFolder">
-                                            <li ng-repeat="doc in folder" class="docs-list-item">
-                                                <a target="_blank" ng-href="{{doc.url}}" >{{doc.nombre_archivo}} | {{doc.anio}}</a>
-                                            </li> 
-                                        </ul>
+                                    <ul ng-show="toggleFolder">
+                                        <li ng-repeat="(key,doc) in folder| toArray  | orderBy : '-anio' | orderBy : 'subconcepto'" class="docs-list-item docs-item" ng-class='getFileExt(doc.nombre_archivo)' >
+                                            <a target="_blank" ng-href="{{doc.url}}" >
+                                                {{doc.subconcepto}} <span ng-if='doc.subconcepto'>|</span> {{doc.anio}} - {{doc.nombre_archivo}}</a>
+                                        </li> 
+                                    </ul>
 
-                                    </li>
-                              
-                                </perfect-scrollbar>
+                                </li>
                             </ul>
                         </div>
                     </div>

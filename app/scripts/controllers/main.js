@@ -67,4 +67,9 @@ angular.module('asecApp')
       return result;
     };    
 
+    $scope.getFileExt = function(filename){
+      var parts = filename.split('.');
+      return parts[parts.length-1];
+    }
+
   });
