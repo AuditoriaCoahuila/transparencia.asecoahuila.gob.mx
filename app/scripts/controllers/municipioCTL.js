@@ -13,8 +13,8 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 	$scope.municipio = {};
 	$scope.isLoaded = false;
 	$scope.folders = ['Reporte IMCO','Generales'];
-  $scope.documents = [];
-  $scope.selectedYear = '2014';
+	$scope.documents = [];
+	$scope.selectedYear = '2014';
 
 	$scope.drawEgresos = function(){
 		var egresosList = $scope.municipio.informacion_presupuestal['2014'].Egresos;

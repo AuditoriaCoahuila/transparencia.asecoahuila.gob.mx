@@ -12,6 +12,8 @@ angular.module('asecApp')
     $scope.search = {};
     $scope.isLoaded = false;
     $scope.folders = ['Reporte IMCO','Generales'];
+    $scope.initMeta();
+    $scope.meta.title = 'Documentos - '+$scope.meta.title;
 
     var nMunicipios = 38,
       baseUrlDocs =

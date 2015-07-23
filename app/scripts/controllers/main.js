@@ -18,8 +18,9 @@ angular.module('asecApp')
       $scope.mainContent.cifrasPrincipales = $scope.mainContent.cifrasPrincipales.split("\\,");
       $scope.mainContent.descripciones = $scope.mainContent.descripciones.split("\\,");
       
-      if($location.path == '/') $scope.initMeta();
-      //console.log($scope.mainContent);
+      if($location.path() === '/' || $location.path() === '/municipios'){
+        $scope.initMeta();
+      } 
     });
     $scope.initMeta = function(){
       $scope.meta = {
@@ -27,6 +28,9 @@ angular.module('asecApp')
         description : $scope.mainContent.descripcionMeta,
         keywords : $scope.mainContent.keywordsMeta,
         url: $location.protocol() + "://" + $location.host() + ":" + $location.port()
+      };
+      if($location.path() === '/municipios'){
+        $scope.meta.title = 'Municipios - '+$scope.meta.title;
       }
     }
 

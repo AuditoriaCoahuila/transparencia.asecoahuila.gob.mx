@@ -59,7 +59,7 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 				var docsTypes = ['Cuentas públicas municipales','Información Presupuestal'];
 				$scope.randomDocsKey = docsTypes[Math.floor(Math.random()*docsTypes.length)];
 				//$scope.randomMunDocs = $scope.randomMun.documentos.generales['Valuación Actuarial'];
-				console.log($scope.randomMun);
+				//console.log($scope.randomMun);
 			}
 		});
 	};
