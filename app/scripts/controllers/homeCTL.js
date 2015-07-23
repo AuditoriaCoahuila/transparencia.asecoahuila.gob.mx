@@ -51,12 +51,12 @@ app.controller('homeCTL',['$scope','$http', '$location', '$rootScope', function 
 
 		  });
 
-		$scope.getMuncipioDetail(20,function(err,result){
+		$scope.getMuncipioDetail(Math.floor(Math.random() * (nMunicipios - 1)) + 1,function(err,result){
 			if (err) {
 				console.log(err);
 			} else {
 				$scope.randomMun = result;
-				var docsTypes = ['Cuentas públicas municipales','Valuación Actuarial','Información Presupuestal'];
+				var docsTypes = ['Cuentas públicas municipales','Información Presupuestal'];
 				$scope.randomDocsKey = docsTypes[Math.floor(Math.random()*docsTypes.length)];
 				//$scope.randomMunDocs = $scope.randomMun.documentos.generales['Valuación Actuarial'];
 				console.log($scope.randomMun);

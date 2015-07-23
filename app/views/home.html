@@ -43,10 +43,10 @@
     <div class="column-item" flex="50" flex-md="100" flex-sm="100">
         <div class="container container-sm">
             <h3 ng-bind="randomMun.datos_entidad.nombre_completo"></h3>
-            <p>Documentos relacionados</p>
+            <p>Documentos de {{randomDocsKey}}</p>
             <ul class="custom-ordered-list">
                 <li ng-repeat="doc in randomMun.documentos.generales[randomDocsKey] | objectLimitTo:limitDocs">
-                    <a target="_blank" ng-href="{{doc.url}}" >{{doc.nombre_archivo}} | {{randomDocsKey}} {{doc.anio}}</a>
+                    <a target="_blank" ng-href="{{doc.url}}" >{{doc.subconcepto}} - {{doc.anio}}</a>
                 </li>                             
             </ul>
         </div>
@@ -60,3 +60,5 @@
     </div>
 </div>
 <div ng-include="'/views/footer.html'"></div>
+
+
