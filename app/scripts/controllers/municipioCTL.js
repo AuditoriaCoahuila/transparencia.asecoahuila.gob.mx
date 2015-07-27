@@ -27,7 +27,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		angular.forEach($scope.capitulos , function(cap,key){
 			var capObject = {};
 			capObject = egresosList['Capítulo ' + key] || {'valor':0};
-			capObject['Descripcion'] = $scope.capitulos[key];
+			capObject['Descripción'] = $scope.capitulos[key];
 
 			if( parseInt(capObject['valor']) <= 0 ){
 				capObject['concepto'] = 'Capítulo ' + key;
