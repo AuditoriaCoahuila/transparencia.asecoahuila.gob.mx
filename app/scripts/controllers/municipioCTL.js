@@ -56,6 +56,7 @@ app.controller('municipioCTL',['$scope','$http', '$routeParams', function ($scop
 		$http.jsonp(requestUrl)
 	  	.success(function(data) {
 				$scope.municipio = data[id];
+				console.log($scope.municipio);
 				$scope.isLoaded = true;
 				$scope.drawEgresos();
 				$scope.meta.title = $scope.municipio.datos_entidad.nombre+' - '+$scope.mainContent.tituloMeta;

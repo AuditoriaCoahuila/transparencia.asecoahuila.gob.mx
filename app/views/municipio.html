@@ -120,6 +120,15 @@
                                                     flex
                                                     ng-bind="criterio.concepto"></p>
                                                 
+
+                                                <a 
+                                                    ng-repeat="doc in criterio.documentos | limitTo:1"
+                                                    ng-href="{{doc.url_documento}}"
+                                                    target="_blank"
+                                                    class="feed-list-item-status feed-list-item-url feed-list-item-doc">
+                                                </a>
+
+
                                                 <a 
                                                     ng-repeat="doc in criterio.documentos | limitTo:1"
                                                     ng-href="{{doc.url}}"
