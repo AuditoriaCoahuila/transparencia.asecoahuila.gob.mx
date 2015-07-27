@@ -728,16 +728,16 @@ a,p,h1,h2,h3,h4,a[href],input,textarea,span{font-family: 'Open Sans', sans-serif
 	background: url(../images/pdf-icon.png) 4px center/22px 25px no-repeat;
 }
 .docs-item.xls{
-	background-image: url(../images/pdf-icon.png);
+	background-image: url(../images/xls-icon.png);
 }
 .docs-item.xlsx{
-	background-image: url(../images/pdf-icon.png);
+	background-image: url(../images/xls-icon.png);
 }
 .docs-item.doc{
-	background-image: url(../images/pdf-icon.png);
+	background-image: url(../images/doc-icon.png);
 }
 .docs-item.docx{
-	background-image: url(../images/pdf-icon.png);
+	background-image: url(../images/doc-icon.png);
 }
 
 

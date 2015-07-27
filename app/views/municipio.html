@@ -21,7 +21,7 @@
             <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
                 <div class="container container-sm center-content">
                     <h2>Ingresos per cápita de {{municipio.datos_entidad.nombre}}</h2>
-                    <p><strong> vs promedio estatal</strong></p>
+                    <p><strong> vs promedio municipal en Coahuila de ingresos per cápita</strong></p>
                     <div class="radial-item">
                         <graph data="ingresos_egresos" class="ring-chart" width="100%" height="520px">
                             <r field="valor"></r>
@@ -36,15 +36,15 @@
             </div>
             <div class="column-item column-item-alt" flex="50" flex-md="100" flex-sm="100">
                 <div class="container center-content">
-                    <h2>Egresos por capítulo</h2>
-                    <p><strong>Dividido por concepto</strong></p>
+                    <h2>Egresos por clasificador por objeto del casto</h2>
+                    <p><strong>Dividido por capítulo</strong></p>
 
 
                     <div class="radial-item">
                         <graph data="egresos" class="ring-chart" width="100%" height="520px">
                             <r field="valor"></r>
                             <graph-legend></graph-legend>
-                            <ring field="Descripcion" diameter="80" thickness="15"></ring>
+                            <ring field="Descripción" diameter="80" thickness="15"></ring>
                         </graph>
                         <p class="radial-chart-label">Presupuesto de egresos 2014 (Adenda)</p>
                         <p class="radial-chart-label"><strong class="big-text">{{presupuestoEgresos.valor | currency:'$'}}</strong></p>
