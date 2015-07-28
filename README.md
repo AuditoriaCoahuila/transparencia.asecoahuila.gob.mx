@@ -26,6 +26,7 @@ Run `grunt` for building and `grunt serve` for preview.
 
 Running `grunt test` will run the unit tests with karma.
 
+
 ## Deployment
 
 Can be deployed to apache or divshot using the `dist` folder.
